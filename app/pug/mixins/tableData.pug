@@ -1,0 +1,32 @@
+mixin tableData(data)
+	tr 
+		td.tour-table__number
+			a(href="request.html" class="tour-table__link")= data.number
+		td.tour-table__data
+			span.fw-600= data.date
+			span= data.route
+		td.tour-table__customer
+			div.text-clamp.fw-600= data.customer
+			div.text-clamp #[b 2:] ${data.customers}
+		td.tour-table__operator
+			div.text-clamp= data.operator.operatorName
+			if data.operator.operatorFull
+				div.payment-status #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+			if data.operator.operatorPart
+				div.payment-status #[i(class="fa-solid fa-circle-exclamation")] Частично оплачено 
+		td.tour-table__sum
+			span.fw-600= data.sum 
+			if data.sum.sumFull 
+				div.payment-status #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+			if data.sum.sumPart
+				div.payment-status #[i(class="fa-solid fa-circle-exclamation")] Частично оплачено 
+		td.tour-table__manager
+			div 
+				a(href="" class="tour-table__link")= data.manager
+				span= data.managerDate
+		td 
+			button.btn-archive(type="button")
+				i(class="fa-solid fa-box-archive")
+		td
+			button.btn-copy
+				i(class="fa-solid fa-copy")

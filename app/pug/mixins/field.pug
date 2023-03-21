@@ -1,0 +1,12 @@
+mixin fieldItem(labelName, inputName)
+	.field-group__item
+		label.field-group__label(for=inputName)= labelName
+		table.field-group__box.field-group__table
+			tr
+				td
+					input(type="text" id=inputName class="field-group__input")
+				if inputName != "number" && inputName != "fio"
+					td 
+						button(type="button" class="field-group__button")
+			if block 
+				block

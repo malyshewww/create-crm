@@ -1,0 +1,28 @@
+.btn-reset {
+	border: 1px solid $grayColorPrimary;
+	color: $grayColorPrimary;
+}
+.btn-search {
+	border: 1px solid $blueColorSecondary;
+	color: $blueColorSecondary;
+}
+.btn-download {
+	border: 1px solid $greenColorPrimary;
+	color: $greenColorPrimary;
+}
+.btn-request {
+	border: 1px solid $blackColorSecondary;
+	color: $blackColorSecondary;
+}
+.btn-archive,
+.btn-copy {
+	width: 48px;
+	height: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: transparent;
+	color: $blueColorPrimary;
+	padding: 10px;
+	cursor: pointer;
+}

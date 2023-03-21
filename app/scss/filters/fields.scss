@@ -1,0 +1,73 @@
+.field-group {
+	&__table {
+		border: 1px solid $grayColorLight2;
+		font-size: 14px;
+		background: $whiteColor;
+		border-collapse: separate;
+		border-spacing: 0;
+		min-height: 30px;
+		width: 100%;
+		& td {
+			min-height: 100%;
+		}
+		& tbody {
+			vertical-align: auto;
+		}
+	}
+	&__item {
+	}
+	&__label,
+	&__name {
+		display: inline-block;
+		font-size: 11px;
+		line-height: math.div(18, 11) * 100%;
+		color: $grayColorPrimary;
+		text-transform: uppercase;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+	&__input {
+		padding: 5px;
+		font-size: inherit;
+		color: $mainColor;
+		width: 100%;
+	}
+	&__name {
+		color: $mainColor;
+		margin-bottom: 3px;
+	}
+	&__list {
+		list-style: none;
+		& li {
+			display: inline;
+			font-size: 13px;
+			color: $blueColorPrimary;
+			cursor: pointer;
+		}
+	}
+	&__button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 5px;
+		height: 28px;
+		width: 100%;
+		background-color: transparent;
+		cursor: pointer;
+		&::before {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 6px 3px 0 3px;
+			border-color: $mainColor transparent transparent transparent;
+		}
+		&:hover {
+			background-color: $blueColorSecondary;
+			&::before {
+				border-color: $whiteColor transparent transparent transparent;
+			}
+		}
+	}
+}

@@ -1,0 +1,383 @@
+extends layout.pug
+
+block variables
+	- var pageTitle = "Заявка";
+	- var commentText = "тест";
+	- var area = true;
+	- var touristDataArea = true; 
+	- var detailTourArea = true;
+	- var documentsArea = true;
+	- var filesArea = true;
+	- var organization = true;
+block content
+	section.claim 
+		.container 
+			.claim__body
+				.claim__header
+					.claim__top 
+						h1.claim__title Заявка №1802-2757
+						button.claim__copy.btn-copy
+							i(class="fa-solid fa-copy")
+						.claim__subtitle 
+							| Тихановская Ирина Викторовна создана: 11:33:29 06.03.2023 МСК.
+					.claim__comment.comment-claim
+						.comment-claim__box
+							if commentText
+								button.claim__button.btn-blue.btn-redact
+									span
+										| редактировать комментарий
+								div.comment-claim__text= commentText
+							else
+								button.claim__button.btn-blue.btn-redact
+									span
+										| + Добавить комментарий для себя ( его не будут видеть сотрудники ЦБ! )
+				.claim__tabs.tabs-claim
+					nav.tabs-claim__navigation 
+						ul.tabs-claim__list 
+							li.tabs-claim__item(data-tab="info") Информация по заявке
+							li.tabs-claim__item(data-tab="fincance") Финансы
+					.tabs-claim__content 
+						.tabs-claim__data.data-claim(data-tab-content="info")
+							.data-claim__groups
+								.data-claim__group.group-data
+									.group-data__row 
+										.group-data__column
+											each item, index in groupItemData
+												if !item.key
+													.group-data__item.item-group
+														.item-group__top 
+															.item-group__title= item.title
+															button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+															if item.status
+																case item.status
+																	when "notSent"
+																		.item-group__status.status-not-sent
+																			i(class="fa-solid fa-circle-xmark")
+																			| Не отправлены
+																	when "part"
+																		.item-group__status.status-part
+																			i(class="fa-solid fa-circle-check")
+																			| Частично оплачено
+																	when "full"
+																		.item-group__status.status-full
+																			i(class="fa-solid fa-circle-check")
+																			| Полностью оплачено
+														if item.list
+															ul.item-group__list.list
+																each listItem in item.list
+																	li.list__item
+																		div.list__label= listItem.label
+																		div.list__value= listItem.value
+																			if listItem.image 
+																				span.list__image 
+																					img(src=`./images/claim/${listItem.image}.png`, alt=listItem.value)
+										.group-data__column
+												each item, index in groupItemData
+													if item.key
+														.group-data__item.item-group
+															.item-group__top 
+																.item-group__title= item.title
+																if item.status
+																	case item.status
+																		when "notSent"
+																			.item-group__status.status-not-sent
+																				i(class="fa-solid fa-circle-xmark")
+																				| Не отправлены
+																		when "part"
+																			.item-group__status.status-part
+																				i(class="fa-solid fa-circle-check")
+																				| Частично оплачено
+																		when "full"
+																			.item-group__status.status-full
+																				i(class="fa-solid fa-circle-check")
+																				| Полностью оплачено
+																if item.key == "finance_tourist"
+																	div
+																		button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+															.item-group__main
+																.item-group__box.finance-box
+																	.item-group__heading
+																		.item-group__buttons
+																			button(type="button" id="tourist-price").btn-blue.btn-redact= item.priceBtn
+																				i(class="fa-solid fa-chevron-down icon-arrow")
+																			if item.key == "finance"
+																				div
+																					button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+																		if item.prices
+																			.item-group__prices
+																				each itemPrice in item.prices
+																					span.item-group__price= itemPrice.priceOne
+																					span /
+																					span.item-group__price= itemPrice.priceTwo
+																	if item.list
+																		ul.item-group__list.list
+																			each listItem in item.list
+																				li
+																					div.list__label= listItem.label
+																					div.list__value= listItem.value
+															if item.key == "finance_tourist"
+																.item-group__box
+																	.item-group__heading
+																		.item-group__button
+																			span.text-label ОПЛАЧЕНО ТУРИСТОМ
+																			button(type="button" id="tourist-price").btn-blue.btn-redact ИСТОРИЯ ОПЛАТ
+																				i(class="fa-solid fa-chevron-down icon-arrow")
+																		if item.prices
+																			.item-group__prices 
+																				each itemPrice in item.prices
+																					span.item-group__price= itemPrice.priceOne
+																	if item.table
+																		each arrayTable in item.table
+																			table.table.finance-table 
+																				thead 
+																					th(style="width: 60px;")
+																						each itemHeader in arrayTable.headers
+																							th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
+																					th(style="width: 50px;")
+																				tbody 
+																					each rowItem in arrayTable.tableRows
+																						tr 
+																							td= rowItem.payment
+																							td= rowItem.date
+																							td= rowItem.number
+																							td= rowItem.sum
+																							td 
+																								if rowItem.obligation
+																									if rowItem.status == "success"
+																										span.text-success Оплачено
+																									else 
+																										span.text-error Не оплачено
+																							td 
+																								.table__actions 
+																									.table__buttons
+																										button(type="button").btn-pen
+																											i(class="fa-solid fa-pen")
+																										button(type="button").btn-trash
+																											i(class="fa-solid fa-trash-can")
+																.item-group__box
+																	.item-group__row 
+																		.item-group__col
+																			div.text-label 
+																				span
+																					| Долг туриста
+																				span
+																					|  по установленному ТА
+																			div
+																				span.text-label КУРСУ 
+																				button(type="button").btn-blue.btn-redact 78,02 ₽
+																		.item-group__col
+																			span.fw-700(style=`color: ${item.status == "full" ? "#659f13" : "red"};`) 0,28 ₽
+																.item-group__footer
+																		+btnBlue("Платеж от туриста", "fa-regular fa-plus")
+																		+btnBlue("Выставить счет туристу", null)
+								.data-claim__group.group-data
+									header.group-data__header
+										h1.group-data__title Заказчик
+										.group-data__buttons
+											+btnBlue("Указать заказчика", null)
+										.group-data__text.text-blue Покупатель тура, с которым заключается договор
+									.group-data__area.area-group
+										if area
+											header.area-group__header
+												div.area-group__info
+													| Физическое лицо:&nbsp;
+													span Андросова Елена Николаевна
+													.area-group__labels 
+														.area-group__label
+															i(class="fa-solid fa-phone")
+															span.area-group__phone +79159565930
+														.area-group__label
+															i(class="fa-solid fa-envelope")
+															span.area-group__phone sale@4sez.ru
+											.area-group__body
+												.dropdown
+													button(type="button" id="passport-data").dropdown__button.text-blue Паспортные данные
+													.dropdown__content.customer-passport(hidden)
+														ul.dropdown__list.list
+															each item in passportData
+																li 
+																	.list__label= item.label
+																		| :
+																	.list__value= item.value
+										else 
+											div.area-group__empty Необходимо указать данные о лице, с которым будет заключен договор
+								.data-claim__group.group-data
+									header.group-data__header
+										h1.group-data__title Туристы
+										.group-data__buttons
+											+btnBlue("Отправить ссылку на заполнение данных", null)
+											+btnBlue("Добавить туриста", "fa-regular fa-plus")
+									.group-data__subheader 
+										i 
+											| Для граждан РФ при бронировании направления Россия заселение в отель и авиаперевозка производится 
+											| #[strong только по паспорту гражданина РФ]
+										br
+										i 
+											| #[strong Важно!] 
+											| Замена данных в заявке с заграничного паспорта на российский и наоборот 
+											| #[strong является перебронированием.]
+										br
+										i 
+											| #[strong Внимание!] 
+											| Паспортные данные граждан СНГ и иностранных граждан других государств вносятся латиницей как в паспорте.	
+									.group-data__area.area-group
+										if touristDataArea
+											.area-group__body
+												each item, index in touristTable
+													table.tourist-table.table 
+														thead 
+															each itemHeader in item.headers
+																th(style=`width: ${itemHeader.widthColumn}%`)= itemHeader.name
+														tbody 
+															each person in item.person
+																each mainItem in person.mainRow
+																	tr
+																		td.tourist-table__name
+																			span= mainItem.fio
+																		td.tourist-table__gender= mainItem.gender
+																		td.tourist-table__date 
+																			span= mainItem.date
+																		td.tourist-table__passport
+																			ul 	
+																				li 
+																					span РФ: 
+																					span= mainItem.passportData
+																		td.tourist-table__contacts
+																			ul
+																				li 
+																					span Тл:
+																					span: a(href=`tel:${mainItem.tel}`)= mainItem.tel
+																		td.tourist-table__visa= mainItem.visa
+																		td.table__actions
+																			.table__buttons
+																				button(type="button").btn-gear
+																					i(class="fa-solid fa-gear")
+																				button(type="button").btn-trash
+																					i(class="fa-solid fa-trash-can")
+																				button(type="button").btn-link
+																					i(class="fa-solid fa-link")
+																each addItem in person.additionalRow
+																	tr.join
+																		td.tourist-table__name  
+																			span= addItem.fio
+																		td.tourist-table__gender= addItem.gender
+																		td.tourist-table__date 
+																			ul 	
+																				li 
+																					span возраст: 
+																					span= addItem.date
+																		td.tourist-table__passport
+																			ul 	
+																				li 
+																					span ЗГРН: 
+																					span= addItem.passportData
+																		td.tourist-table__contacts
+																			if addItem.email
+																				ul
+																					li 
+																						span Email:
+																						span: a(href=`mailto:${addItem.email}`)= addItem.email
+																			if addItem.contactManager
+																				div= addItem.contactManager
+																		td.ourist-table__visa= addItem.visa
+																		td.tourist-table__actions
+										else 
+											div.area-group__empty Необходимо указать данные о лице, с которым будет заключен договор
+								.data-claim__group.group-data
+									header.group-data__header
+										h1.group-data__title Детали тура
+										.group-data__buttons
+											+btnBlue("Создать заявку на доп.услугу", null)
+											+btnBlue("Добавить услугу", "fa-regular fa-plus")
+									.group-data__area.area-group
+										.area-group__body
+											.area-group__header 
+												h3.area-group__title УСЛУГИ В ТУРПАКЕТЕ
+										if detailTourArea
+											each item, index in detailTourTable
+												table.detailtour-table.table
+													thead 
+														each itemHeader in item.headers
+																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
+													tbody
+														each serviceItem in item.services
+															tr 
+																td= serviceItem.name
+																td % 
+																td= serviceItem.description
+																td= serviceItem.dates
+																td
+																	if serviceItem.tourists
+																		ul.tourists-list
+																			- for (var i = 0; i < serviceItem.tourists; ++i) {
+																				li 
+																					span 
+																						| -
+																					span: i(class="fa-solid fa-user")
+																			- }
+																td.table__actions
+																	.table__buttons
+																		button(type="button").btn-gear
+																			i(class="fa-solid fa-gear")
+																		button(type="button").btn-trash
+																			i(class="fa-solid fa-trash-can")
+										else 
+											div.area-group__empty Необходимо выбрать услугу
+								.data-claim__group.group-data
+									header.group-data__header
+										h1.group-data__title Документы от туроператора
+										.group-data__buttons
+											+btnBlue("Отпрвить по email", null)
+									.group-data__area.area-group
+										.area-group__body
+										if documentsArea
+											each item, index in documentsTable
+												table.documents-table.table
+													thead 
+														each itemHeader in item.headers
+																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
+													tbody
+														each docItem in item.documentsData
+															tr 
+																td= docItem.date
+																td= docItem.name
+																td= docItem.type
+																td.table__actions
+																	.table__buttons
+																		button(type="button").btn-download-doc
+																			i(class="fa-solid fa-download")
+																		button(type="button").btn-trash
+																			i(class="fa-solid fa-trash-can")
+										else 
+											div.area-group__empty Нет файлов
+								.data-claim__group.group-data
+									header.group-data__header
+										h1.group-data__title Файлы
+										.group-data__buttons
+											+btnBlue("Добавить файлы", "fa-regular fa-plus")
+									.group-data__area.area-group
+										.area-group__body
+											.area-group__header 
+												h3.area-group__title ФАЙЛЫ, КОТОРЫЕ ВИДНЫ ТОЛЬКО ВАМ
+										if filesArea
+											each item, index in filesTable
+												table.documents-table.table
+													thead 
+														each itemHeader in item.headers
+																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
+													tbody
+														each fileItem in item.filesData
+															tr 
+																td= fileItem.date
+																td= fileItem.name
+																td= fileItem.type
+																td.table__actions
+																	.table__buttons
+																		button(type="button").btn-download-doc
+																			i(class="fa-solid fa-download")
+																		button(type="button").btn-trash
+																			i(class="fa-solid fa-trash-can")
+										else 
+											div.area-group__empty Нет файлов
+						.tabs-claim__data.data-claim(data-tab-content="fincance")
+							| Таб 2 - Финансы

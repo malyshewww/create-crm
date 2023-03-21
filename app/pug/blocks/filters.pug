@@ -1,0 +1,35 @@
+include ../mixins/field.pug
+.filters 
+	.filters__top
+		.filters__column
+			.filters__row.field-group(style="--col: 3")
+				//- +fieldItem("НОМЕР ЗАЯВКИ", "number")
+				+fieldItem("ФИО ТУРИСТА", "fio")
+				+fieldItem("НАЧАЛО ТУРА (ОТ)", "start_tour")
+				+fieldItem("НАЧАЛО ТУРА (ДО)", "end_tour")
+				//- +fieldItem("МЕНЕДЖЕР", "manager")
+				//- +fieldItem("ОФИС", "office")
+				//- +fieldItem("ТУРОПЕРАТОР", "tour_operator")
+				//- +fieldItem("ГОРОД ВЫЛЕТА", "city")
+				//- +fieldItem("СТРАНА ТУРА", "country")
+				//- +fieldItem("ДОКУМЕНТЫ ТУРИСТУ", "documents")
+				//- .field-group__item
+				//- 	.field-group__name Вылет:
+				//- 	.field-group__list
+				//- 		li сегодня,
+				//- 		li завтра,
+				//- 		li через 3 дня,
+				//- 		li через 5 дней
+				//- .field-group__item
+				//- 	.field-group__name Прилёт:
+				//- 	.field-group__list
+				//- 		li сегодня,
+				//- 		li завтра,
+				//- 		li через 3 дня,
+				//- 		li через 5 дней
+		.filters__column
+			.filters__buttons
+				+button("Сброс", "fa-solid fa-xmark", "btn-reset")
+				+button("Поиск", "fa-solid fa-binoculars", "btn-search")
+				//- +button("Скачать в .xlsx", "fa-solid fa-file-excel", "btn-download")
+

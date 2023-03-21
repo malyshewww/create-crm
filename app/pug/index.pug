@@ -1,0 +1,14 @@
+extends layout.pug
+
+block variables
+	- var pageTitle = "Главная"
+	- var blockTitle = "Активные заявки"
+block content
+	div.main__container
+		.main__top 
+			.main__title= blockTitle
+			.main__button
+				button.btn.btn-request(type="button") Создать заявку
+		include ./blocks/filters
+		include ./blocks/table
+

@@ -1,0 +1,14 @@
+.sorting {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	& select {
+		max-width: 60px;
+		min-height: 30px;
+		color: $blackColor;
+		cursor: pointer;
+		& option {
+			font-family: inherit;
+		}
+	}
+}

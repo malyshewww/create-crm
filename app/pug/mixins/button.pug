@@ -1,0 +1,11 @@
+mixin button(text, classNameIcon, classNameBtn)
+	.filters__button
+		button.btn(type="button" class=classNameBtn)
+			if classNameIcon
+				i(class=classNameIcon) 
+			| #{text}
+mixin btnBlue(text, classNameIcon)
+	button.btn.btn-blue(type="button" class=classNameBtn)
+		if classNameIcon
+			i(class=classNameIcon) 
+		| #{text}

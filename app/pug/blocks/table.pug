@@ -1,0 +1,67 @@
+include ../mixins/tableData.pug
+table(class="table table-striped table-class tour-table" id="table-id")
+	each item, index in table
+		thead 
+			tr
+				each itemHeader, itemIndex in item.arrayHeaders
+					th(tabindex="0" aria-controls="example" rowspan="1" colspan="1" style=`width:${itemIndex==0?"130px;":"auto"}`)= itemHeader
+		tbody 
+			each itemRow in item.tableRows 
+				tr
+					td.tour-table__number
+						a(href="claim.html" class="tour-table__link")= itemRow.number
+					td.tour-table__data
+						span.fw-600= itemRow.date
+						| #[br]
+						span= itemRow.route
+					td.tour-table__customer
+						div.text-clamp.fw-600= itemRow.customer
+						div.text-clamp #[b 2:]
+							| #{itemRow.customers}
+					if itemRow.operatorName
+						td.tour-table__operator
+							div.text-clamp= itemRow.operatorName
+							if itemRow.operatorFull
+								div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+							if itemRow.operatorPart
+								div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
+					if itemRow.sumNum
+						td.tour-table__sum
+							span.fw-600= itemRow.sumNum
+							if itemRow.sumFull 
+								div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+							if itemRow.sumPart
+								div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
+					if itemRow.managerName
+						td.tour-table__manager
+							div 
+								a(href="" class="tour-table__link")= itemRow.managerName 
+								div #{itemRow.managerDate}
+					td 
+						button.btn-archive(type="button")
+							i(class="fa-solid fa-box-archive")
+					td
+						button.btn-copy
+							i(class="fa-solid fa-copy")
+div(class='table-bottom')
+	nav.pagination
+		ul(class="pagination__list")
+			li(data-page="prev" class="pagination__item pagination__item--prev")
+				span
+					i(class="fa-solid fa-angle-left")
+					span(class="sr-only") (current)
+			li(data-page="next" id="prev" class="pagination__item pagination__item--next")
+				span
+					i(class="fa-solid fa-angle-right")
+					span(class="sr-only") (current)
+	div(class="form-group sorting")
+		p Элементов на странице
+		select(class="form-control" name="state" id="maxRows")
+			option(value="5000") Show ALL Rows
+			option(value="5") 5
+			option(value="10") 10
+			option(value="15") 15
+			option(value="20") 20
+			option(value="50") 50
+			option(value="70") 70
+			option(value="100") 100
