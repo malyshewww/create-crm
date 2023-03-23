@@ -1,4 +1,3 @@
-include ../mixins/field.pug
 .filters 
 	.filters__top
 		.filters__column
@@ -6,7 +5,11 @@ include ../mixins/field.pug
 				//- +fieldItem("НОМЕР ЗАЯВКИ", "number")
 				+fieldItem("ФИО ТУРИСТА", "fio")
 				+fieldItem("НАЧАЛО ТУРА (ОТ)", "start_tour")
+					.field-group__trigger
+						input(type="text" class="input-trigger input-trigger-start")
 				+fieldItem("НАЧАЛО ТУРА (ДО)", "end_tour")
+					.field-group__trigger
+						input(type="text" class="input-trigger input-trigger-end")
 				//- +fieldItem("МЕНЕДЖЕР", "manager")
 				//- +fieldItem("ОФИС", "office")
 				//- +fieldItem("ТУРОПЕРАТОР", "tour_operator")

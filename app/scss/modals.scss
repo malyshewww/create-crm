@@ -1,0 +1,59 @@
+.modal-dialog {
+	@media screen and (min-width: 991.98px) {
+		max-width: 800px;
+	}
+}
+.modal {
+	& .row {
+		gap: 15px 10px;
+		margin: 0;
+		& .col {
+			padding: 0;
+		}
+	}
+	&__header {
+		text-align: center;
+		position: relative;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	&__title {
+		font-size: 24px;
+		line-height: 100%;
+		color: $blackColorSecondary;
+		font-weight: 600;
+		max-width: 90%;
+		margin: 0 auto;
+	}
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 8px;
+		display: grid;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		& i {
+			font-size: 30px;
+			color: $blueColorSecondary;
+		}
+	}
+	&__body {
+		padding: 10px;
+	}
+	&__footer {
+		padding: 10px;
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__buttons {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	& .modal-text {
+		margin: 25px 0 15px 0px;
+		text-align: center;
+	}
+}

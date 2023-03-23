@@ -16,4 +16,7 @@ function tabsAction(event) {
 		}
 	}
 }
-document.querySelector('[data-tab]').click();
+const tab = document.querySelector('[data-tab]');
+if (tab) {
+	document.querySelector('[data-tab]').click();
+}

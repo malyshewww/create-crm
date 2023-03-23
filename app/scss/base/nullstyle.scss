@@ -77,3 +77,21 @@ img {
 	vertical-align: top;
 	object-fit: cover;
 }
+button {
+	cursor: pointer;
+	background: transparent;
+}
+select {
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
+}
+p {
+	margin: 0;
+	padding: 0;
+}
+ul,
+ol {
+	padding: 0;
+}

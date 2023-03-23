@@ -1,8 +1,4 @@
 // Заголовки, общие БЄМ блоки и прочее...
-button {
-	cursor: pointer;
-	background: transparent;
-}
 .fw-500 {
 	font-weight: 500;
 }
@@ -23,7 +19,7 @@ button {
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	max-height: 16px;
+	max-height: 20px;
 }
 .payment-status {
 	display: flex;
@@ -58,17 +54,23 @@ button {
 	text-align: center;
 	outline: none;
 	width: 100%;
-	background-color: transparent;
+	color: $whiteColor;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: inherit;
+	font-family: "OpenSans", sans-serif;
+	border-radius: 0;
 	& i:not(.fa-regular) {
 		font-size: 18px;
 	}
 	& i {
 		margin-right: 5px;
+	}
+	&:focus,
+	&:active {
+		outline: none;
+		box-shadow: none;
 	}
 }
 .btn-blue {
@@ -80,6 +82,15 @@ button {
 	width: auto;
 	& .icon-arrow {
 		margin-left: 5px;
+		transition: transform 0.2s ease 0s;
+	}
+	&.isActive {
+		.icon-arrow {
+			transform: rotate(-180deg);
+		}
+	}
+	&:hover {
+		color: $whiteColor;
 	}
 }
 .btn-blue.btn-redact {
@@ -88,6 +99,23 @@ button {
 	color: $blueColorSecondary;
 	background-color: transparent;
 	padding: 0;
+}
+.btn-cancel {
+	border: 1px solid $grayColor76;
+	color: $blackColorSecondary;
+	width: auto;
+	min-width: 150px;
+	&:hover {
+		color: $blackColorSecondary;
+	}
+}
+.btn-create {
+	min-width: 150px;
+	color: $whiteColor;
+	background-color: $blueColorSecondary;
+	&:hover {
+		color: $whiteColor;
+	}
 }
 .text-blue {
 	color: $blueColorPrimary;

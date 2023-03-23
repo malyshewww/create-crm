@@ -4,6 +4,8 @@ doctype html
 html(lang="ru")
 	block variables
 	include mixins/button.pug
+	include mixins/field.pug
+	include mixins/modals.pug
 	head 
 		block head
 			meta(charset="UTF-8")
@@ -12,7 +14,8 @@ html(lang="ru")
 			meta(name='viewport', content='width=device-width, initial-scale=1')
 			meta(name="format-detection", content="telephone=no")
 			//- meta(name='viewport', content='width=1320px, initial-scale=1')
-			link(href="styles/main.min.css" rel="stylesheet")
+			block links
+				link(href="styles/main.min.css" rel="stylesheet")
 			//- include blocks/favicons
 	body
 		div.wrapper#wrapper

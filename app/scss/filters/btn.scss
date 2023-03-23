@@ -1,18 +1,30 @@
 .btn-reset {
 	border: 1px solid $grayColorPrimary;
 	color: $grayColorPrimary;
+	&:hover {
+		color: $grayColorPrimary;
+	}
 }
 .btn-search {
 	border: 1px solid $blueColorSecondary;
 	color: $blueColorSecondary;
+	&:hover {
+		color: $blueColorSecondary;
+	}
 }
 .btn-download {
 	border: 1px solid $greenColorPrimary;
 	color: $greenColorPrimary;
+	&:hover {
+		color: $greenColorPrimary;
+	}
 }
 .btn-request {
 	border: 1px solid $blackColorSecondary;
 	color: $blackColorSecondary;
+	&:hover {
+		color: $blackColorSecondary;
+	}
 }
 .btn-archive,
 .btn-copy {

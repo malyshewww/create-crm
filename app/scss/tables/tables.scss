@@ -29,6 +29,11 @@
 		box-shadow: none;
 	}
 }
+.table.tour-table {
+	& thead th {
+		text-transform: unset;
+	}
+}
 .table {
 	border-spacing: 0;
 	width: 100%;
@@ -41,6 +46,7 @@
 		text-transform: uppercase;
 		color: $grayColorDark;
 		font-size: 11px;
+		vertical-align: baseline;
 	}
 	& thead th,
 	& tbody td {
@@ -81,13 +87,22 @@
 		}
 	}
 }
+.table > :not(:last-child) > :last-child > * {
+	border: none;
+}
+.table.tour-table > :not(:last-child) > :last-child > * {
+	border-bottom: 1px solid $grayColorLight2;
+}
+.table > :not(caption) > * > * {
+	border-bottom-width: 0;
+}
 .tourist-table,
 .detailtour-table {
-	& tbody tr {
+	& tbody tr:not(:first-child) {
 		border-top: 1px solid $grayColorLight2;
 	}
 	& tbody tr.join {
-		border: none;
+		border: none !important;
 	}
 }
 .detailtour-table {

@@ -98,7 +98,7 @@ block content
 																.item-group__box.finance-box
 																	.item-group__heading
 																		.item-group__buttons
-																			button(type="button" id="tourist-price").btn-blue.btn-redact= item.priceBtn
+																			button(type="button" id=`${item.key == "finance_tourist" ? 'tourist-price' : 'finance-price'}` class={isActive: item.key == "finance"}).btn-blue.btn-redact= item.priceBtn
 																				i(class="fa-solid fa-chevron-down icon-arrow")
 																			if item.key == "finance"
 																				div
@@ -109,18 +109,19 @@ block content
 																					span.item-group__price= itemPrice.priceOne
 																					span /
 																					span.item-group__price= itemPrice.priceTwo
-																	if item.list
-																		ul.item-group__list.list
-																			each listItem in item.list
-																				li
-																					div.list__label= listItem.label
-																					div.list__value= listItem.value
+																	if item.list 
+																		div(class=`${item.key == "finance_tourist" ? 'tourist-price-content' : 'finance-price-content'}`)&attributes({hidden: item.key == "finance_tourist"})
+																			ul.item-group__list.list
+																				each listItem in item.list
+																					li
+																						div.list__label= listItem.label
+																						div.list__value= listItem.value
 															if item.key == "finance_tourist"
 																.item-group__box
 																	.item-group__heading
 																		.item-group__button
 																			span.text-label ОПЛАЧЕНО ТУРИСТОМ
-																			button(type="button" id="tourist-price").btn-blue.btn-redact ИСТОРИЯ ОПЛАТ
+																			button(type="button" id="history-price").btn-blue.btn-redact ИСТОРИЯ ОПЛАТ
 																				i(class="fa-solid fa-chevron-down icon-arrow")
 																		if item.prices
 																			.item-group__prices 
@@ -128,7 +129,7 @@ block content
 																					span.item-group__price= itemPrice.priceOne
 																	if item.table
 																		each arrayTable in item.table
-																			table.table.finance-table 
+																			table.table.finance-table(hidden)
 																				thead 
 																					th(style="width: 60px;")
 																						each itemHeader in arrayTable.headers
@@ -254,7 +255,7 @@ block content
 																					i(class="fa-solid fa-gear")
 																				button(type="button").btn-trash
 																					i(class="fa-solid fa-trash-can")
-																				button(type="button").btn-link
+																				button(type="button").btn-linkify
 																					i(class="fa-solid fa-link")
 																each addItem in person.additionalRow
 																	tr.join
