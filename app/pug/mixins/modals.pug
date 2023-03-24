@@ -1,4 +1,4 @@
-mixin modal(modalId, title, btnCreate = "Создать")
+mixin modal(modalId, title, btnCreate = "Сохранить", btnClose = "Закрыть")
 	.modal.fade(id=modalId data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby=id aria-hidden='true')
 		.modal-dialog.modal-dialog-centered
 			.modal-content.modal__content
@@ -11,7 +11,7 @@ mixin modal(modalId, title, btnCreate = "Создать")
 					block
 				.modal__footer
 					.modal__buttons
-						button(type="button").btn.btn-create
+						button(type="button").btn.btn-create.btn-primary
 							i(class="fa-solid fa-check")
 							| #{btnCreate}
-						button(type='button' data-bs-dismiss='modal').btn.btn-cancel Отмена
+						button(type='button' data-bs-dismiss='modal').btn.btn-secondary #{btnClose}

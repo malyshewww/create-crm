@@ -11,7 +11,7 @@ block variables
 	- var organization = true;
 block content
 	section.claim 
-		.container 
+		.container
 			.claim__body
 				.claim__header
 					.claim__top 
@@ -34,10 +34,10 @@ block content
 				.claim__tabs.tabs-claim
 					nav.tabs-claim__navigation 
 						ul.tabs-claim__list 
-							li.tabs-claim__item(data-tab="info") Информация по заявке
-							li.tabs-claim__item(data-tab="fincance") Финансы
+							li.tabs-claim__item.tabs-item(data-tab="info") Информация по заявке
+							li.tabs-claim__item.tabs-item(data-tab="fincance") Финансы
 					.tabs-claim__content 
-						.tabs-claim__data.data-claim(data-tab-content="info")
+						.tabs-claim__data.data-claim.tabs-content(data-tab-content="info")
 							.data-claim__groups
 								.data-claim__group.group-data
 									.group-data__row 
@@ -47,7 +47,7 @@ block content
 													.group-data__item.item-group
 														.item-group__top 
 															.item-group__title= item.title
-															button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+															button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
 															if item.status
 																case item.status
 																	when "notSent"
@@ -169,13 +169,13 @@ block content
 																		.item-group__col
 																			span.fw-700(style=`color: ${item.status == "full" ? "#659f13" : "red"};`) 0,28 ₽
 																.item-group__footer
-																		+btnBlue("Платеж от туриста", "fa-regular fa-plus")
-																		+btnBlue("Выставить счет туристу", null)
+																		+btnBlue("Платеж от туриста", "fa-regular fa-plus", "btn-sm")
+																		+btnBlue("Выставить счет туристу", null, "btn-sm")
 								.data-claim__group.group-data
 									header.group-data__header
 										h1.group-data__title Заказчик
 										.group-data__buttons
-											+btnBlue("Указать заказчика", null)
+											+btnBlue("Указать заказчика", null, null, "#addCustomer")
 										.group-data__text.text-blue Покупатель тура, с которым заключается договор
 									.group-data__area.area-group
 										if area
@@ -380,5 +380,5 @@ block content
 																			i(class="fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Нет файлов
-						.tabs-claim__data.data-claim(data-tab-content="fincance")
+						.tabs-claim__data.data-claim.tabs-content(data-tab-content="fincance")
 							| Таб 2 - Финансы

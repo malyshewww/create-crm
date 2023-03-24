@@ -6,3 +6,8 @@ mixin fieldItem(labelName, inputName, inputType = "text")
 			if block 
 				block
 		
+mixin dropdownList([...items])
+	.dropdown 
+		.dropdown__list
+			each item, index in items
+				li.dropdown__list-item= item

@@ -9,21 +9,6 @@ block content
 			.main__title= blockTitle
 			.main__button
 				button.btn.btn-request(type="button" data-bs-toggle="modal" data-bs-target="#createClaim") Создать заявку
-			+modal("createClaim", "Заявка от 22.03.2023")
-				.field-group
-					.row 
-						.col 
-							.modal-text 
-								| Даты тура
-						.col 
-							+fieldItem("Начало", "tour_start")
-						.col
-							+fieldItem("Окончание", "tour_end")
-						.col.col-sm-12 
-							.field-group__item 
-								label.field-group__label 
-									| КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)
-								textarea(type="text" name="comment" class="field-group__textarea")
 		include ./blocks/filters
 		include ./blocks/table
 		

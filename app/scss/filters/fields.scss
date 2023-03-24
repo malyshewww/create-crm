@@ -41,7 +41,7 @@
 		background: $whiteColor;
 		border-collapse: separate;
 		border-spacing: 0;
-		min-height: 30px;
+		min-height: 40px;
 		width: 100%;
 		position: relative;
 		display: flex;
@@ -50,6 +50,19 @@
 	}
 	&__label {
 		display: block;
+		&.required {
+			display: flex;
+			align-items: flex-start;
+			&::after {
+				content: "";
+				display: block;
+				background-image: url("../images/icons/star-required.svg");
+				background-size: 8px 8px;
+				width: 8px;
+				height: 8px;
+				margin-left: 3px;
+			}
+		}
 	}
 	&__label,
 	&__name {
@@ -66,6 +79,9 @@
 		font-size: inherit;
 		color: $mainColor;
 		width: 100%;
+		&:focus {
+			border: 1px solid $blueColorSecondary;
+		}
 	}
 	&__textarea {
 		min-height: 90px;

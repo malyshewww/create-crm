@@ -5,16 +5,35 @@
 console.log('test')
 
 import AirDatepicker from "air-datepicker";
+import Choices from "choices.js";
+
+const selectChoices = document.querySelectorAll('.select-choices');
+[...selectChoices].forEach((select) => {
+	const choices = new Choices(select, {
+		noResultsText: "Ничего не найдено",
+		itemSelectText: "",
+		searchPlaceholderValue: "Начните вводить",
+		placeholder: false,
+		shouldSortItems: false,
+	})
+})
 
 
 import "./libs/jquery.min.js";
 import "./libs/bootstrap.bundle.min.js";
+// import "./libs/bootstrap-multiselect.min.js";
 // Подключение модуля таблицы
 import "./modules/paginationTable.js";
 // Подключение модуля табов
 import "./modules/tabs.js";
 
+// Подключение модуля moment Для форматирования даты
 import moment from 'moment';
+
+// $('#personsSelect').on('change', function (e) {
+// 	var $optionSelected = $("option:selected", this);
+// 	console.log($optionSelected)
+// });
 
 document.addEventListener('click', documentActions);
 
@@ -41,6 +60,8 @@ function showHide(target, contentBlock) {
 		? content.removeAttribute('hidden')
 		: content.setAttribute('hidden', 'true')
 }
+
+
 
 let inputTriggerStart = document.querySelector('.input-trigger-start');
 let inputTriggerEnd = document.querySelector('.input-trigger-end');
@@ -76,17 +97,18 @@ let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
 		})
 	}
 });
-
-inputStartDate.addEventListener('change', function (e) {
-	let value = inputStartDate.value;
-	let newDate = new Date(value);
-	inputStartDate.value = inputStartDate.value.replace(/([%#/?*+^$[\]\\(){}-])/g, '.');
-	moment.defaultFormat = "DD.MM.YYYY";
-	const date = moment(newDate, moment.defaultFormat, true).toDate();
-	console.log(date);
-	datepickerStart.selectedDates[0] = date;
-	datepickerEnd.minDate = date;
-})
+if (inputStartDate) {
+	inputStartDate.addEventListener('change', function (e) {
+		let value = inputStartDate.value;
+		let newDate = new Date(value);
+		inputStartDate.value = inputStartDate.value.replace(/([%#/?*+^$[\]\\(){}-])/g, '.');
+		moment.defaultFormat = "DD.MM.YYYY";
+		const date = moment(newDate, moment.defaultFormat, true).toDate();
+		console.log(date);
+		datepickerStart.selectedDates[0] = date;
+		datepickerEnd.minDate = date;
+	})
+}
 const fieldGroupItems = document.querySelectorAll('.field-group__item');
 [...fieldGroupItems].forEach((group) => {
 	let inputTriggerStart = group.querySelector('.input-trigger-start');

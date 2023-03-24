@@ -1,0 +1,314 @@
++modal("createClaim", "Заявка от 22.03.2023", "Создать", "Отмена")
+	.field-group
+		.row 
+			.col 
+				.modal-text 
+					| Даты тура
+			.col 
+				+fieldItem("Начало", "tour_start")
+			.col
+				+fieldItem("Окончание", "tour_end")
+			.col.col-sm-12 
+				.field-group__item 
+					label.field-group__label 
+						| КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)
+					textarea(type="text" name="comment" class="field-group__textarea")
++modal("docModal", "Статус отправки документов")
+	.field-group
+		.row.justify-content-center
+			.col
+				.field-group__item
+					label.field-group__label Статус отправки документов
+					select(name="statusDocs" class="select-choices")
+						option(value="" selected) 
+						option(value="Не отправлены") Не отправлены
+						option(value="Отправлены частично") Отправлены частично
+						option(value="Отправлены") Отправлены
++modal("tourpackageModal", "Турпакет")
+	.field-group
+		.row
+			.col.col-6
+				.field-group__item
+					label.field-group__label Название
+					.field-group__box 
+						input(type="text" class="field-group__input")
+			.col.col-3
+				.field-group__item
+					label.field-group__label Начало
+					.field-group__box 
+						input(type="date" class="field-group__input")
+			.col.col-3
+				.field-group__item
+					label.field-group__label Окончание
+					.field-group__box 
+						input(type="date" class="field-group__input")
+			.col.col-6
+				.field-group__item
+					label.field-group__label Город вылета
+					select(name="statusDocs" class="select-choices")
+						option(value="" selected) 
+						option(value="moscow") Москва
+						option(value="spb") Санкт-Петербург
+						option(value="novosibirsk") Новосибирск
+			.col.col-6
+				.field-group__item
+					label.field-group__label Страна прилета
+					select(name="statusDocs" class="select-choices")
+						option(value="" selected) 
+						option(value="Egypt") Египет
+						option(value="Italy") Италия
+						option(value="Spain") Испания
++modal("touroperatorModal", "Туроператор - поставщик тура")
+	.field-group
+		.row
+			.col.col-12
+				.field-group__item
+					label.field-group__label Туроператор
+					.field-group__box 
+						input(type="text" class="field-group__input")
++modal("contractModal", "Договор")
+	.field-group
+		.row
+			.col.col-4
+				.field-group__item
+					label.field-group__label Дата договора
+					.field-group__box 
+						input(type="date" class="field-group__input")
+			.col.col-4
+				.field-group__item
+					label.field-group__label Номер брони
+					.field-group__box 
+						input(type="text" class="field-group__input")
++modal("addCustomer", "Заказчик")
+	.field-group
+		.row
+			.col.col-12
+				.field-group__item
+					label.field-group__label Заказчик
+					select(name="statusDocs" class="select-choices tabs-item" id="personsSelect")
+						option(value="") 
+						option(value="person") Физическое лицо
+						option(value="juridical") Юридическое лицо
+			#tabContentModal
+				#person(class="tabs-content" data-tab-content="person")
+					.row
+						.col.col-3
+							.field-group__item
+								label.field-group__label.required Фамилия
+								.field-group__box
+									input(type="text" class="field-group__input" required)
+						.col.col-3
+							.field-group__item
+								label.field-group__label.required Имя
+								.field-group__box
+									input(type="text" class="field-group__input" required)
+						.col.col-3
+							.field-group__item
+								label.field-group__label Отчество
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label.required Пол
+								select(name="gender" class="select-choices" selected)
+									option(value="" selected) 
+									option(value="male") Мужской
+									option(value="female") Женский
+						.col.col-3
+							.field-group__item
+								label.field-group__label Фамилия (LAT)
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label Имя (LAT)
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label.required Гражданство
+								select(name="nationality" class="select-choices")
+									option(value="")
+									option(value="Russia") Россия
+									option(value="Belarus") Беларусь
+									option(value="Ukraine") Украина
+						.col.col-3
+							.field-group__item
+								label.field-group__label.required Дата рождения
+								.field-group__box
+									input(type="date" class="field-group__input" required)
+						.col.col-3
+							.field-group__item
+								label.field-group__label Фактический адрес
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label Телефон
+								.field-group__box
+									input(type="tel" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label Email
+								.field-group__box
+									input(type="email" class="field-group__input")
+					hr
+					.row 
+						.col.col-4
+							.text-label.text-center.mb-2  Национальный паспорт
+							.row 
+								.col-sm-3
+									.field-group__item
+										label.field-group__label Серия
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-3
+									.field-group__item
+										label.field-group__label Номер
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-6
+									.field-group__item
+										label.field-group__label Дата выдачи
+										.field-group__box
+											input(type="date" class="field-group__input")
+								.col-sm-8
+									.field-group__item
+										label.field-group__label Кем выдан
+										.field-group__box
+											input(type="text" class="field-group__input")
+								.col-sm-4
+									.field-group__item
+										label.field-group__label Код
+										.field-group__box
+											input(type="text" class="field-group__input")
+								.col-sm-12
+									.field-group__item
+										label.field-group__label Адрес регистрации
+										.field-group__box
+											input(type="text" class="field-group__input")
+						.col.col-4
+							.text-label.text-center.mb-2 Свидетельство о рождении
+							.row 
+								.col-sm-4
+									.field-group__item
+										label.field-group__label Серия
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-8
+									.field-group__item
+										label.field-group__label Номер
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-12
+									.field-group__item
+										label.field-group__label Дата выдачи
+										.field-group__box
+											input(type="date" class="field-group__input")
+								.col-sm-12
+									.field-group__item
+										label.field-group__label Кем выдан
+										.field-group__box
+											input(type="text" class="field-group__input")
+						.col.col-4
+							.text-label.text-center.mb-2  Заграничный паспорт
+							.row 
+								.col-sm-4
+									.field-group__item
+										label.field-group__label Серия
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-8
+									.field-group__item
+										label.field-group__label Номер
+										.field-group__box
+											input(type="number" class="field-group__input")
+								.col-sm-6
+									.field-group__item
+										label.field-group__label Дата выдачи
+										.field-group__box
+											input(type="date" class="field-group__input")
+								.col-sm-6
+									.field-group__item
+										label.field-group__label Срок действия
+										.field-group__box
+											input(type="date" class="field-group__input")
+								.col-sm-12
+									.field-group__item
+										label.field-group__label Кем выдан
+										.field-group__box
+											input(type="text" class="field-group__input")
+				#juridical(class="tabs-content" data-tab-content="juridical")
+					.row 
+						.col.col-3
+							.field-group__item
+								label.field-group__label Наименование банка
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label Бик
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label Р/с
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-3
+							.field-group__item
+								label.field-group__label К/с
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-6
+							.field-group__item
+								label.field-group__label Полное наименование юр.лица
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-6
+							.field-group__item
+								label.field-group__label Сокращенное наименование юр.лица
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-6
+							.field-group__item
+								label.field-group__label Юридический адрес
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-6
+							.field-group__item
+								label.field-group__label Фактический адрес
+								.field-group__box
+									input(type="text" class="field-group__input")
+					hr
+					.row 
+						.col.col-4
+							.field-group__item
+								label.field-group__label КПП
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-4
+							.field-group__item
+								label.field-group__label ИНН
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-4
+							.field-group__item
+								label.field-group__label ОГРН
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-4
+							.field-group__item
+								label.field-group__label Фио директора
+								.field-group__box
+									input(type="text" class="field-group__input")
+						.col.col-4
+							.field-group__item
+								label.field-group__label Телефон
+								.field-group__box
+									input(type="tel" class="field-group__input")
+						.col.col-4
+							.field-group__item
+								label.field-group__label E-mail
+								.field-group__box
+									input(type="email" class="field-group__input")

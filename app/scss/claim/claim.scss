@@ -62,18 +62,18 @@
 		padding: 8px 12px;
 		border-radius: 8px;
 		// margin-bottom: -1px;
-		&--active {
-			// border: 1px solid $grayColorSecondary;
-			// border-bottom-color: transparent;
-			color: $blackColorSecondary;
-			box-shadow: 0px 0px 8px 4px rgba(203, 205, 206, 0.2);
-		}
 	}
-	&__data {
-		display: none;
-		&--open {
-			display: block;
-		}
+}
+.tabs-item {
+	&.isActive {
+		color: $blackColorSecondary;
+		box-shadow: 0px 0px 8px 4px rgba(203, 205, 206, 0.2);
+	}
+}
+.tabs-content {
+	display: none;
+	&.isOpen {
+		display: block;
 	}
 }
 .data-claim {

@@ -4,8 +4,9 @@ mixin button(text, classNameIcon, classNameBtn)
 			if classNameIcon
 				i(class=classNameIcon) 
 			| #{text}
-mixin btnBlue(text, classNameIcon)
-	button.btn.btn-blue(type="button" class=classNameBtn)
+mixin btnBlue(text, classNameIcon, classNameBtn, id, attributes)
+	- const attributesObj = {"data-bs-toggle": "modal", "data-bs-target": `${id}`}
+	button.btn.btn-blue.btn-primary(type="button" class=classNameBtn)&attributes(attributesObj)
 		if classNameIcon
 			i(class=classNameIcon) 
 		| #{text}
