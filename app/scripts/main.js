@@ -23,12 +23,8 @@ import "./modules/tabs.js";
 // import "./libs/jquery.min.js";
 import "./libs/bootstrap.bundle.min.js";
 
-var tooltipTriggerList = [].slice.call(
-	document.querySelectorAll('[data-bs-toggle="tooltip"]')
-);
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-	return new bootstrap.Tooltip(tooltipTriggerEl);
-});
+// import "./libs/jquery.min.js";
+import "./modules/bootstrapTooltip.js";
 
 document.addEventListener('click', documentActions);
 
