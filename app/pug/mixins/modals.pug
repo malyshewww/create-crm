@@ -1,5 +1,5 @@
-mixin modal(modalId, title, btnCreate = "Сохранить", btnClose = "Закрыть")
-	.modal.fade(id=modalId data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby=id aria-hidden='true')
+mixin modal(modalId, title, modalClasses, btnCreate = "Сохранить", btnClose = "Закрыть")
+	.modal.fade(id=modalId class=modalClasses data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby=id aria-hidden='true')
 		.modal-dialog.modal-dialog-centered
 			.modal-content.modal__content
 				.modal__header

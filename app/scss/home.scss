@@ -13,3 +13,8 @@
 		font-weight: 500;
 	}
 }
+.select-items {
+	& > *:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}

@@ -300,3 +300,16 @@
 		width: 20%;
 	}
 }
+.dropdown-menu {
+	&__button {
+		padding: 7px;
+		width: 100%;
+		text-align: left;
+		color: inherit;
+	}
+	&__item {
+		&:hover {
+			color: $blueColorSecondary;
+		}
+	}
+}

@@ -168,6 +168,7 @@
 		{
 			"title": "ВЗАИМОРАСЧЁТЫ С ТУРИСТОМ",
 			"btnHead": "параметры предоплаты по договору",
+			"btnId": "prepaymentParameters",
 			"status": "full",
 			"prices": [
 				{
@@ -508,4 +509,210 @@
 				}
 			]
 		}
-	]
+	],
+	select = {
+		"statusDocs": [
+			{
+				"value": "Не отправлены",
+				"name": "Не отправлены",
+			},
+			{
+				"value": "Отправлены частично",
+				"name": "Отправлены частично",
+			},
+			{
+				"value": "Отправлены",
+				"name": "Отправлены",
+			},
+		],
+		"departureCity": [
+			{
+				"value": "Moscow",
+				"name": "Москва",
+			},
+			{
+				"value": "Spb",
+				"name": "Санкт-Петербург",
+			},
+			{
+				"value": "novosibirsk",
+				"name": "Новосибирск",
+			},
+		],
+		"countryArrival": [
+			{
+				"value": "Egypt",
+				"name": "Египет",
+			},
+			{
+				"value": "Italy",
+				"name": "Италия",
+			},
+			{
+				"value": "Spain",
+				"name": "Испания",
+			},
+		],
+		"customer": [
+			{
+				"value": "person",
+				"name": "Физическое лицо",
+			},
+			{
+				"value": "juridical",
+				"name": "Юридическое лицо",
+			},
+		],
+		"gender": [
+			{
+				"value": "male",
+				"name": "Мужской",
+			},
+			{
+				"value": "female",
+				"name": "Женский",
+			},
+		],
+		"nationality": [
+			{
+				"value": "Россия",
+				"name": "Мужской",
+			},
+			{
+				"value": "Belarus",
+				"name": "Беларусь",
+			},
+			{
+				"value": "Ukraine",
+				"name": "Украина",
+			},
+		],
+		"visa": [
+			{
+				"value": "not",
+				"name": "Не требуется",
+			},
+			{
+				"value": "yes",
+				"name": "Надо оформить визу",
+			},
+		],
+		"visaCity": [
+			{
+				"value": "moscow",
+				"name": "Москва",
+			},
+			{
+				"value": "kaliningrad",
+				"name": "Калининград",
+			},
+			{
+				"value": "murmansk",
+				"name": "Мурманск",
+			},
+		],
+		"flightClass": [
+			{
+				"value": "unknown",
+				"name": "Неизвестно",
+			},
+			{
+				"value": "economy",
+				"name": "Эконом",
+			},
+			{
+				"value": "business",
+				"name": "Бизнес",
+			},
+		],
+		"insuranceType": [
+			{
+				"value": "required",
+				"name": "Обязательное страхование медицинских расходов в период путешествия",
+			},
+			{
+				"value": "extended",
+				"name": "Расширенное страхование",
+			},
+			{
+				"value": "cancel",
+				"name": "Отмена поездки",
+			},
+			{
+				"value": "other",
+				"name": "Другое (добавить вручную)",
+			},
+		],
+		"transferType": [
+			{
+				"value": "group",
+				"name": "Групповой",
+			},
+			{
+				"value": "individual",
+				"name": "Индивидуальный",
+			},
+		],
+		"habitationTypeFood": [
+			{
+				"value": "RO",
+				"name": "RO",
+			},
+			{
+				"value": "RO",
+				"name": "RO",
+			},
+			{
+				"value": "HB",
+				"name": "HB",
+			},
+			{
+				"value": "FB",
+				"name": "FB",
+			},
+			{
+				"value": "AI",
+				"name": "AI",
+			},
+			{
+				"value": "UAI",
+				"name": "UAI",
+			},
+		]
+	},
+	dropdown = {
+		"services": [
+			{
+				"id": "addFlight",
+				"text": "Перелёт"
+			},
+			{
+				"id": "addInsurance",
+				"text": "Страховка"
+			},
+			{
+				"id": "addTransfer",
+				"text": "Трансфер"
+			},
+			{
+				"id": "addVisa",
+				"text": "Виза"
+			},
+			{
+				"id": "addHabitation",
+				"text": "Проживание"
+			},
+			{
+				"id": "addFuelSurcharge",
+				"text": "Топливный сбор"
+			},
+			{
+				"id": "addExcursionProgram",
+				"text": "Экскурсионная программа"
+			},
+			{
+				"id": "addOtherService",
+				"text": "Другая услуга"
+			},
+		]
+	}

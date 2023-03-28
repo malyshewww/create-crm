@@ -1,11 +1,22 @@
+.modal {
+	z-index: 10;
+}
+.modal-backdrop {
+	z-index: 9;
+}
 .modal-dialog {
 	@media screen and (min-width: 991.98px) {
 		max-width: 800px;
 	}
 }
-#addCustomer .modal-dialog {
+.modal-extended .modal-dialog {
 	@media screen and (min-width: 991.98px) {
 		max-width: 1000px;
+	}
+}
+.modal-small .modal-dialog {
+	@media screen and (min-width: 991.98px) {
+		max-width: 600px;
 	}
 }
 .modal-content {

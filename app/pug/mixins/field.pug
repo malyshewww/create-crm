@@ -1,13 +1,51 @@
-mixin fieldItem(labelName, inputName, inputType = "text")
+mixin fieldItem(labelName, inputType = "text", inputName, required)
 	.field-group__item
-		label.field-group__label= labelName
+		label.field-group__label(class=required ? "required" : "")= labelName
 		.field-group__box
-			input(type=inputType name=inputName class="field-group__input")
-			if block 
-				block
-		
+			if required
+				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input" required)
+			else 
+				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input")
+		if block 
+			block
+mixin fieldRangeDate(labelName, inputType = "text", inputName, required)
+	.field-group__item(id=itemId)
+		label.field-group__label(class=required ? "required" : "")= labelName
+		.field-group__box
+			if required
+				input(type=inputType name=inputName class="field-group__input" required)
+			else 
+				input(type=inputType name=inputName class="field-group__input")
+			.field-group__trigger
+				input(type="text" class=`input-trigger ${inputName == "date_start" ? "input-trigger-start" : "input-trigger-end"}`)
+mixin fieldSingleDate(labelName, inputType = "text", inputName, required)
+	.field-group__item
+		label.field-group__label(class=required ? "required" : "")= labelName
+		.field-group__box
+			if required
+				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input" required)
+			else 
+				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input")
+			.field-group__trigger
+				input(type="text" class=`input-trigger input-trigger-date`)
+mixin select(labelName, selectName, selectId, [...items], required)
+	.field-group__item
+		label.field-group__label(class=required ? "required" : "")= labelName
+		select(name=selectName class="select-choices" id=selectId)&attributes({required: required != null})
+			option(value="" selected)
+			each item, index in items 
+				option(value=item.value)= item.name 
 mixin dropdownList([...items])
-	.dropdown 
-		.dropdown__list
-			each item, index in items
-				li.dropdown__list-item= item
+	ul.dropdown-menu
+		each item, index in items
+			li.dropdown_item= item
+mixin checkboxGroup(label)
+	.checkbox-group 
+		.checkbox-group__label.field-group__label= label
+		if block 
+			block
+mixin checkbox(text, inputName)
+	.checkbox
+		label
+			input(type="checkbox" class="checkbox__input" name=inputName)
+			span.checkbox__label= text

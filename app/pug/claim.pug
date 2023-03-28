@@ -10,7 +10,7 @@ block variables
 	- var filesArea = true;
 	- var organization = true;
 block content
-	section.claim 
+	section.claim
 		.container
 			.claim__body
 				.claim__header
@@ -23,7 +23,7 @@ block content
 					.claim__comment.comment-claim
 						.comment-claim__box
 							if commentText
-								button.claim__button.btn-blue.btn-redact
+								button.claim__button.btn-blue.btn-redact(type="button" data-bs-toggle="modal" data-bs-target="#comment")
 									span
 										| редактировать комментарий
 								div.comment-claim__text= commentText
@@ -93,7 +93,7 @@ block content
 																				| Полностью оплачено
 																if item.key == "finance_tourist"
 																	div
-																		button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+																		button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
 															.item-group__main
 																.item-group__box.finance-box
 																	.item-group__heading
@@ -207,7 +207,7 @@ block content
 										h1.group-data__title Туристы
 										.group-data__buttons
 											+btnBlue("Отправить ссылку на заполнение данных", null)
-											+btnBlue("Добавить туриста", "fa-regular fa-plus")
+											+btnBlue("Добавить туриста", "fa-regular fa-plus", null, "#addTourist")
 									.group-data__subheader 
 										i 
 											| Для граждан РФ при бронировании направления Россия заселение в отель и авиаперевозка производится 
@@ -251,12 +251,9 @@ block content
 																		td.tourist-table__visa= mainItem.visa
 																		td.table__actions
 																			.table__buttons
-																				button(type="button").btn-gear
-																					i(class="fa-solid fa-gear")
-																				button(type="button").btn-trash
-																					i(class="fa-solid fa-trash-can")
-																				button(type="button").btn-linkify
-																					i(class="fa-solid fa-link")
+																				+tableBtn("Редактировать данные о туристе", "btn-gear", "fa-solid fa-gear")
+																				+tableBtn("Удалить туриста", "btn-trash", "fa-solid fa-trash-can")
+																				+tableBtn("Добавить во все услуги заявки", "btn-linkify", "fa-solid fa-link")
 																each addItem in person.additionalRow
 																	tr.join
 																		td.tourist-table__name  
@@ -289,7 +286,14 @@ block content
 										h1.group-data__title Детали тура
 										.group-data__buttons
 											+btnBlue("Создать заявку на доп.услугу", null)
-											+btnBlue("Добавить услугу", "fa-regular fa-plus")
+											.dropdown
+												button.btn.btn-blue.btn-primary(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+													i(class="fa-regular fa-plus") 
+													| Добавить услугу
+												ul.dropdown-menu.dropdown__menu
+													each item in dropdown.services
+														li.dropdown-menu__item
+															button(type="button" class="dropdown-menu__button" data-bs-toggle="modal" data-bs-target=`#${item.id}`)= item.text
 									.group-data__area.area-group
 										.area-group__body
 											.area-group__header 
@@ -318,10 +322,8 @@ block content
 																			- }
 																td.table__actions
 																	.table__buttons
-																		button(type="button").btn-gear
-																			i(class="fa-solid fa-gear")
-																		button(type="button").btn-trash
-																			i(class="fa-solid fa-trash-can")
+																		+tableBtn("Редактировать услугу", "btn-gear", "fa-solid fa-gear")
+																		+tableBtn("Удалить услугу", "btn-trash", "fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Необходимо выбрать услугу
 								.data-claim__group.group-data
@@ -345,10 +347,8 @@ block content
 																td= docItem.type
 																td.table__actions
 																	.table__buttons
-																		button(type="button").btn-download-doc
-																			i(class="fa-solid fa-download")
-																		button(type="button").btn-trash
-																			i(class="fa-solid fa-trash-can")
+																		+tableBtn("Скачать документ", "btn-download-doc", "fa-solid fa-download")
+																		+tableBtn("Удалить документ", "btn-trash", "fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Нет файлов
 								.data-claim__group.group-data
@@ -374,10 +374,8 @@ block content
 																td= fileItem.type
 																td.table__actions
 																	.table__buttons
-																		button(type="button").btn-download-doc
-																			i(class="fa-solid fa-download")
-																		button(type="button").btn-trash
-																			i(class="fa-solid fa-trash-can")
+																		+tableBtn("Скачать файл", "btn-download-doc", "fa-solid fa-download")
+																		+tableBtn("Удалить файл", "btn-trash", "fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Нет файлов
 						.tabs-claim__data.data-claim.tabs-content(data-tab-content="fincance")

@@ -49,6 +49,7 @@
     "bootstrap": "^5.2.3",
     "choices.js": "^10.2.0",
     "datatables.net-dt": "^1.13.4",
+    "gost-transliteration": "^0.1.2",
     "gulp-sourcemaps": "^3.0.0",
     "jquery": "^3.6.4",
     "moment": "^2.29.4"

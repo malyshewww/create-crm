@@ -9,6 +9,10 @@
 		flex: 0 0 28px;
 		background-color: transparent;
 		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
 		&::before {
 			content: "";
 			display: block;
@@ -36,7 +40,6 @@
 		background-color: transparent;
 	}
 	&__box {
-		border: 1px solid $grayColorLight2;
 		font-size: 14px;
 		background: $whiteColor;
 		border-collapse: separate;
@@ -79,6 +82,7 @@
 		font-size: inherit;
 		color: $mainColor;
 		width: 100%;
+		border: 1px solid $grayColorLight2;
 		&:focus {
 			border: 1px solid $blueColorSecondary;
 		}
