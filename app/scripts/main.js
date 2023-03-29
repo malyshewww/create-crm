@@ -20,6 +20,9 @@ import "./modules/paginationTable.js";
 // Подключение модуля табов
 import "./modules/tabs.js";
 
+// Подключение модуля с курсами валют
+import "./modules/currency.js";
+
 // import "./libs/jquery.min.js";
 import "./libs/bootstrap.bundle.min.js";
 

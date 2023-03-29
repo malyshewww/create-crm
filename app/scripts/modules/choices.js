@@ -6,6 +6,7 @@ const choiceConfig = {
 	searchPlaceholderValue: "Поиск",
 	placeholder: false,
 	shouldSortItems: false,
+	allowHTML: true,
 };
 const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {

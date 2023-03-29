@@ -1,24 +1,31 @@
 import { translit } from 'gost-transliteration';
 
-const inputPersonSurName = document.querySelector('input[name="person_surname"]');
-const inputPersonSurNameLat = document.querySelector('input[name="person_surname_lat"]');
-const inputPersonName = document.querySelector('input[name="person_name"]');
-const inputPersonNameLat = document.querySelector('input[name="person_name_lat"]');
-const inputTranslit = document.querySelector('input[name="translit"]');
 
-inputTranslit.addEventListener('change', (event) => {
-	const inputPersonSurNameValue = inputPersonSurName.value;
-	const inputPersonNameValue = inputPersonName.value;
-	if (event.target.checked) {
-		if (inputPersonSurNameValue != "" && inputPersonNameValue != "") {
-			inputPersonSurNameLat.value = translit(inputPersonSurNameValue).toUpperCase();
-			inputPersonNameLat.value = translit(inputPersonNameValue).toUpperCase();
-		}
-	} else {
-		inputPersonSurNameLat.value = "";
-		inputPersonNameLat.value = "";
+function translitFields(target, surName, surNameLat, name, nameLat) {
+	const inputSurName = document.querySelector(`input[name=${surName}]`);
+	const inputSurNameLat = document.querySelector(`input[name=${surNameLat}]`);
+	const inputName = document.querySelector(`input[name=${name}]`);
+	const inputnNameLat = document.querySelector(`input[name=${nameLat}]`);
+	const translitInput = document.querySelector(`input[name=${target}]`)
+	if (translitInput) {
+		translitInput.addEventListener('change', (event) => {
+			const inputSurNameValue = inputSurName.value;
+			const inputNameValue = inputName.value;
+			if (event.target.checked) {
+				if (inputSurNameValue != "" && inputNameValue != "") {
+					inputSurNameLat.value = translit(inputSurNameValue).toUpperCase();
+					inputnNameLat.value = translit(inputNameValue).toUpperCase();
+				}
+			} else {
+				inputSurNameLat.value = "";
+				inputnNameLat.value = "";
+			}
+		})
 	}
-})
+}
+translitFields("translit_customer", "person_surname", "person_surname_lat", "person_name", "person_name_lat");
+translitFields("translit_tourist", "tourist_surname", "tourist_surname_lat", "tourist_name", "tourist_name_lat");
+
 function transliterate(word) {
 	var answer = "";
 	var a = {}
@@ -35,5 +42,4 @@ function transliterate(word) {
 	return answer;
 }
 
-console.log(transliterate("по госту"));
 // console.log(transliterate("Алексей"));

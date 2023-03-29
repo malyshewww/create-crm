@@ -102,7 +102,7 @@ block content
 																				i(class="fa-solid fa-chevron-down icon-arrow")
 																			if item.key == "finance"
 																				div
-																					button(type="button").item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+																					button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
 																		if item.prices
 																			.item-group__prices
 																				each itemPrice in item.prices
@@ -151,10 +151,8 @@ block content
 																							td 
 																								.table__actions 
 																									.table__buttons
-																										button(type="button").btn-pen
-																											i(class="fa-solid fa-pen")
-																										button(type="button").btn-trash
-																											i(class="fa-solid fa-trash-can")
+																										+tableBtn("Редактировать счет", "btn-pen", "fa-solid fa-pen")
+																										+tableBtn("Удалить счет", "btn-trash", "fa-solid fa-trash-can")
 																.item-group__box
 																	.item-group__row 
 																		.item-group__col
@@ -170,7 +168,7 @@ block content
 																			span.fw-700(style=`color: ${item.status == "full" ? "#659f13" : "red"};`) 0,28 ₽
 																.item-group__footer
 																		+btnBlue("Платеж от туриста", "fa-regular fa-plus", "btn-sm")
-																		+btnBlue("Выставить счет туристу", null, "btn-sm")
+																		+btnBlue("Выставить счет туристу", null, "btn-sm", "#exposePayment")
 								.data-claim__group.group-data
 									header.group-data__header
 										h1.group-data__title Заказчик

@@ -8,6 +8,17 @@ mixin fieldItem(labelName, inputType = "text", inputName, required)
 				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input")
 		if block 
 			block
+mixin date(labelName, inputType = "text", inputName, required)
+	.field-group__item(id=itemId)
+		label.field-group__label(class=required ? "required" : "")= labelName
+		.field-group__box
+			if required
+				input(type=inputType name=inputName class="field-group__input" required)
+			else 
+				input(type=inputType name=inputName class="field-group__input")
+			.field-group__trigger
+				i(class="fa-regular fa-calendar-days calendar-icon")
+				input(type="text" class='input-trigger' data-id=inputName)
 mixin fieldRangeDate(labelName, inputType = "text", inputName, required)
 	.field-group__item(id=itemId)
 		label.field-group__label(class=required ? "required" : "")= labelName
@@ -17,7 +28,8 @@ mixin fieldRangeDate(labelName, inputType = "text", inputName, required)
 			else 
 				input(type=inputType name=inputName class="field-group__input")
 			.field-group__trigger
-				input(type="text" class=`input-trigger ${inputName == "date_start" ? "input-trigger-start" : "input-trigger-end"}`)
+				i(class="fa-regular fa-calendar-days calendar-icon")
+				input(type="text" class=`input-trigger ${inputName == "date_start" ? "input-trigger-start" : "input-trigger-end"}` data-id=inputName)
 mixin fieldSingleDate(labelName, inputType = "text", inputName, required)
 	.field-group__item
 		label.field-group__label(class=required ? "required" : "")= labelName
@@ -27,7 +39,8 @@ mixin fieldSingleDate(labelName, inputType = "text", inputName, required)
 			else 
 				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input")
 			.field-group__trigger
-				input(type="text" class=`input-trigger input-trigger-date`)
+				i(class="fa-regular fa-calendar-days calendar-icon")
+				input(type="text" class=`input-trigger input-trigger-date` data-id=inputName)
 mixin select(labelName, selectName, selectId, [...items], required)
 	.field-group__item
 		label.field-group__label(class=required ? "required" : "")= labelName

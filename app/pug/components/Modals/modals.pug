@@ -5,9 +5,9 @@
 				.modal-text 
 					| Даты тура
 			.col 
-				+fieldRangeDate("Начало", "text", "date_start")
+				+date("Начало", "text", "datetour_start")
 			.col
-				+fieldRangeDate("Окончание", "text", "date_end")
+				+date("Окончание", "text", "datetour_end")
 			.col.col-sm-12 
 				.field-group__item 
 					label.field-group__label КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)
@@ -30,9 +30,9 @@
 			.col.col-6
 				+fieldItem("Название", "text", "name")
 			.col.col-3
-				+fieldRangeDate("Начало", "text", "date_start")
+				+date("Начало", "text", "datetourpack_start")
 			.col.col-3
-				+fieldRangeDate("Окончание", "text", "date_end")
+				+date("Окончание", "text", "datetourpack_end")
 			.col.col-6
 				+select("Город вылета", "departureСity", null, [...select.departureCity])
 			.col.col-6
@@ -46,7 +46,7 @@
 	.field-group
 		.row
 			.col.col-4
-				+fieldSingleDate("Дата договора", "text", "contract_date")
+				+date("Дата договора", "text", "date")
 			.col.col-4
 				+fieldItem("Номер брони", "text", "booking_number")
 +modal("addCustomer", "Заказчик", "modal-extended")
@@ -60,7 +60,7 @@
 						.col.col-12 
 							.checkbox
 								label
-									input(type="checkbox" class="checkbox__input" name="translit")
+									input(type="checkbox" class="checkbox__input" name="translit_customer")
 									span.checkbox__label.text-label Включить транслитерацию по госту 2016
 						.col.col-3
 							+fieldItem("Фамилия", "text", "person_surname", true)
@@ -77,7 +77,7 @@
 						.col.col-3
 							+select("Гражданство", "nationality", null, [...select.nationality], true)
 						.col.col-3
-							+fieldSingleDate("Дата рождения", "text", "person_birthday", true)
+							+fieldItem("Дата рождения", "text", "person_birthday", true)
 						.col.col-3
 							+fieldItem("Фактический адрес", "text", "person_address")
 						.col.col-3
@@ -109,7 +109,7 @@
 								.col-sm-8
 									+fieldItem("Номер", "text", "certificate_number")
 								.col-sm-12
-									+fieldSingleDate("Дата выдачи", "text", "certificate_date")
+									+date("Дата выдачи", "text", "date")
 								.col-sm-12
 									+fieldItem("Кем выдан", "text", "certificate_issued")
 						.col.col-4
@@ -120,9 +120,9 @@
 								.col-sm-8
 									+fieldItem("Номер", "text", "international_passport_number")
 								.col-sm-6
-									+fieldSingleDate("Дата выдачи", "text", "international_passport_date")
+									+date("Дата выдачи", "text", "date")
 								.col-sm-6
-									+fieldItem("Срок действия", "text", "international_passport_limit")
+									+date("Срок действия", "text", "date")
 								.col-sm-12
 									+fieldItem("Кем выдан", "text", "international_passport_issued")
 				#juridical(class="tabs-content" data-tab-content="juridical")
@@ -161,7 +161,7 @@
 	.field-group 
 		.row
 			.col.col-12
-				+checkbox("Включить транслитерацию по госту 2016", "translit")
+				+checkbox("Включить транслитерацию по госту 2016", "translit_tourist")
 			.col.col-3
 				+fieldItem("Фамилия", "text", "tourist_surname", true)
 			.col.col-3
@@ -177,7 +177,7 @@
 			.col.col-3
 				+select("Гражданство", "nationality", null, [...select.nationality], true)
 			.col.col-3
-				+fieldSingleDate("Дата рождения", "text", "tourist_birthday", true)
+				+fieldItem("Дата рождения", "text", "tourist_birthday", true)
 			.col.col-3
 				+fieldItem("Фактический адрес", "text", "tourist_address")
 			.col.col-3
@@ -194,7 +194,7 @@
 					.col-sm-3
 						+fieldItem("Номер", "number", "passport_number")
 					.col-sm-6
-						+fieldItem("Дата выдачи", "text", "passport_date")
+						+fieldItem("Дата выдачи", "text", "date")
 					.col-sm-8
 						+fieldItem("Кем выдан", "text", "passport_issued")
 					.col-sm-4
@@ -209,7 +209,7 @@
 					.col-sm-8
 						+fieldItem("Номер", "text", "certificate_number")
 					.col-sm-12
-						+fieldSingleDate("Дата выдачи", "text", "certificate_date")
+						+date("Дата выдачи", "text", "date")
 					.col-sm-12
 						+fieldItem("Кем выдан", "text", "certificate_issued")
 			.col.col-4
@@ -220,13 +220,12 @@
 					.col-sm-8
 						+fieldItem("Номер", "text", "international_passport_number")
 					.col-sm-6
-						+fieldSingleDate("Дата выдачи", "text", "international_passport_date")
+						+date("Дата выдачи", "text", "date")
 					.col-sm-6
-						+fieldItem("Срок действия", "text", "international_passport_limit")
+						+date("Срок действия", "text", "date")
 					.col-sm-12
 						+fieldItem("Кем выдан", "text", "international_passport_issued")
 						.text-label.mt-2 Пример: UFMS-12
-
 		.row 
 			.col.col-4 	
 				.text-label.mb-2 Информация и визе
@@ -249,9 +248,9 @@
 			.col.col-2
 				+fieldItem("Номер рейса", "text", "flight_number")
 			.col.col-3
-				+fieldRangeDate("Время вылета", "text", "date_start")
+				+date("Время вылета", "text", "dateflight_start")
 			.col.col-3
-				+fieldRangeDate("Время прилета", "text", "date_end")
+				+date("Время прилета", "text", "dateflight_end")
 			.col.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -268,9 +267,9 @@
 				+select("Тип страховки", "insurance_type", "insuranceType", [...select.insuranceType])
 				+fieldItem("Тип страховки (заполняется вручную)", "text", "insurance_type_other")
 			.col.col-2
-				+fieldRangeDate("Начало действия", "text", "date_start")
+				+date("Начало действия", "text", "dateinsurance_start")
 			.col.col-2
-				+fieldRangeDate("Окончание действия", "text", "date_end")
+				+date("Окончание действия", "text", "dateinsurance_end")
 			.col.col-3
 				+fieldItem("Страховая сумма", "text", "insurance_sum")
 			.col.col-12
@@ -286,9 +285,9 @@
 			.col.col-6
 				+fieldItem("Маршрут (обратно)", "text", "transfer_route_end")
 			.col.col-3
-				+fieldRangeDate("Начало", "text", "date_start")
+				+date("Начало", "text", "datetransfer_start")
 			.col.col-3
-				+fieldRangeDate("Окончание", "text", "date_end")
+				+date("Окончание", "text", "datetransfer_end")
 			.col.col-6
 				+select("Тип трансфера", "transfer_type", null, [...select.transferType])
 			.col.col-6
@@ -308,9 +307,9 @@
 			.col.col-6
 				+fieldItem("Страна назначения", "text", "visa_country")
 			.col.col-3
-				+fieldRangeDate("Начало действия", "text", "date_start")
+				+date("Начало действия", "text", "datevisa_start")
 			.col.col-3
-				+fieldRangeDate("Окончани действия", "text", "date_end")
+				+date("Окончани действия", "text", "datevisa_end")
 			.col.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -336,9 +335,9 @@
 			.col.col-4
 				+select("Тип питания", "habitation_type_food", null, [...select.habitationTypeFood])
 			.col.col-3
-				+fieldRangeDate("Время заезда", "text", "date_start")
+				+date("Время заезда", "text", "datehabitation_start")
 			.col.col-3
-				+fieldRangeDate("Время выезда", "text", "date_end")
+				+date("Время выезда", "text", "datehabitation_end")
 			.col.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -383,3 +382,23 @@
 				+fieldItem("Предоплата не менее, %", "text", "prepayment_percent")
 			.col.col-12 
 				+fieldItem("Полная оплата не позднее, дней", "text", "prepayment_days")
++modal("exposePayment", "Счет на оплату")
+	.field-group
+		.row
+			.col.col-3
+				+select("Расчет", "expose_calculate", "exposeCalculate", [...select.exposePayment])
+		.row
+			.col.col-3
+				+fieldItem("Сумма платежа в счете", "text", "expose_payment_sum")
+			.col.col-3
+				.field-group__item
+					label.field-group__label Валюта платежа
+					select(name="expose_currency" class="select-choices" id="exposeCurrency")
+						option(value="" selected)
+							each item, index in select.exposeCurrency 
+								option(value=item.value)&attributes({selected: item.value == "RUB"})= item.name
+		.row
+			.col.col-4
+				+date("Дата и время счёта", "text", "date")
++modal("parametersPayment", "Параметры стоимости")
+	.field-group

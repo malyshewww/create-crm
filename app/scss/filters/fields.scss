@@ -1,5 +1,37 @@
+input[type="date"] {
+	position: relative;
+	padding: 10px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+	color: transparent;
+	background: none;
+	z-index: 1;
+	cursor: pointer;
+}
+input[type="date"]::before {
+	color: transparent;
+	background: none;
+	display: block;
+	font-family: "FontAwesome";
+	content: "\f073";
+	font-size: 20px;
+	width: 28px;
+	height: 30px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: $grayColorPrimary;
+}
 .field-group {
 	position: relative;
+	display: grid;
+	gap: 10px;
+	& .row {
+	}
 	&__trigger {
 		display: flex;
 		justify-content: center;
@@ -13,21 +45,35 @@
 		top: 0;
 		right: 0;
 		height: 100%;
-		&::before {
-			content: "";
-			display: block;
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 6px 3px 0 3px;
-			border-color: $mainColor transparent transparent transparent;
-		}
+		// pointer-events: none;
+		// &::before {
+		// 	color: transparent;
+		// 	background: none;
+		// 	display: block;
+		// 	font-family: "FontAwesome";
+		// 	content: "\f073";
+		// 	font-size: 20px;
+		// 	width: 28px;
+		// 	height: 30px;
+		// 	position: absolute;
+		// 	display: flex;
+		// 	justify-content: center;
+		// 	align-items: center;
+		// 	color: $grayColorPrimary;
+		// }
 		&:hover {
 			background-color: $blueColorSecondary;
+			& .calendar-icon {
+				color: $whiteColor;
+			}
 			&::before {
-				border-color: $whiteColor transparent transparent transparent;
+				color: $whiteColor;
 			}
 		}
+	}
+	& .calendar-icon {
+		color: $grayColorPrimary;
+		font-size: 18px;
 	}
 	& .input-trigger {
 		position: absolute;
@@ -44,12 +90,13 @@
 		background: $whiteColor;
 		border-collapse: separate;
 		border-spacing: 0;
-		min-height: 40px;
+		min-height: 30px;
 		width: 100%;
 		position: relative;
 		display: flex;
 	}
 	&__item {
+		position: relative;
 	}
 	&__label {
 		display: block;
@@ -86,6 +133,12 @@
 		&:focus {
 			border: 1px solid $blueColorSecondary;
 		}
+		// &:focus + .field-group__trigger {
+		// 	background: $blueColorSecondary;
+		// 	& .calendar-icon {
+		// 		color: $whiteColor;
+		// 	}
+		// }
 	}
 	&__textarea {
 		min-height: 90px;
