@@ -1,5 +1,7 @@
+// Плагин для создания селектов
 import Choices from "choices.js";
 
+// Общая конфигурация для всех селектов
 const choiceConfig = {
 	noResultsText: "Ничего не найдено",
 	itemSelectText: "",

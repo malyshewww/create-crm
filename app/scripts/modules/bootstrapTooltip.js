@@ -1,6 +1,7 @@
-var tooltipTriggerList = [].slice.call(
+// Всплывающие подсказки от bootstrap при наведении на элементы
+let tooltipTriggerList = [].slice.call(
 	document.querySelectorAll('[data-bs-toggle="tooltip"]')
 );
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	return new bootstrap.Tooltip(tooltipTriggerEl);
 });

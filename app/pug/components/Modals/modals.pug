@@ -359,7 +359,7 @@
 			.col.col-12 
 				+fieldItem("Название", "text", "excursion_name")
 			.col.col-12 
-				+fieldItem("Название", "text", "excursion_description")
+				+fieldItem("Описание", "text", "excursion_description")
 			.col.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -389,7 +389,7 @@
 				+select("Расчет", "expose_calculate", "exposeCalculate", [...select.exposePayment])
 		.row
 			.col.col-3
-				+fieldItem("Сумма платежа в счете", "text", "expose_payment_sum")
+				+fieldItem("Сумма платежа в счете", "number", "expose_payment_sum")
 			.col.col-3
 				.field-group__item
 					label.field-group__label Валюта платежа
@@ -400,5 +400,47 @@
 		.row
 			.col.col-4
 				+date("Дата и время счёта", "text", "date")
-+modal("parametersPayment", "Параметры стоимости")
++modal("parametersPayment", "Параметры стоимости", "modal-parameters")
+	.parameters-payment
+		.parameters-payment__row
+			.parameters-payment__col
+				.field-group__item
+					label.field-group__label Валюта турпакета
+					select(name="tourpackage_currency" class="select-choices" id="tourPackageCurrency")
+						option(value="" selected)
+							each item, index in select.tourPackageCurrency
+								option(value=item.value)&attributes({selected: item.value == "RUB"})= item.name
+			.parameters-payment__col
+				+fieldItem("Курс для туриста", "text", "parameters_course_tourist")
+		hr(class="line-dashed")
+		.parameters-payment__row
+			.parameters-payment__col
+				.text-label Цена тура для ТА
+			.parameters-payment__col.parameters-price
+				+fieldItem("RUB", "text", "parameters_tour_price")
+			.parameters-payment__col
+				.text-label Комиссионная часть
+			.parameters-payment__col.parameters-price
+				+fieldItem("RUB", "text", "parameters_comission_price")
++modal("addFile", "Добавить файл", null, "Сохранить", "Отменить")
 	.field-group
+		form.drag-area(method='post' enctype='multipart/form-data')
+			i(class="fa-solid fa-cloud-arrow-up drag-area__icon")
+			p.drag-area__text.
+				Просто перетащите файл в эту область 
+				#[br]
+				или воспользуйтесь стандартным загрузчиком
+		.row 
+			.col.col-8
+				form(method='post' enctype='multipart/form-data')
+					.field-group__label Файл
+					div.upload-file
+						.upload-file__preview.preview
+							| Нет выбранных файлов
+						.upload-file__button
+							label(for='upload' class="upload-file__label") Обзор
+							input#file_uploads(type='file' name='uploads' class="upload-file__input")
+			.col.col-4
+				+select("Тип файла", "file_type", "fileType", [...select.fileType])
+
+

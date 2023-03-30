@@ -1,10 +1,13 @@
 // Плагин календаря air-datepicker
 import AirDatepicker from "air-datepicker";
+// Библиотека для позиционирования календаря
 import { createPopper } from '@popperjs/core';
+// Библиотека для настройки анимации появления | скрытия календаря
 import anime from 'animejs';
 // Плагин для форматирования даты
 import moment from 'moment';
 
+// Конфигурация для одиночных дат
 const inputTriggerDates = document.querySelectorAll('[data-id="date"]');
 [...inputTriggerDates].forEach((item) => {
 	const parent = item.closest('.field-group__box');
@@ -81,8 +84,10 @@ const inputTriggerDates = document.querySelectorAll('[data-id="date"]');
 	})
 });
 
-
+// МАссив со значениями атрибутов, для которых в конфигурацию добавляется возможность выбора времени помиом основной даты
 const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date"];
+
+// Функция для диапазона дат
 function rangeDate(start, end) {
 	let inputTriggerStart = document.querySelector(`[data-id=${start}]`);
 	let inputTriggerEnd = document.querySelector(`[data-id=${end}]`);

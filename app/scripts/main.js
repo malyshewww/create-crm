@@ -5,6 +5,9 @@
 // Подключение библиотеки jquery
 import "./libs/jquery.min.js";
 
+// Подключение библиотеки bootstrap
+import "./libs/bootstrap.bundle.min.js";
+
 // Подключение модуля translit
 import "./modules/translit.js";
 
@@ -23,8 +26,8 @@ import "./modules/tabs.js";
 // Подключение модуля с курсами валют
 import "./modules/currency.js";
 
-// import "./libs/jquery.min.js";
-import "./libs/bootstrap.bundle.min.js";
+// Подключение модуля с Загрузкой файлов
+import "./modules/uploadFiles.js";
 
 // import "./libs/jquery.min.js";
 import "./modules/bootstrapTooltip.js";

@@ -1,6 +1,11 @@
+// Плагин для транслитерации 
 import { translit } from 'gost-transliteration';
 
-
+/* Функция для транслитерации Фамилии и Имени
+	Принимает 
+	-	Целевой элемент (target) - input с типом checkbox в разметке
+	-	значения атрибутов у селекторов (input) - откуда брать значение / куда записывать результат 
+*/
 function translitFields(target, surName, surNameLat, name, nameLat) {
 	const inputSurName = document.querySelector(`input[name=${surName}]`);
 	const inputSurNameLat = document.querySelector(`input[name=${surNameLat}]`);
@@ -26,6 +31,7 @@ function translitFields(target, surName, surNameLat, name, nameLat) {
 translitFields("translit_customer", "person_surname", "person_surname_lat", "person_name", "person_name_lat");
 translitFields("translit_tourist", "tourist_surname", "tourist_surname_lat", "tourist_name", "tourist_name_lat");
 
+// Кастомная функция для трнаслитерации с возможностью редактирования объекта с буквами
 function transliterate(word) {
 	var answer = "";
 	var a = {}
