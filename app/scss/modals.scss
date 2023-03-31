@@ -130,6 +130,27 @@
 	display: flex;
 	min-height: 30px;
 	border: 1px solid $grayColorSecondary;
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		& button {
+			width: 20px;
+			height: 20px;
+			display: grid;
+			place-items: center;
+			margin-left: auto;
+			font-size: 18px;
+			color: $redColor;
+			cursor: pointer;
+			& i {
+				pointer-events: none;
+			}
+		}
+	}
+	&__list {
+		width: 100%;
+	}
 	&__preview {
 		flex: 1 1 auto;
 		padding: 4px 8px;

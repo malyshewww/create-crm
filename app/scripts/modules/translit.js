@@ -31,7 +31,7 @@ function translitFields(target, surName, surNameLat, name, nameLat) {
 translitFields("translit_customer", "person_surname", "person_surname_lat", "person_name", "person_name_lat");
 translitFields("translit_tourist", "tourist_surname", "tourist_surname_lat", "tourist_name", "tourist_name_lat");
 
-// Кастомная функция для трнаслитерации с возможностью редактирования объекта с буквами
+// Кастомная функция для транслитерации с возможностью редактирования объекта с буквами
 function transliterate(word) {
 	var answer = "";
 	var a = {}

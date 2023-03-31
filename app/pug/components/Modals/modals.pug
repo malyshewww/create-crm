@@ -436,7 +436,11 @@
 					.field-group__label Файл
 					div.upload-file
 						.upload-file__preview.preview
-							| Нет выбранных файлов
+							ul#fileList.upload-file__list
+								//- li.upload-file__item 
+								//- 	span.file-name file.pdf
+								//- 	button(type="button" data-action="delete" class="btn-file")
+								//- 		i(class="fa-solid fa-xmark")
 						.upload-file__button
 							label(for='upload' class="upload-file__label") Обзор
 							input#file_uploads(type='file' name='uploads' class="upload-file__input")

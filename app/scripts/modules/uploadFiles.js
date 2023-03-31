@@ -1,40 +1,99 @@
+const dropArea = document.querySelector('.drag-area');
 const inputUpload = document.querySelector('#file_uploads');
-const preview = document.querySelector('.preview');
+const fileList = document.querySelector('#fileList');
+const emptyList = document.querySelector('#emptyList');
 
-inputUpload.style.opacity = 0;
-inputUpload.addEventListener('change', updateImageDisplay);
-function updateImageDisplay() {
-	while (preview.firstChild) {
-		preview.removeChild(preview.firstChild);
+let file;
+let files = inputUpload.files;
+
+checkEmptyList(files);
+
+function renderFile(file) {
+	// Формируем разметку для нового файла
+	let fileItem = `<li class="upload-file__item">
+						<span class="file-name">${file.name}</span>
+						<button type="button" data-action="delete" class="btn-file">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+					</li>`;
+	// Добавляем данные файла (file.name) на страницу
+	fileList.insertAdjacentHTML('afterbegin', fileItem);
+}
+function deleteFile(event) {
+	// Проверяем если клик был НЕ по кнопке "удалить файл"
+	if (event.target.dataset.action !== 'delete') return;
+	const parentNode = event.target.closest('.upload-file__item');
+	// Удаляем файл из разметки
+	parentNode.remove();
+	checkEmptyList(files);
+}
+function checkEmptyList(files) {
+	if (files.length === 0) {
+		const emptyListHTML = `<li id="emptyList" class="upload-file__item">Нет загруженных файлов</li>`;
+		fileList.insertAdjacentHTML('afterbegin', emptyListHTML);
 	}
-	const curFiles = inputUpload.files;
-	if (curFiles.length === 0) {
-		const para = document.createElement('p');
-		para.textContent = 'No files currently selected for upload';
-		preview.appendChild(para);
-	} else {
-		const list = document.createElement('ul');
-		preview.appendChild(list);
-
-		for (const file of curFiles) {
-			const listItem = document.createElement('li');
-			const para = document.createElement('p');
-			if (validFileType(file)) {
-				para.textContent = `File name: ${file.name}, file size: ${returnFileSize(file.size)}.`;
-				// const image = document.createElement('img');
-				// image.src = URL.createObjectURL(file);
-
-				// listItem.appendChild(image);
-				listItem.appendChild(para);
-			} else {
-				alert("Недопустимый тип файла");
-				// para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-				listItem.appendChild(para);
-			}
-			list.appendChild(listItem);
-		}
+	if (files.length > 0) {
+		const emptyListEl = document.querySelector('#emptyList');
+		emptyListEl ? emptyListEl.remove() : null;
 	}
 }
+
+dropArea.addEventListener('click', () => {
+	inputUpload.click();
+});
+
+fileList.addEventListener('click', deleteFile);
+
+inputUpload.addEventListener('change', (event) => {
+	file = event.target.files[0];
+	displayFile();
+});
+
+dropArea.addEventListener('dragover', (event) => {
+	event.preventDefault();
+	dropArea.classList.add('active');
+})
+
+dropArea.addEventListener('dragleave', () => {
+	dropArea.classList.remove('active');
+})
+
+dropArea.addEventListener('drop', (event) => {
+	event.preventDefault();
+	file = event.dataTransfer.files[0];
+	displayFile();
+	// if (validFileType(file)) {
+	// 	// Если необходимо вывести изображение в превью, то делаем через создание new FileReader()
+	// 	// let fileReader = new FileReader();
+	// 	// fileReader.onload = function () {
+	// 	// 	let fileURL = fileReader.result;
+	// 	// 	let imgTag = `<img src="${fileURL}" alt>`;
+	// 	// 	dropArea.innerHTML = imgTag;
+	// 	// }
+	// 	// fileReader.readAsDataURL(file)
+	// 	preview.textContent = `File name: ${file.name}, file size: ${returnFileSize(file.size)}.`;
+	// 	dropArea.classList.remove('active');
+	// } else {
+	// 	alert("Недопустимый тип файла");
+	// 	// preview.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+	// 	dropArea.classList.remove('active');
+	// }
+})
+
+function displayFile() {
+	while (fileList.firstChild) {
+		fileList.removeChild(fileList.firstChild);
+	}
+	if (file.size < 15728640) {
+		renderFile(file);
+		dropArea.classList.remove('active');
+	} else {
+		alert("Файл не должен превышать 15 МБ");
+		dropArea.classList.remove('active');
+		checkEmptyList(files);
+	}
+}
+
 const fileTypes = [
 	"image/apng",
 	"image/bmp",
@@ -45,9 +104,8 @@ const fileTypes = [
 	"image/svg+xml",
 	"image/tiff",
 	"image/webp",
-	"image/x-icon"
+	"image/x-icon",
 ];
-
 function validFileType(file) {
 	return fileTypes.includes(file.type);
 }
@@ -60,45 +118,3 @@ function returnFileSize(number) {
 		return `${(number / 1048576).toFixed(1)} MB`;
 	}
 }
-
-const dropArea = document.querySelector('.drag-area');
-
-dropArea.addEventListener('click', () => {
-	inputUpload.click();
-})
-
-let file;
-
-dropArea.addEventListener('dragover', (event) => {
-	event.preventDefault();
-	dropArea.classList.add('active');
-	// console.log('File is over dropArea');
-})
-dropArea.addEventListener('dragleave', () => {
-	dropArea.classList.remove('active');
-	// console.log('File is outside from dropArea');
-})
-dropArea.addEventListener('drop', (event) => {
-	event.preventDefault();
-	file = event.dataTransfer.files[0];
-	if (file.size > 15728640) {
-		alert("Файл не должен превышать 15 МБ")
-	}
-	if (validFileType(file)) {
-		// Если необходимо вывести изображение в превью, то делаем через создание new FileReader()
-		// let fileReader = new FileReader();
-		// fileReader.onload = function () {
-		// 	let fileURL = fileReader.result;
-		// 	let imgTag = `<img src="${fileURL}" alt>`;
-		// 	dropArea.innerHTML = imgTag;
-		// }
-		// fileReader.readAsDataURL(file)
-		preview.textContent = `File name: ${file.name}, file size: ${returnFileSize(file.size)}.`;
-		dropArea.classList.remove('active');
-	} else {
-		alert("Недопустимый тип файла");
-		// preview.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-		dropArea.classList.remove('active');
-	}
-	// console.log('File is dropped on dropArea');
-})
