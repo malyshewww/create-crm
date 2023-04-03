@@ -32,6 +32,11 @@ import "./modules/uploadFiles.js";
 // import "./libs/jquery.min.js";
 import "./modules/bootstrapTooltip.js";
 
+import "./api/countries.js";
+
+import "./components/Cities/Cities.js";
+import "./components/Countries/Countries.js";
+
 document.addEventListener('click', documentActions);
 
 function documentActions(event) {

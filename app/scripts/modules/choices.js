@@ -2,13 +2,15 @@
 import Choices from "choices.js";
 
 // Общая конфигурация для всех селектов
-const choiceConfig = {
+export const choiceConfig = {
 	noResultsText: "Ничего не найдено",
 	itemSelectText: "",
 	searchPlaceholderValue: "Поиск",
 	placeholder: false,
-	shouldSortItems: false,
 	allowHTML: true,
+	removeItemButton: true,
+	searchResultLimit: 8,
+	shouldSort: false,
 };
 const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {

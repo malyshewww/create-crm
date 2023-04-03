@@ -47,27 +47,25 @@
 	&__list {
 		display: flex;
 		align-items: center;
-		gap: 10px;
 		list-style: none;
-		// border-bottom: 1px solid $grayColorSecondary;
-	}
-	&__item {
-		background: $whiteColor;
-		// border: 1px solid transparent;
-		// border-bottom: 1px solid transparent;
-		color: $blueColorSecondary;
-		font-size: 18px;
-		font-weight: 600;
-		cursor: pointer;
-		padding: 8px 12px;
-		border-radius: 8px;
-		// margin-bottom: -1px;
+		border-bottom: 1px solid $grayColorSecondary;
 	}
 }
 .tabs-item {
+	color: $blueColorSecondary;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 8px 12px;
+	background: 0 0;
+	border: 1px solid transparent;
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+	margin-bottom: -1px;
 	&.isActive {
-		color: $blackColorSecondary;
-		box-shadow: 0px 0px 8px 4px rgba(203, 205, 206, 0.2);
+		background-color: #fff;
+		border-color: #dee2e6 #dee2e6 #fff;
+		color: #495057;
 	}
 }
 .tabs-content {

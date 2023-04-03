@@ -34,9 +34,15 @@
 			.col.col-3
 				+date("Окончание", "text", "datetourpack_end")
 			.col.col-6
-				+select("Город вылета", "departureСity", null, [...select.departureCity])
+				.field-group__item
+					label.field-group__label Город вылета
+					select(id="departureСity" name="departureСity")
+				//- +select("Город вылета", "departureСity", "departureСity", [...select.departureCity])
 			.col.col-6
-				+select("Страна прилета", "countryArrival", null, [...select.countryArrival])
+				.field-group__item
+					label.field-group__label Страна прилета
+					select(id="countryArrival" name="countryArrival")
+				//- +select("Страна прилета", "countryArrival", "countryArrival", [...select.countryArrival])
 +modal("touroperatorModal", "Туроператор - поставщик тура")
 	.field-group
 		.row
@@ -231,7 +237,10 @@
 				.text-label.mb-2 Информация и визе
 				.select-items
 					+select("Необходимость визы", "visa_info", "visaInfo", [...select.visa], true)
-					+select("Город подачи визы", "visa_city", "visaCity", [...select.visaCity])
+					.field-group__item
+						label.field-group__label Город подачи визы
+						select(id="visaCity" name="visa_city")
+					//- +select("Город подачи визы", "visa_city", "visaCity", [...select.visaCity])
 +modal("addFlight", "Перелет (добавление)", "modal-extended")
 	.field-group 	
 		.row 	
