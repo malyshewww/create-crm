@@ -4,21 +4,23 @@ import { choiceConfig } from "../../modules/choices.js";
 
 const newArrCities = cities.map((city, index) => {
 	// let obj = Object.assign({}, city);
-	index == 0 ? city.selected = true : null;
+	// index == 0 ? city.label = true : null;
 	return {
 		...city,
 		value: city.label,
 		id: index + 1,
+		selected: false,
 	}
 })
-
-const selectCities = document.getElementById('departureСity');
-const selectVisaCities = document.getElementById('visaCity');
+// Добавляем в начало массива элемент (объект) с пустыми значениями, чтобы оставить селект пустым, если ничего не выбрано
+newArrCities.unshift({ value: "", label: "", selected: true, disabled: true })
 
 function setCities(selectId) {
-	let choices = new Choices(selectId, choiceConfig);
-	choices.setValue(newArrCities);
+	let select = document.getElementById(selectId);
+	if (select) {
+		let choices = new Choices(select, choiceConfig);
+		choices.setChoices(newArrCities, 'value', 'label');
+	}
 }
-
-setCities(selectCities);
-setCities(selectVisaCities);
+setCities("departureСity");
+setCities("visaCity");

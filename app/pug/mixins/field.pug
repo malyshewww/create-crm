@@ -1,6 +1,6 @@
 mixin fieldItem(labelName, inputType = "text", inputName, required)
 	.field-group__item
-		label.field-group__label(class=required ? "required" : "")= labelName
+		label.field-group__label(class=required ? "required" : "")!= labelName
 		.field-group__box
 			if required
 				input(type=`${inputType == null ? "text" : inputType}` name=inputName class="field-group__input" required)

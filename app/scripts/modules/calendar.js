@@ -7,85 +7,101 @@ import anime from 'animejs';
 // Плагин для форматирования даты
 import moment from 'moment';
 
+// Массив со значениями атрибутов, для которых в конфигурацию добавляется возможность выбора времени помиом основной даты
+const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date", "pay_date"];
+
 // Конфигурация для одиночных дат
-const inputTriggerDates = document.querySelectorAll('[data-id="date"]');
-[...inputTriggerDates].forEach((item) => {
-	const parent = item.closest('.field-group__box');
-	const altFieldDate = parent.querySelector('.field-group__input')
-	let datepicker = new AirDatepicker(item, {
-		dateSeparator: "",
-		position: "bottom right",
-		autoClose: true,
-		dateFormat: 'dd.MM.yyyy',
-		altField: altFieldDate,
-		altFieldDateFormat: 'dd.MM.yyyy',
-		buttons: ['today', 'clear'],
-		// navTitles: {
-		// 	days: '<strong>yyyy</strong> <i>MMMM</i>',
-		// 	months: 'Выберите месяц в  <strong>yyyy</strong>'
-		// },
-		container: "#scroll-container",
-		position({ $datepicker, $target, $pointer, isViewChange, done }) {
-			let popper = createPopper($target, $datepicker, {
-				placement: 'bottom',
-				onFirstUpdate: state => {
-					!isViewChange && anime.remove($datepicker);
-					$datepicker.style.transformOrigin = 'center top';
-					!isViewChange && anime({
-						targets: $datepicker,
-						opacity: [0, 1],
-						rotateX: [-90, 0],
-						easing: 'spring(1.3, 80, 5, 0)',
-					})
+let button = {
+	content: 'Применить',
+	className: 'custom-button-classname',
+	onClick: (dp, date) => {
+		let newDate = new Date(date);
+		dp.selectDate(newDate);
+		dp.setViewDate(newDate);
+		dp.hide();
+	}
+}
+function singleDates(datesId) {
+	const inputTriggerDates = document.querySelectorAll(`[data-id=${datesId}]`);
+	[...inputTriggerDates].forEach((item) => {
+		const parent = item.closest('.field-group__box');
+		const altFieldDate = parent.querySelector('.field-group__input')
+		let datepicker = new AirDatepicker(item, {
+			dateSeparator: "",
+			position: "bottom right",
+			autoClose: false,
+			dateFormat: dateValues.includes(datesId) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altField: altFieldDate,
+			altFieldDateFormat: dateValues.includes(datesId) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			buttons: ['today', 'clear', button],
+			timepicker: dateValues.includes(datesId) ? true : false,
+			timeFormat: 'HH:mm',
+			// navTitles: {
+			// 	days: '<strong>yyyy</strong> <i>MMMM</i>',
+			// 	months: 'Выберите месяц в  <strong>yyyy</strong>'
+			// },
+			container: "#scroll-container",
+			position({ $datepicker, $target, $pointer, isViewChange, done }) {
+				let popper = createPopper($target, $datepicker, {
+					placement: 'bottom',
+					onFirstUpdate: state => {
+						!isViewChange && anime.remove($datepicker);
+						$datepicker.style.transformOrigin = 'center top';
+						!isViewChange && anime({
+							targets: $datepicker,
+							opacity: [0, 1],
+							rotateX: [-90, 0],
+							easing: 'spring(1.3, 80, 5, 0)',
+						})
 
-				},
-				modifiers: [
-					{
-						name: 'offset',
-						options: {
-							offset: [0, 10]
-						}
 					},
-					{
-						name: 'arrow',
-						options: {
-							element: $pointer,
-						}
-					},
-					{
-						name: 'computeStyles',
-						options: {
-							gpuAcceleration: false,
+					modifiers: [
+						{
+							name: 'offset',
+							options: {
+								offset: [0, 10]
+							}
 						},
-					},
-				]
-			});
-			return () => {
-				anime({
-					targets: $datepicker,
-					opacity: 0,
-					rotateX: -90,
-					duration: 300,
-					easing: 'easeOutCubic'
-				}).finished.then(() => {
-					popper.destroy();
-					done();
-				})
+						{
+							name: 'arrow',
+							options: {
+								element: $pointer,
+							}
+						},
+						{
+							name: 'computeStyles',
+							options: {
+								gpuAcceleration: false,
+							},
+						},
+					]
+				});
+				return () => {
+					anime({
+						targets: $datepicker,
+						opacity: 0,
+						rotateX: -90,
+						duration: 300,
+						easing: 'easeOutCubic'
+					}).finished.then(() => {
+						popper.destroy();
+						done();
+					})
+				}
 			}
-		}
-	})
-	altFieldDate.addEventListener('change', function (e) {
-		let value = altFieldDate.value;
-		let newDate = new Date(value).toString();
-		altFieldDate.value = altFieldDate.value.replace(/([%;#/?*+^$[\]\\(){}-])/g, '.');
-		moment.defaultFormat = "DD.MM.YYYY";
-		const date = moment(newDate, moment.defaultFormat, true).toDate();
-		datepicker.selectedDates[0] = date;
-	})
-});
-
-// МАссив со значениями атрибутов, для которых в конфигурацию добавляется возможность выбора времени помиом основной даты
-const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date"];
+		})
+		altFieldDate.addEventListener('change', function (e) {
+			let value = altFieldDate.value;
+			let newDate = new Date(value).toString();
+			altFieldDate.value = altFieldDate.value.replace(/([%;#/?*+^$[\]\\(){}-])/g, '.');
+			moment.defaultFormat = "DD.MM.YYYY";
+			const date = moment(newDate, moment.defaultFormat, true).toDate();
+			datepicker.selectedDates[0] = date;
+		})
+	});
+}
+singleDates("date");
+singleDates("pay_date");
 
 // Функция для диапазона дат
 function rangeDate(start, end) {

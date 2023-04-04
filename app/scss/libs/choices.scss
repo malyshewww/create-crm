@@ -340,3 +340,6 @@
 .choices__placeholder {
 	opacity: 0.5;
 }
+.choices__item--disabled {
+	display: none;
+}

@@ -25,7 +25,7 @@ body {
 	font-weight: $fontWeight;
 	font-family: $fontFamily;
 	background-color: $mainColor_bg;
-	line-height: 1;
+	line-height: $lineHeight;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;

@@ -36,12 +36,13 @@ block content
 						ul.tabs-claim__list 
 							li.tabs-claim__item.tabs-item(data-tab="info") Информация по заявке
 							li.tabs-claim__item.tabs-item(data-tab="finance") Финансы
+							li.tabs-claim__item.tabs-item(data-tab="contract") Договоры
 					.tabs-claim__content 
 						.tabs-claim__data.data-claim.tabs-content(data-tab-content="info")
 							.data-claim__groups
 								.data-claim__group.group-data
-									.group-data__row 
-										.group-data__column
+									.row.g-20
+										.col.col-xl-6.col-12
 											each item, index in groupItemData
 												if !item.key
 													.group-data__item.item-group
@@ -71,104 +72,6 @@ block content
 																			if listItem.image 
 																				span.list__image 
 																					img(src=`./images/claim/${listItem.image}.png`, alt=listItem.value)
-										.group-data__column
-												each item, index in groupItemData
-													if item.key
-														.group-data__item.item-group
-															.item-group__top 
-																.item-group__title= item.title
-																if item.status
-																	case item.status
-																		when "notSent"
-																			.item-group__status.status-not-sent
-																				i(class="fa-solid fa-circle-xmark")
-																				| Не отправлены
-																		when "part"
-																			.item-group__status.status-part
-																				i(class="fa-solid fa-circle-check")
-																				| Частично оплачено
-																		when "full"
-																			.item-group__status.status-full
-																				i(class="fa-solid fa-circle-check")
-																				| Полностью оплачено
-																if item.key == "finance_tourist"
-																	div
-																		button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
-															.item-group__main
-																.item-group__box.finance-box
-																	.item-group__heading
-																		.item-group__buttons
-																			button(type="button" id=`${item.key == "finance_tourist" ? 'tourist-price' : 'finance-price'}` class={isActive: item.key == "finance"}).btn-blue.btn-redact= item.priceBtn
-																				i(class="fa-solid fa-chevron-down icon-arrow")
-																			if item.key == "finance"
-																				div
-																					button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
-																		if item.prices
-																			.item-group__prices
-																				each itemPrice in item.prices
-																					span.item-group__price= itemPrice.priceOne
-																					span /
-																					span.item-group__price= itemPrice.priceTwo
-																	if item.list 
-																		div(class=`${item.key == "finance_tourist" ? 'tourist-price-content' : 'finance-price-content'}`)&attributes({hidden: item.key == "finance_tourist"})
-																			ul.item-group__list.list
-																				each listItem in item.list
-																					li
-																						div.list__label= listItem.label
-																						div.list__value= listItem.value
-															if item.key == "finance_tourist"
-																.item-group__box
-																	.item-group__heading
-																		.item-group__button
-																			span.text-label ОПЛАЧЕНО ТУРИСТОМ
-																			button(type="button" id="history-price").btn-blue.btn-redact ИСТОРИЯ ОПЛАТ
-																				i(class="fa-solid fa-chevron-down icon-arrow")
-																		if item.prices
-																			.item-group__prices 
-																				each itemPrice in item.prices
-																					span.item-group__price= itemPrice.priceOne
-																	if item.table
-																		each arrayTable in item.table
-																			table.table.finance-table(hidden)
-																				thead 
-																					th(style="width: 60px;")
-																						each itemHeader in arrayTable.headers
-																							th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
-																					th(style="width: 50px;")
-																				tbody 
-																					each rowItem in arrayTable.tableRows
-																						tr 
-																							td= rowItem.payment
-																							td= rowItem.date
-																							td= rowItem.number
-																							td= rowItem.sum
-																							td 
-																								if rowItem.obligation
-																									if rowItem.status == "success"
-																										span.text-success Оплачено
-																									else 
-																										span.text-error Не оплачено
-																							td 
-																								.table__actions 
-																									.table__buttons
-																										+tableBtn("Редактировать счет", "btn-pen", "fa-solid fa-pen")
-																										+tableBtn("Удалить счет", "btn-trash", "fa-solid fa-trash-can")
-																.item-group__box
-																	.item-group__row 
-																		.item-group__col
-																			div.text-label 
-																				span
-																					| Долг туриста
-																				span
-																					|  по установленному ТА
-																			div
-																				span.text-label КУРСУ 
-																				button(type="button").btn-blue.btn-redact 78,02 ₽
-																		.item-group__col
-																			span.fw-700(style=`color: ${item.status == "full" ? "#659f13" : "red"};`) 0,28 ₽
-																.item-group__footer
-																		+btnBlue("Платеж от туриста", "fa-regular fa-plus", "btn-sm")
-																		+btnBlue("Выставить счет туристу", null, "btn-sm", "#exposePayment")
 								.data-claim__group.group-data
 									header.group-data__header
 										h1.group-data__title Заказчик
@@ -223,60 +126,61 @@ block content
 										if touristDataArea
 											.area-group__body
 												each item, index in touristTable
-													table.tourist-table.table 
-														thead 
-															each itemHeader in item.headers
-																th(style=`width: ${itemHeader.widthColumn}%`)= itemHeader.name
-														tbody 
-															each person in item.person
-																each mainItem in person.mainRow
-																	tr
-																		td.tourist-table__name
-																			span= mainItem.fio
-																		td.tourist-table__gender= mainItem.gender
-																		td.tourist-table__date 
-																			span= mainItem.date
-																		td.tourist-table__passport
-																			ul 	
-																				li 
-																					span РФ: 
-																					span= mainItem.passportData
-																		td.tourist-table__contacts
-																			ul
-																				li 
-																					span Тл:
-																					span: a(href=`tel:${mainItem.tel}`)= mainItem.tel
-																		td.tourist-table__visa= mainItem.visa
-																		td.table__actions
-																			.table__buttons
-																				+tableBtn("Редактировать данные о туристе", "btn-gear", "fa-solid fa-gear")
-																				+tableBtn("Удалить туриста", "btn-trash", "fa-solid fa-trash-can")
-																				+tableBtn("Добавить во все услуги заявки", "btn-linkify", "fa-solid fa-link")
-																each addItem in person.additionalRow
-																	tr.join
-																		td.tourist-table__name  
-																			span= addItem.fio
-																		td.tourist-table__gender= addItem.gender
-																		td.tourist-table__date 
-																			ul 	
-																				li 
-																					span возраст: 
-																					span= addItem.date
-																		td.tourist-table__passport
-																			ul 	
-																				li 
-																					span ЗГРН: 
-																					span= addItem.passportData
-																		td.tourist-table__contacts
-																			if addItem.email
+													.table-responsive
+														table.tourist-table.table 
+															thead 
+																each itemHeader in item.headers
+																	th(style=`width: ${itemHeader.widthColumn}%`)= itemHeader.name
+															tbody 
+																each person in item.person
+																	each mainItem in person.mainRow
+																		tr
+																			td.tourist-table__name
+																				span= mainItem.fio
+																			td.tourist-table__gender= mainItem.gender
+																			td.tourist-table__date 
+																				span= mainItem.date
+																			td.tourist-table__passport
+																				ul 	
+																					li 
+																						span РФ: 
+																						span= mainItem.passportData
+																			td.tourist-table__contacts
 																				ul
 																					li 
-																						span Email:
-																						span: a(href=`mailto:${addItem.email}`)= addItem.email
-																			if addItem.contactManager
-																				div= addItem.contactManager
-																		td.ourist-table__visa= addItem.visa
-																		td.tourist-table__actions
+																						span Тл:
+																						span: a(href=`tel:${mainItem.tel}`)= mainItem.tel
+																			td.tourist-table__visa= mainItem.visa
+																			td.table__actions
+																				.table__buttons
+																					+tableBtn("Редактировать данные о туристе", "btn-gear", "fa-solid fa-gear")
+																					+tableBtn("Удалить туриста", "btn-trash", "fa-solid fa-trash-can")
+																					+tableBtn("Добавить во все услуги заявки", "btn-linkify", "fa-solid fa-link")
+																	each addItem in person.additionalRow
+																		tr.join
+																			td.tourist-table__name  
+																				span= addItem.fio
+																			td.tourist-table__gender= addItem.gender
+																			td.tourist-table__date 
+																				ul 	
+																					li 
+																						span возраст: 
+																						span= addItem.date
+																			td.tourist-table__passport
+																				ul 	
+																					li 
+																						span ЗГРН: 
+																						span= addItem.passportData
+																			td.tourist-table__contacts
+																				if addItem.email
+																					ul
+																						li 
+																							span Email:
+																							span: a(href=`mailto:${addItem.email}`)= addItem.email
+																				if addItem.contactManager
+																					div= addItem.contactManager
+																			td.ourist-table__visa= addItem.visa
+																			td.tourist-table__actions
 										else 
 											div.area-group__empty Необходимо указать данные о лице, с которым будет заключен договор
 								.data-claim__group.group-data
@@ -296,34 +200,35 @@ block content
 										.area-group__body
 											.area-group__header 
 												h3.area-group__title УСЛУГИ В ТУРПАКЕТЕ
-										if detailTourArea
-											each item, index in detailTourTable
-												table.detailtour-table.table
-													thead 
-														each itemHeader in item.headers
-																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
-													tbody
-														each serviceItem in item.services
-															tr 
-																td= serviceItem.name
-																td % 
-																td= serviceItem.description
-																td= serviceItem.dates
-																td
-																	if serviceItem.tourists
-																		ul.tourists-list
-																			- for (var i = 0; i < serviceItem.tourists; ++i) {
-																				li 
-																					span 
-																						| -
-																					span: i(class="fa-solid fa-user")
-																			- }
-																td.table__actions
-																	.table__buttons
-																		+tableBtn("Редактировать услугу", "btn-gear", "fa-solid fa-gear")
-																		+tableBtn("Удалить услугу", "btn-trash", "fa-solid fa-trash-can")
-										else 
-											div.area-group__empty Необходимо выбрать услугу
+											if detailTourArea
+												each item, index in detailTourTable
+													.table-responsive
+														table.detailtour-table.table
+															thead 
+																each itemHeader in item.headers
+																		th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
+															tbody
+																each serviceItem in item.services
+																	tr 
+																		td= serviceItem.name
+																		td % 
+																		td= serviceItem.description
+																		td= serviceItem.dates
+																		td
+																			if serviceItem.tourists
+																				ul.tourists-list
+																					- for (var i = 0; i < serviceItem.tourists; ++i) {
+																						li 
+																							span 
+																								| -
+																							span: i(class="fa-solid fa-user")
+																					- }
+																		td.table__actions
+																			.table__buttons
+																				+tableBtn("Редактировать услугу", "btn-gear", "fa-solid fa-gear")
+																				+tableBtn("Удалить услугу", "btn-trash", "fa-solid fa-trash-can")
+											else 
+												div.area-group__empty Необходимо выбрать услугу
 								.data-claim__group.group-data
 									header.group-data__header
 										h1.group-data__title Документы от туроператора
@@ -333,20 +238,21 @@ block content
 										.area-group__body
 										if documentsArea
 											each item, index in documentsTable
-												table.documents-table.table
-													thead 
-														each itemHeader in item.headers
-																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
-													tbody
-														each docItem in item.documentsData
-															tr 
-																td= docItem.date
-																td= docItem.name
-																td= docItem.type
-																td.table__actions
-																	.table__buttons
-																		+tableBtn("Скачать документ", "btn-download-doc", "fa-solid fa-download")
-																		+tableBtn("Удалить документ", "btn-trash", "fa-solid fa-trash-can")
+												.table-responsive
+													table.documents-table.table
+														thead 
+															each itemHeader in item.headers
+																	th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
+														tbody
+															each docItem in item.documentsData
+																tr 
+																	td= docItem.date
+																	td= docItem.name
+																	td= docItem.type
+																	td.table__actions
+																		.table__buttons
+																			+tableBtn("Скачать документ", "btn-download-doc", "fa-solid fa-download")
+																			+tableBtn("Удалить документ", "btn-trash", "fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Нет файлов
 								.data-claim__group.group-data
@@ -360,21 +266,131 @@ block content
 												h3.area-group__title ФАЙЛЫ, КОТОРЫЕ ВИДНЫ ТОЛЬКО ВАМ
 										if filesArea
 											each item, index in filesTable
-												table.documents-table.table
-													thead 
-														each itemHeader in item.headers
-																th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
-													tbody
-														each fileItem in item.filesData
-															tr 
-																td= fileItem.date
-																td= fileItem.name
-																td= fileItem.type
-																td.table__actions
-																	.table__buttons
-																		+tableBtn("Скачать файл", "btn-download-doc", "fa-solid fa-download")
-																		+tableBtn("Удалить файл", "btn-trash", "fa-solid fa-trash-can")
+												.table-responsive
+													table.documents-table.table
+														thead 
+															each itemHeader in item.headers
+																	th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + '%' : 'auto'};`)= itemHeader.name
+														tbody
+															each fileItem in item.filesData
+																tr 
+																	td= fileItem.date
+																	td= fileItem.name
+																	td= fileItem.type
+																	td.table__actions
+																		.table__buttons
+																			+tableBtn("Скачать файл", "btn-download-doc", "fa-solid fa-download")
+																			+tableBtn("Удалить файл", "btn-trash", "fa-solid fa-trash-can")
 										else 
 											div.area-group__empty Нет файлов
 						.tabs-claim__data.data-claim.tabs-content(data-tab-content="finance")
-							| Таб 2 - Финансы
+							.data-claim-groups 
+								.data-claim__group
+									.row
+										.col.col-xl-6.col-12
+											each item, index in groupItemData
+												if item.key
+													.group-data__item.item-group
+														.item-group__top 
+															.item-group__title= item.title
+															if item.status
+																case item.status
+																	when "notSent"
+																		.item-group__status.status-not-sent
+																			i(class="fa-solid fa-circle-xmark")
+																			| Не отправлены
+																	when "part"
+																		.item-group__status.status-part
+																			i(class="fa-solid fa-circle-check")
+																			| Частично оплачено
+																	when "full"
+																		.item-group__status.status-full
+																			i(class="fa-solid fa-circle-check")
+																			| Полностью оплачено
+															if item.key == "finance_tourist"
+																div
+																	button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+														.item-group__main
+															.item-group__box.finance-box
+																.item-group__heading
+																	.item-group__buttons
+																		button(type="button" id=`${item.key == "finance_tourist" ? 'tourist-price' : 'finance-price'}` class={isActive: item.key == "finance"}).btn-blue.btn-redact= item.priceBtn
+																			i(class="fa-solid fa-chevron-down icon-arrow")
+																		if item.key == "finance"
+																			div
+																				button(type="button" data-bs-toggle="modal" data-bs-target=`#${item.btnId}`).item-group__button.btn-blue.btn-redact [#{item.btnHead}]
+																	if item.prices
+																		.item-group__prices
+																			each itemPrice in item.prices
+																				span.item-group__price= itemPrice.priceOne
+																				span /
+																				span.item-group__price= itemPrice.priceTwo
+																if item.list 
+																	div(class=`${item.key == "finance_tourist" ? 'tourist-price-content' : 'finance-price-content'}`)&attributes({hidden: item.key == "finance_tourist"})
+																		ul.item-group__list.list
+																			each listItem in item.list
+																				li
+																					div.list__label= listItem.label
+																					div.list__value= listItem.value
+														if item.key == "finance_tourist"
+															.item-group__box
+																.item-group__heading
+																	.item-group__button
+																		span.text-label ОПЛАЧЕНО ТУРИСТОМ
+																		button(type="button" id="history-price").btn-blue.btn-redact ИСТОРИЯ ОПЛАТ
+																			i(class="fa-solid fa-chevron-down icon-arrow")
+																	if item.prices
+																		.item-group__prices 
+																			each itemPrice in item.prices
+																				span.item-group__price= itemPrice.priceOne
+																if item.table
+																	each arrayTable in item.table
+																		.table-responsive
+																			table.table.finance-table(hidden)
+																				thead 
+																					th(style="width: 60px;")
+																						each itemHeader in arrayTable.headers
+																							th(style=`width: ${itemHeader.widthColumn ? itemHeader.widthColumn + 'px' : 'auto'};`)= itemHeader.name
+																					th(style="width: 50px;")
+																				tbody 
+																					each rowItem in arrayTable.tableRows
+																						tr 
+																							td= rowItem.payment
+																							td= rowItem.date
+																							td= rowItem.number
+																							td= rowItem.sum
+																							td 
+																								if rowItem.obligation
+																									if rowItem.status == "success"
+																										span.text-success Оплачено
+																									else 
+																										span.text-error Не оплачено
+																							td 
+																								.table__actions 
+																									.table__buttons
+																										+tableBtn("Редактировать счет", "btn-pen", "fa-solid fa-pen")
+																										+tableBtn("Удалить счет", "btn-trash", "fa-solid fa-trash-can")
+															.item-group__box
+																.item-group__row 
+																	.item-group__col
+																		div.text-label 
+																			span
+																				| Долг туриста
+																			span
+																				|  по установленному ТА
+																		div
+																			span.text-label КУРСУ 
+																			button(type="button").btn-blue.btn-redact 78,02 ₽
+																	.item-group__col
+																		span.fw-700(style=`color: ${item.status == "full" ? "#659f13" : "red"};`) 0,28 ₽
+															.item-group__footer
+																	+btnBlue("Платеж от туриста", "fa-regular fa-plus", "btn-sm", "#addPayTourist")
+																	+btnBlue("Выставить счет туристу", null, "btn-sm", "#exposePayment")
+						.tabs-claim__data.data-claim.tabs-content(data-tab-content="contract")
+							.data-claim-groups 
+								.data-claim__group
+									.row 
+										.col.col-lg-4.col-12
+											+select("Выберите тип договора", "choice_type_doc", "choiceTypeDoc", [...select.choiceTypeDoc])
+											.geneator-button-wrapper.mt-3
+												+btnBlue("Сформировать договор", "btn-generator-doc", "btn-sm")

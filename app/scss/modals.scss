@@ -9,9 +9,15 @@
 		max-width: 800px;
 	}
 }
+@media (max-width: 768px) {
+	.modal-dialog {
+		max-width: 100%;
+		margin: 0.5rem;
+	}
+}
 .modal-extended .modal-dialog {
 	@media screen and (min-width: 991.98px) {
-		max-width: 1000px;
+		max-width: 970px;
 	}
 }
 .modal-small .modal-dialog {
@@ -34,10 +40,10 @@
 	}
 	&__title {
 		font-size: 24px;
-		line-height: 100%;
 		color: $blackColorSecondary;
 		font-weight: 600;
-		max-width: 90%;
+		max-width: 80%;
+		line-height: 120%;
 		margin: 0 auto;
 	}
 	&__close {
@@ -70,6 +76,9 @@
 	& .modal-text {
 		margin: 25px 0 15px 0px;
 		text-align: center;
+		@media screen and (max-width: $lg) {
+			margin: 0;
+		}
 	}
 }
 .parameters-payment {
@@ -83,6 +92,9 @@
 	}
 	& .field-group__item {
 		width: 40%;
+		@media screen and (max-width: $lg) {
+			width: 100%;
+		}
 	}
 	&__col {
 		&.parameters-price {

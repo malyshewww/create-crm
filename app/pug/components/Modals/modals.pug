@@ -1,14 +1,14 @@
 +modal("createClaim", "Заявка от 22.03.2023", null, "Создать", "Отмена")
 	.field-group
 		.row 
-			.col 
+			.col.col-12.col-lg-4
 				.modal-text 
 					| Даты тура
-			.col 
+			.col.col-12.col-lg-4
 				+date("Начало", "text", "datetour_start")
-			.col
+			.col.col-12.col-lg-4
 				+date("Окончание", "text", "datetour_end")
-			.col.col-sm-12 
+			.col.col-12 
 				.field-group__item 
 					label.field-group__label КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)
 					textarea(type="text" name="comment" class="field-group__textarea")
@@ -27,18 +27,18 @@
 +modal("tourpackageModal", "Турпакет")
 	.field-group
 		.row
-			.col.col-6
+			.col.col-12.col-lg-6
 				+fieldItem("Название", "text", "name")
-			.col.col-3
+			.col.col-12.col-lg-3
 				+date("Начало", "text", "datetourpack_start")
-			.col.col-3
+			.col.col-12.col-lg-3
 				+date("Окончание", "text", "datetourpack_end")
-			.col.col-6
+			.col.col-12.col-lg-6
 				.field-group__item
 					label.field-group__label Город вылета
 					select(id="departureСity" name="departureСity")
 				//- +select("Город вылета", "departureСity", "departureСity", [...select.departureCity])
-			.col.col-6
+			.col.col-12.col-lg-6
 				.field-group__item
 					label.field-group__label Страна прилета
 					select(id="countryArrival" name="countryArrival")
@@ -51,9 +51,9 @@
 +modal("contractModal", "Договор")
 	.field-group
 		.row
-			.col.col-4
+			.col.col-12.col-lg-4
 				+date("Дата договора", "text", "date")
-			.col.col-4
+			.col.col-12.col-lg-4
 				+fieldItem("Номер брони", "text", "booking_number")
 +modal("addCustomer", "Заказчик", "modal-extended")
 	.field-group
@@ -63,36 +63,36 @@
 			#tabContentModal
 				#person(class="tabs-content" data-tab-content="person")
 					.row
-						.col.col-12 
+						.col.col-12
 							.checkbox
 								label
 									input(type="checkbox" class="checkbox__input" name="translit_customer")
 									span.checkbox__label.text-label Включить транслитерацию по госту 2016
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Фамилия", "text", "person_surname", true)
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Имя", "text", "person_name", true)
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Отчество", "text", "person_surname_o")
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+select("Пол", "gender", null, [...select.gender], true)
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Фамилия (LAT)", "text", "person_surname_lat")
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Имя (LAT)", "text", "person_name_lat")
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+select("Гражданство", "nationality", null, [...select.nationality], true)
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Дата рождения", "text", "person_birthday", true)
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Фактический адрес", "text", "person_address")
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Телефон", "tel", "person_tel")
-						.col.col-3
+						.col.col-12.col-lg-3.col-md-6
 							+fieldItem("Email", "email", "person_email")
 					hr
 					.row 
-						.col.col-4
+						.col.col-12.col-lg-4
 							.text-label.text-center.mb-2  Национальный паспорт
 							.row 
 								.col-sm-3
@@ -107,7 +107,7 @@
 									+fieldItem("Код", "text", "passport_code")
 								.col-sm-12
 									+fieldItem("Адрес регистрации", "text", "passport_address")
-						.col.col-4
+						.col.col-12.col-lg-4
 							.text-label.text-center.mb-2 Свидетельство о рождении
 							.row 
 								.col-sm-4
@@ -118,7 +118,7 @@
 									+date("Дата выдачи", "text", "date")
 								.col-sm-12
 									+fieldItem("Кем выдан", "text", "certificate_issued")
-						.col.col-4
+						.col.col-12.col-lg-4
 							.text-label.text-center.mb-2  Заграничный паспорт
 							.row 
 								.col-sm-4
@@ -132,36 +132,36 @@
 								.col-sm-12
 									+fieldItem("Кем выдан", "text", "international_passport_issued")
 				#juridical(class="tabs-content" data-tab-content="juridical")
-					.row 
-						.col.col-3
+					.row.align-items-end
+						.col-lg-3.col-md-6
 							+fieldItem("Наименование банка", "text", "juridical_bank")
-						.col.col-3
+						.col-lg-3.col-md-6
 							+fieldItem("Бик", "text", "juridical_bik")
-						.col.col-3
+						.col-lg-3.col-md-6
 							+fieldItem("Р/с", "text", "juridical_rs")
-						.col.col-3
+						.col-lg-3.col-md-6
 							+fieldItem("К/с", "text", "juridical_ks")
-						.col.col-6
+						.col-sm-6
 							+fieldItem("Полное наименование юр.лица", "text", "juridical_fullname")
-						.col.col-6
+						.col-sm-6
 							+fieldItem("Сокращенное наименование юр.лица", "text", "juridical_shortname")
-						.col.col-6
+						.col-sm-6
 							+fieldItem("Юридический адрес", "text", "juridical_address")
-						.col.col-6
+						.col-sm-6
 							+fieldItem("Фактический адрес", "text", "juridical_actual_address")
 					hr
 					.row 
-						.col.col-4
+						.col-lg-4
 							+fieldItem("КПП", "text", "juridical_kpp")
-						.col.col-4
+						.col-lg-4
 							+fieldItem("КПП", "text", "juridical_inn")
-						.col.col-4
+						.col-lg-4
 							+fieldItem("ОГРН", "text", "juridical_ogrn")
-						.col.col-4
+						.col-lg-4
 							+fieldItem("Фио директора", "text", "juridical_director")
-						.col.col-4
+						.col-lg-4
 							+fieldItem("Телефон", "tel", "juridical_tel")
-						.col.col-4
+						.col-lg-4
 							+fieldItem("E-mail", "email", "juridical_email")
 +modal("addTourist", "Турист", "modal-extended")
 	.field-group 
@@ -240,7 +240,6 @@
 					.field-group__item
 						label.field-group__label Город подачи визы
 						select(id="visaCity" name="visa_city")
-					//- +select("Город подачи визы", "visa_city", "visaCity", [...select.visaCity])
 +modal("addFlight", "Перелет (добавление)", "modal-extended")
 	.field-group 	
 		.row 	
@@ -394,12 +393,12 @@
 +modal("exposePayment", "Счет на оплату")
 	.field-group
 		.row
-			.col.col-3
+			.col.col-12.col-lg-3
 				+select("Расчет", "expose_calculate", "exposeCalculate", [...select.exposePayment])
 		.row
-			.col.col-3
+			.col.col-12.col-lg-3
 				+fieldItem("Сумма платежа в счете", "number", "expose_payment_sum")
-			.col.col-3
+			.col.col-12.col-lg-3
 				.field-group__item
 					label.field-group__label Валюта платежа
 					select(name="expose_currency" class="select-choices" id="exposeCurrency")
@@ -407,7 +406,7 @@
 							each item, index in select.exposeCurrency 
 								option(value=item.value)&attributes({selected: item.value == "RUB"})= item.name
 		.row
-			.col.col-4
+			.col.col-12.col-lg-4
 				+date("Дата и время счёта", "text", "date")
 +modal("parametersPayment", "Параметры стоимости", "modal-parameters")
 	.parameters-payment
@@ -455,5 +454,24 @@
 							input#file_uploads(type='file' name='uploads' class="upload-file__input")
 			.col.col-4
 				+select("Тип файла", "file_type", "fileType", [...select.fileType])
++modal("addPayTourist", "Платеж от туриста", "modal-small")
+	.field-group
+		.row.align-items-end
+			.col.col-3
+				+fieldItem("Cумма оплаты <strong>RUB</strong>", "text", "sum_payment_tourist")
+			.col.col-1
+				span.math-icon 	
+					i(class="fa-solid fa-divide")
+			.col.col-3
+				+fieldItem("Курс <strong>EUR</strong>", "text", "course_for_tourist")
+			.col.col-1
+				span.math-icon 	
+					i(class="fa-solid fa-equals")
+			.col.col-4
+				+fieldItem("Cумма <strong>EUR</strong>", "text", "sum_eur_tourist")
+		.row 
+			.col.col-12.col-lg-4
+				+date("Дата и время платежа", "text", "pay_date")
+				
 
 

@@ -14,15 +14,12 @@ export const choiceConfig = {
 };
 const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {
-	if (select.getAttribute('id') != "visaCity") {
-		const choices = new Choices(select, choiceConfig)
-	}
+	let choices = new Choices(select, choiceConfig)
 })
 const selectVisaCity = document.getElementById('visaCity');
 const parentCity = selectVisaCity.closest('.field-group__item');
 if (selectVisaCity) {
 	parentCity.style.display = "none";
-	const choices = new Choices(selectVisaCity, choiceConfig)
 }
 const selectVisaInfo = document.getElementById('visaInfo');
 selectVisaInfo.addEventListener('change', (event) => {

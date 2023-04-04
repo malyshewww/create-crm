@@ -1,17 +1,4 @@
-const rates = {};
-
-getCurrencies();
-
-// Асинхронная функция для получения текущего курса
-async function getCurrencies() {
-	const response = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
-	const data = await response.json();
-	const result = await data;
-	console.log(result);
-	rates.USD = result.Valute.USD;
-	rates.EUR = result.Valute.EUR;
-}
-
+import { rates } from "./../api/api.js";
 // Функция для получения селекторов и вызова функции с калькуляцией
 function getValute(selectId, inputName) {
 	const input = document.querySelector(`input[name=${inputName}]`)
@@ -23,7 +10,6 @@ function getValute(selectId, inputName) {
 		convertValue(select, input);
 	});
 }
-
 // Функция для калькуляции стоимости с текущим курсом
 function convertValue(select, input) {
 	if (select.value != "RUB" && input.value != "") {

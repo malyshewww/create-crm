@@ -51,7 +51,6 @@ select {
 }
 .btn {
 	padding: 7px;
-	text-align: center;
 	min-height: 40px;
 	font-size: 14px;
 	text-align: center;
@@ -59,9 +58,6 @@ select {
 	width: 100%;
 	color: $whiteColor;
 	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	font-family: "OpenSans", sans-serif;
 	border-radius: 0;
 	& i:not(.fa-regular) {
@@ -146,4 +142,13 @@ select {
 .line-dashed {
 	border: 0.5px dashed $grayColorLight;
 	opacity: 0.15;
+}
+.math-icon {
+	font-size: 28px;
+	padding: 10px 4px;
+	color: $grayColorDark;
+	@media screen and (max-width: $md) {
+		font-size: 18px;
+		padding: 0;
+	}
 }

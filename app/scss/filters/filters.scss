@@ -9,6 +9,9 @@
 		gap: 20px;
 		padding: 10px;
 		border: 1px solid $grayColorLight;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__column {
 		&:nth-child(1) {
@@ -23,7 +26,10 @@
 		grid-template-columns: repeat(var(--col), 1fr);
 		grid-template-rows: auto;
 		justify-content: center;
-		gap: 25px 10px;
+		gap: 15px 10px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__buttons {
 		& > *:not(:last-child) {

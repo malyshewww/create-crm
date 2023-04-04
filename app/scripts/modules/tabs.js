@@ -21,6 +21,7 @@ if (personsSelect) {
 	const tabsContentAll = document.querySelectorAll('#tabContentModal .tabs-content');
 	personsSelect.addEventListener('change', (event) => {
 		let selectValue = event.target.value;
+		if (selectValue == "") return;
 		let tabContent = document.getElementById(selectValue);
 		[...tabsContentAll].forEach((item) => {
 			item.classList.remove("isOpen");

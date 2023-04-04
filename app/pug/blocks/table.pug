@@ -1,48 +1,49 @@
 include ../mixins/tableData.pug
-table(class="tour-table table" id="table-id")
-	each item, index in table
-		thead 
-			tr
-				each itemHeader, itemIndex in item.arrayHeaders
-					th(tabindex="0" aria-controls="example" rowspan="1" colspan="1" style=`width:${itemIndex==0?"130px;":"auto"}`)= itemHeader
-		tbody 
-			each itemRow in item.tableRows 
+.table-responsive
+	table(class="tour-table table" id="table-id")
+		each item, index in table
+			thead 
 				tr
-					td.tour-table__number
-						a(href="claim.html" class="tour-table__link")= itemRow.number
-					td.tour-table__data
-						span.fw-600= itemRow.date
-						| #[br]
-						span= itemRow.route
-					td.tour-table__customer
-						div.text-clamp.fw-600= itemRow.customer
-						div.text-clamp #[b 2:]
-							| #{itemRow.customers}
-					if itemRow.operatorName
-						td.tour-table__operator
-							div.text-clamp= itemRow.operatorName
-							if itemRow.operatorFull
-								div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
-							if itemRow.operatorPart
-								div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
-					if itemRow.sumNum
-						td.tour-table__sum
-							span.fw-600= itemRow.sumNum
-							if itemRow.sumFull 
-								div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
-							if itemRow.sumPart
-								div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
-					if itemRow.managerName
-						td.tour-table__manager
-							div 
-								a(href="" class="tour-table__link")= itemRow.managerName 
-								div #{itemRow.managerDate}
-					td 
-						button.btn-archive(type="button")
-							i(class="fa-solid fa-box-archive")
-					td
-						button.btn-copy
-							i(class="fa-solid fa-copy")
+					each itemHeader, itemIndex in item.arrayHeaders
+						th(tabindex="0" aria-controls="example" rowspan="1" colspan="1" style=`width:${itemIndex==0?"130px;":"auto"}`)= itemHeader
+			tbody 
+				each itemRow in item.tableRows 
+					tr
+						td.tour-table__number
+							a(href="claim.html" class="tour-table__link")= itemRow.number
+						td.tour-table__data
+							span.fw-600= itemRow.date
+							| #[br]
+							span= itemRow.route
+						td.tour-table__customer
+							div.text-clamp.fw-600= itemRow.customer
+							div.text-clamp #[b 2:]
+								| #{itemRow.customers}
+						if itemRow.operatorName
+							td.tour-table__operator
+								div.text-clamp= itemRow.operatorName
+								if itemRow.operatorFull
+									div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+								if itemRow.operatorPart
+									div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
+						if itemRow.sumNum
+							td.tour-table__sum
+								span.fw-600= itemRow.sumNum
+								if itemRow.sumFull 
+									div.payment-status.status-full #[i(class="fa-solid fa-circle-check")] Оплачено: 100%
+								if itemRow.sumPart
+									div.payment-status.status-part #[i(class="fa-solid fa-circle-check")] Частично оплачено
+						if itemRow.managerName
+							td.tour-table__manager
+								div 
+									a(href="" class="tour-table__link")= itemRow.managerName 
+									div #{itemRow.managerDate}
+						td 
+							button.btn-archive(type="button")
+								i(class="fa-solid fa-box-archive")
+						td
+							button.btn-copy
+								i(class="fa-solid fa-copy")
 div(class='table-bottom')
 	nav.pagination
 		ul(class="pagination__list")

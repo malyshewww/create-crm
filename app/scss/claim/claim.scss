@@ -2,6 +2,9 @@
 	&__body {
 		background: $whiteColor;
 		padding: 10px 15px;
+		@media screen and (max-width: $md) {
+			padding: 10px;
+		}
 	}
 	&__header {
 		margin-bottom: 30px;
@@ -17,6 +20,7 @@
 		font-size: 28px;
 		color: $blackColorSecondary;
 		font-weight: 600;
+		line-height: 130%;
 	}
 	&__copy {
 		& i {
@@ -25,6 +29,7 @@
 	}
 	&__subtitle {
 		flex: 1 1 100%;
+		line-height: 130%;
 	}
 	&__comment {
 	}
@@ -49,9 +54,15 @@
 		align-items: center;
 		list-style: none;
 		border-bottom: 1px solid $grayColorSecondary;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+			gap: 10px;
+			border: none;
+		}
 	}
 }
 .tabs-item {
+	--radius: 0.25rem;
 	color: $blueColorSecondary;
 	font-size: 18px;
 	font-weight: 600;
@@ -59,13 +70,17 @@
 	padding: 8px 12px;
 	background: 0 0;
 	border: 1px solid transparent;
-	border-top-left-radius: 0.25rem;
-	border-top-right-radius: 0.25rem;
+	border-top-left-radius: var(--radius);
+	border-top-right-radius: var(--radius);
 	margin-bottom: -1px;
 	&.isActive {
 		background-color: #fff;
 		border-color: #dee2e6 #dee2e6 #fff;
 		color: #495057;
+		@media screen and (max-width: $md) {
+			border: 1px solid #dee2e6;
+			border-radius: var(--radius);
+		}
 	}
 }
 .tabs-content {
@@ -79,6 +94,9 @@
 	}
 	&__group {
 		padding: 15px 10px;
+		@media screen and (max-width: $md) {
+			padding: 15px 0;
+		}
 	}
 }
 .group-data {
@@ -95,6 +113,10 @@
 			margin-bottom: 30px;
 			border-bottom: 1px solid $grayColorSecondary;
 			padding-bottom: 35px;
+			@media screen and (max-width: $md) {
+				margin-bottom: 20px;
+				padding-bottom: 25px;
+			}
 		}
 	}
 	&__header {
@@ -102,12 +124,13 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 20px;
+		gap: 12px;
 	}
 	&__buttons {
 		display: flex;
 		align-items: center;
-		gap: 15px 30px;
+		gap: 15px 20px;
+		flex-wrap: wrap;
 	}
 	&__text {
 		flex: 1 1 100%;
@@ -133,11 +156,17 @@
 	}
 	&__title {
 		text-transform: uppercase;
+		line-height: 130%;
+		font-weight: 500;
 	}
 	&__button {
 	}
 	&__status {
 		padding-left: 30px;
+		@media screen and (max-width: $md) {
+			width: 100%;
+			padding: 0;
+		}
 	}
 	&__list {
 		& li {
@@ -194,11 +223,17 @@
 		color: $grayColor76;
 		font-size: 12px;
 		text-transform: uppercase;
+		@media screen and (max-width: $md) {
+			width: 50%;
+		}
 	}
 	&__value {
 		width: 75%;
 		color: $blackColorSecondary;
 		font-size: 15px;
+		@media screen and (max-width: $md) {
+			width: 50%;
+		}
 	}
 	&__image {
 		display: inline-block;
@@ -209,6 +244,9 @@
 	width: 100%;
 	.list {
 		padding-left: 20px;
+		@media screen and (max-width: $md) {
+			padding: 0;
+		}
 		& li {
 			gap: 10px;
 			&:not(:last-child) {
@@ -218,10 +256,16 @@
 		&__label {
 			width: 75%;
 			color: $blackColor;
+			@media screen and (max-width: $md) {
+				width: 50%;
+			}
 		}
 		&__value {
 			width: 25%;
 			text-align: right;
+			@media screen and (max-width: $md) {
+				width: 50%;
+			}
 		}
 	}
 }
@@ -229,6 +273,9 @@
 	margin-top: 15px;
 	position: relative;
 	display: grid;
+	&__body {
+		overflow: hidden;
+	}
 	&__title {
 		font-size: 14px;
 		padding: 7px;
@@ -249,12 +296,13 @@
 	&__info {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
+		gap: 10px;
 	}
 	&__labels {
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		margin-left: 10px;
 	}
 	&__label {
 		border: 1px solid $grayColorSecondary;
@@ -293,9 +341,15 @@
 	}
 	& .list__value {
 		width: auto;
+		@media screen and (max-width: $md) {
+			width: 50%;
+		}
 	}
 	& .list__label {
 		width: 20%;
+		@media screen and (max-width: $md) {
+			width: 50%;
+		}
 	}
 }
 .dropdown-menu {
