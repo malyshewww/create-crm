@@ -2,14 +2,13 @@ getPagination('#table-id');
 //getPagination('.table-class');
 //getPagination('table');
 
-/*	PAGINATION 
+/*	PAGINATION
 - on change max rows select options fade out all rows gt option value mx = 5
 - append pagination list as per numbers of rows / max rows option (20row/5= 4pages )
 - each pagination li on click -> fade out all tr gt max rows * li num and (5*pagenum 2 = 10 rows)
 - fade out all tr lt max rows * li num - max rows ((5*pagenum 2 = 10) - 5)
-- fade in all tr between (maxRows*PageNum) and (maxRows*pageNum)- MaxRows 
+- fade in all tr between (maxRows*PageNum) and (maxRows*pageNum)- MaxRows
 */
-
 
 function getPagination(table) {
 	let lastPage = 1;
@@ -168,17 +167,17 @@ function limitPagging() {
 	}
 }
 
-// $(function () {
-// 	// Just to append id number for each row
-// 	$('#table-id tr:eq(0)').prepend('<th> ID </th>');
+$(function () {
+	// Just to append id number for each row
+	$('#table-id tr:eq(0)').prepend('<th> ID </th>');
 
-// 	var id = 0;
+	var id = 0;
 
-// 	$('#table-id tr:gt(0)').each(function () {
-// 		id++;
-// 		$(this).prepend('<td>' + id + '</td>');
-// 	});
-// });
+	$('#table-id tr:gt(0)').each(function () {
+		id++;
+		$(this).prepend('<td>' + id + '</td>');
+	});
+});
 
 //  Developed By Yasser Mas
 // yasser.mas2@gmail.com

@@ -1,6 +1,6 @@
 include ../mixins/tableData.pug
 .table-responsive
-	table(class="tour-table table" id="table-id")
+	table(class="tour-table table responsive" id="table-id")
 		each item, index in table
 			thead 
 				tr
@@ -45,24 +45,30 @@ include ../mixins/tableData.pug
 							button.btn-copy
 								i(class="fa-solid fa-copy")
 div(class='table-bottom')
-	nav.pagination
-		ul(class="pagination__list")
-			li(data-page="prev" class="pagination__item pagination__item--prev")
-				span
-					i(class="fa-solid fa-angle-left")
-					span(class="sr-only") (current)
-			li(data-page="next" id="prev" class="pagination__item pagination__item--next")
-				span
-					i(class="fa-solid fa-angle-right")
-					span(class="sr-only") (current)
-	div(class="form-group sorting")
-		p.text-label Элементов на странице:
-		select(class="form-group__select" name="state" id="maxRows")
-			option(value="5000") Show ALL Rows
-			option(value="5") 5
-			option(value="10") 10
-			option(value="15") 15
-			option(value="20") 20
-			option(value="50") 50
-			option(value="70") 70
-			option(value="100") 100
+	nav.pagination 
+	//- 	ul.pagination__list
+	//- 		li.prev
+	//- 			a#prev(href='#') 
+	//- 				| &#139;
+	//- 		li.next
+	//- 			a#next(href='#') 
+	//- 				| &#155;
+
+	//- nav.pagination
+	//- 	ul(class="pagination__list")
+	//- 		li(data-page="prev" class="pagination__item pagination__item--prev")
+	//- 			span
+	//- 				i(class="fa-solid fa-angle-left")
+	//- 				span(class="sr-only") (current)
+	//- 		li(data-page="next" id="prev" class="pagination__item pagination__item--next")
+	//- 			span
+	//- 				i(class="fa-solid fa-angle-right")
+	//- 				span(class="sr-only") (current)
+	//- div(class="form-group sorting")
+	//- 	p.text-label Элементов на странице:
+	//- 	select(class="form-group__select" name="state" id="maxRows")
+	//- 		option(value="4") 4
+	//- 		option(value="5") 5
+	//- 		option(value="8" selected) 8
+	//- 		option(value="10") 10
+	//- 		option(value="15") 15

@@ -15,9 +15,12 @@ block content
 			.claim__body
 				.claim__header
 					.claim__top 
-						h1.claim__title Заявка №1802-2757
-						button.claim__copy.btn-copy
-							i(class="fa-solid fa-copy")
+						h1.claim__title 
+							| Заявка 
+							| № 
+							span(class="claim-number") 1802-2757
+						button.claim__copy.btn-copy#btn-copy
+							i(class="fa-regular fa-paste")
 						.claim__subtitle 
 							| Тихановская Ирина Викторовна создана: 11:33:29 06.03.2023 МСК.
 					.claim__comment.comment-claim

@@ -1,44 +1,44 @@
 +modal("createClaim", "Заявка от 22.03.2023", null, "Создать", "Отмена")
 	.field-group
 		.row 
-			.col.col-12.col-lg-4
+			.col-lg-4
 				.modal-text 
 					| Даты тура
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+date("Начало", "text", "datetour_start")
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+date("Окончание", "text", "datetour_end")
-			.col.col-12 
+			.col-12 
 				.field-group__item 
 					label.field-group__label КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)
 					textarea(type="text" name="comment" class="field-group__textarea")
 +modal("comment", "Коментарий")
 	.field-group
 		.row.justify-content-center
-			.col.col-12
+			.col-12
 				.field-group__item 
 					label.field-group__label КОММЕНТАРИЙ
 					textarea(type="text" name="comment" class="field-group__textarea")
 +modal("docModal", "Статус отправки документов")
 	.field-group
 		.row.justify-content-center
-			.col
+			.col-12
 				+select("Статус отправки документов", "statusDocs", null, [...select.statusDocs])
 +modal("tourpackageModal", "Турпакет")
 	.field-group
 		.row
-			.col.col-12.col-lg-6
+			.col-lg-6
 				+fieldItem("Название", "text", "name")
-			.col.col-12.col-lg-3
+			.col-lg-3
 				+date("Начало", "text", "datetourpack_start")
-			.col.col-12.col-lg-3
+			.col-lg-3
 				+date("Окончание", "text", "datetourpack_end")
-			.col.col-12.col-lg-6
+			.col-lg-6
 				.field-group__item
 					label.field-group__label Город вылета
 					select(id="departureСity" name="departureСity")
 				//- +select("Город вылета", "departureСity", "departureСity", [...select.departureCity])
-			.col.col-12.col-lg-6
+			.col-lg-6
 				.field-group__item
 					label.field-group__label Страна прилета
 					select(id="countryArrival" name="countryArrival")
@@ -46,53 +46,53 @@
 +modal("touroperatorModal", "Туроператор - поставщик тура")
 	.field-group
 		.row
-			.col.col-12
+			.col-12
 				+fieldItem("Туроператор", "text", "touroperator")
 +modal("contractModal", "Договор")
 	.field-group
 		.row
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+date("Дата договора", "text", "date")
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+fieldItem("Номер брони", "text", "booking_number")
 +modal("addCustomer", "Заказчик", "modal-extended")
 	.field-group
 		.row
-			.col.col-12
+			.col-12
 				+select("Заказчик", "customers", "personsSelect", [...select.customer])
 			#tabContentModal
 				#person(class="tabs-content" data-tab-content="person")
 					.row
-						.col.col-12
+						.col-12
 							.checkbox
 								label
 									input(type="checkbox" class="checkbox__input" name="translit_customer")
 									span.checkbox__label.text-label Включить транслитерацию по госту 2016
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Фамилия", "text", "person_surname", true)
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Имя", "text", "person_name", true)
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Отчество", "text", "person_surname_o")
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+select("Пол", "gender", null, [...select.gender], true)
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Фамилия (LAT)", "text", "person_surname_lat")
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Имя (LAT)", "text", "person_name_lat")
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+select("Гражданство", "nationality", null, [...select.nationality], true)
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Дата рождения", "text", "person_birthday", true)
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Фактический адрес", "text", "person_address")
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Телефон", "tel", "person_tel")
-						.col.col-12.col-lg-3.col-md-6
+						.col-lg-3.col-md-6
 							+fieldItem("Email", "email", "person_email")
 					hr
 					.row 
-						.col.col-12.col-lg-4
+						.col-lg-4
 							.text-label.text-center.mb-2  Национальный паспорт
 							.row 
 								.col-sm-3
@@ -107,7 +107,7 @@
 									+fieldItem("Код", "text", "passport_code")
 								.col-sm-12
 									+fieldItem("Адрес регистрации", "text", "passport_address")
-						.col.col-12.col-lg-4
+						.col-lg-4
 							.text-label.text-center.mb-2 Свидетельство о рождении
 							.row 
 								.col-sm-4
@@ -118,7 +118,7 @@
 									+date("Дата выдачи", "text", "date")
 								.col-sm-12
 									+fieldItem("Кем выдан", "text", "certificate_issued")
-						.col.col-12.col-lg-4
+						.col-lg-4
 							.text-label.text-center.mb-2  Заграничный паспорт
 							.row 
 								.col-sm-4
@@ -166,33 +166,33 @@
 +modal("addTourist", "Турист", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12
+			.col-12
 				+checkbox("Включить транслитерацию по госту 2016", "translit_tourist")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Фамилия", "text", "tourist_surname", true)
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Имя", "text", "tourist_name", true)
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Отчество", "text", "tourist_surname_o")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+select("Пол", "gender", null, [...select.gender], true)
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Фамилия (LAT)", "text", "tourist_surname_lat")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Имя (LAT)", "text", "tourist_name_lat")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+select("Гражданство", "nationality", null, [...select.nationality], true)
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Дата рождения", "text", "tourist_birthday", true)
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Фактический адрес", "text", "tourist_address")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Телефон", "tel", "tourist_tel")
-			.col.col-3
+			.col-lg-3.col-md-6
 				+fieldItem("Email", "email", "tourist_email")
 		hr
 		.row 
-			.col.col-4
+			.col-lg-4
 				.text-label.text-center.mb-2  Национальный паспорт
 				.row 
 					.col-sm-3
@@ -205,20 +205,20 @@
 						+fieldItem("Кем выдан", "text", "passport_issued")
 					.col-sm-4
 						+fieldItem("Код", "text", "passport_code")
-					.col-sm-12
+					.col-12
 						+fieldItem("Адрес регистрации", "text", "passport_address")
-			.col.col-4
+			.col-lg-4
 				.text-label.text-center.mb-2 Свидетельство о рождении
 				.row 
 					.col-sm-4
 						+fieldItem("Серия", "text", "certificate_series")
 					.col-sm-8
 						+fieldItem("Номер", "text", "certificate_number")
-					.col-sm-12
+					.col-12
 						+date("Дата выдачи", "text", "date")
-					.col-sm-12
+					.col-12
 						+fieldItem("Кем выдан", "text", "certificate_issued")
-			.col.col-4
+			.col-lg-4
 				.text-label.text-center.mb-2  Заграничный паспорт
 				.row 
 					.col-sm-4
@@ -233,7 +233,7 @@
 						+fieldItem("Кем выдан", "text", "international_passport_issued")
 						.text-label.mt-2 Пример: UFMS-12
 		.row 
-			.col.col-4 	
+			.col-lg-4
 				.text-label.mb-2 Информация и визе
 				.select-items
 					+select("Необходимость визы", "visa_info", "visaInfo", [...select.visa], true)
@@ -243,23 +243,23 @@
 +modal("addFlight", "Перелет (добавление)", "modal-extended")
 	.field-group 	
 		.row 	
-			.col.col-12
+			.col-12
 				+fieldItem("Маршрут", "text", "flight_route")
-			.col.col-3
+			.col-lg-3
 				+fieldItem("Откуда", "text", "flight_start")
-			.col.col-3
+			.col-lg-3
 				+fieldItem("Куда", "text", "flight_end")
-			.col.col-2
+			.col-lg-2
 				+fieldItem("Авиакомпания", "text", "flight_aviacompany")
-			.col.col-2
+			.col-lg-2
 				+select("Класс", "flight_class", null, [...select.flightClass])
-			.col.col-2
+			.col-lg-2
 				+fieldItem("Номер рейса", "text", "flight_number")
-			.col.col-3
+			.col-lg-3
 				+date("Время вылета", "text", "dateflight_start")
-			.col.col-3
+			.col-lg-3
 				+date("Время прилета", "text", "dateflight_end")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -267,20 +267,23 @@
 +modal("addInsurance", "Страховка (добавление)", "modal-extended")
 	.field-group 
 		.row 
-			.col.col-12
+			.col-12
 				+fieldItem("Название", "text", "insurance_name")
-			.col.col-4
+			.col-lg-4
 				+fieldItem("Компания страховщик", "text", "insurance_company")
-			.col.col-8
+			.col-lg-8
 				+select("Тип страховки", "insurance_type", "insuranceType", [...select.insuranceType])
-				+fieldItem("Тип страховки (заполняется вручную)", "text", "insurance_type_other")
-			.col.col-2
+				.field-group__item.mt-3
+					label.field-group__label Тип страховки (заполняется вручную)
+					.field-group__box
+						input(type="text" name="insurance_type_other" class="field-group__input")
+			.col-lg-2
 				+date("Начало действия", "text", "dateinsurance_start")
-			.col.col-2
+			.col-lg-2
 				+date("Окончание действия", "text", "dateinsurance_end")
-			.col.col-3
+			.col-lg-3
 				+fieldItem("Страховая сумма", "text", "insurance_sum")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -288,21 +291,21 @@
 +modal("addTransfer", "Трансфер (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-6
+			.col-lg-6
 				+fieldItem("Маршрут (туда)", "text", "transfer_route_start")
-			.col.col-6
+			.col-lg-6
 				+fieldItem("Маршрут (обратно)", "text", "transfer_route_end")
-			.col.col-3
+			.col-lg-3
 				+date("Начало", "text", "datetransfer_start")
-			.col.col-3
+			.col-lg-3
 				+date("Окончание", "text", "datetransfer_end")
-			.col.col-6
+			.col-lg-6
 				+select("Тип трансфера", "transfer_type", null, [...select.transferType])
-			.col.col-6
+			.col-lg-6
 				+fieldItem("Вид транспорта (туда)", "text", "transfer_transport_start")
-			.col.col-6
+			.col-lg-6
 				+fieldItem("Вид транспорта (обратно)", "text", "transfer_transport_end")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -310,15 +313,15 @@
 +modal("addVisa", "Виза (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12
+			.col-lg-6
 				+fieldItem("Название", "text", "visa_name")
-			.col.col-6
+			.col-lg-6
 				+fieldItem("Страна назначения", "text", "visa_country")
-			.col.col-3
+			.col-lg-3
 				+date("Начало действия", "text", "datevisa_start")
-			.col.col-3
+			.col-lg-3
 				+date("Окончани действия", "text", "datevisa_end")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -326,27 +329,25 @@
 +modal("addHabitation", "Проживание (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12 
+			.col-12 
 				+fieldItem("Название", "text", "habitation_name")
-			.col.col-4
+			.col-lg-4
 				+fieldItem("Курорт", "text", "habitation_resort")
-			.col.offset-md-4
-			.col.col-4
+			.col-lg-4
 				+fieldItem("Отель", "text", "habitation_hotel")
-			.col.offset-md-4
-			.col.col-12
+			.col-12
 				+fieldItem("Адрес отеля", "text", "habitation_hotel_address")
-			.col.col-4
+			.col-lg-4
 				+fieldItem("Тип номера", "text", "habitation_type_number")
-			.col.col-4
+			.col-lg-4
 				+fieldItem("Тип номера", "text", "habitation_type_placement")
-			.col.col-4
+			.col-lg-4
 				+select("Тип питания", "habitation_type_food", null, [...select.habitationTypeFood])
-			.col.col-3
+			.col-lg-3
 				+date("Время заезда", "text", "datehabitation_start")
-			.col.col-3
+			.col-lg-3
 				+date("Время выезда", "text", "datehabitation_end")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -354,9 +355,9 @@
 +modal("addFuelSurcharge", "Топливный сбор (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12 
+			.col-12 
 				+fieldItem("Название", "text", "habitation_name")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -364,11 +365,11 @@
 +modal("addExcursionProgram", "Экскурсионная программа (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12 
+			.col-12 
 				+fieldItem("Название", "text", "excursion_name")
-			.col.col-12 
+			.col-12 
 				+fieldItem("Описание", "text", "excursion_description")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -376,9 +377,9 @@
 +modal("addOtherService", "Услуга (добавление)", "modal-extended")
 	.field-group 
 		.row
-			.col.col-12 
+			.col-12 
 				+fieldItem("Название", "text", "other_service_name")
-			.col.col-12
+			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
 						+checkbox("Новикова Алла Сергеева", "tourist")
@@ -386,19 +387,19 @@
 +modal("prepaymentParameters", "Параметры предоплаты", "modal-small")
 	.field-group 
 		.row
-			.col.col-12 
+			.col-12 
 				+fieldItem("Предоплата не менее, %", "text", "prepayment_percent")
-			.col.col-12 
+			.col-12 
 				+fieldItem("Полная оплата не позднее, дней", "text", "prepayment_days")
 +modal("exposePayment", "Счет на оплату")
 	.field-group
 		.row
-			.col.col-12.col-lg-3
+			.col-lg-3
 				+select("Расчет", "expose_calculate", "exposeCalculate", [...select.exposePayment])
 		.row
-			.col.col-12.col-lg-3
+			.col-lg-3
 				+fieldItem("Сумма платежа в счете", "number", "expose_payment_sum")
-			.col.col-12.col-lg-3
+			.col-lg-3
 				.field-group__item
 					label.field-group__label Валюта платежа
 					select(name="expose_currency" class="select-choices" id="exposeCurrency")
@@ -406,7 +407,7 @@
 							each item, index in select.exposeCurrency 
 								option(value=item.value)&attributes({selected: item.value == "RUB"})= item.name
 		.row
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+date("Дата и время счёта", "text", "date")
 +modal("parametersPayment", "Параметры стоимости", "modal-parameters")
 	.parameters-payment
@@ -439,7 +440,7 @@
 				#[br]
 				или воспользуйтесь стандартным загрузчиком
 		.row 
-			.col.col-8
+			.col-lg-8
 				form(method='post' enctype='multipart/form-data')
 					.field-group__label Файл
 					div.upload-file
@@ -452,25 +453,25 @@
 						.upload-file__button
 							label(for='upload' class="upload-file__label") Обзор
 							input#file_uploads(type='file' name='uploads' class="upload-file__input")
-			.col.col-4
+			.col-lg-4
 				+select("Тип файла", "file_type", "fileType", [...select.fileType])
 +modal("addPayTourist", "Платеж от туриста", "modal-small")
 	.field-group
 		.row.align-items-end
-			.col.col-3
+			.col-3
 				+fieldItem("Cумма оплаты <strong>RUB</strong>", "text", "sum_payment_tourist")
-			.col.col-1
+			.col-1
 				span.math-icon 	
 					i(class="fa-solid fa-divide")
-			.col.col-3
+			.col-3
 				+fieldItem("Курс <strong>EUR</strong>", "text", "course_for_tourist")
-			.col.col-1
+			.col-1
 				span.math-icon 	
 					i(class="fa-solid fa-equals")
-			.col.col-4
+			.col-4
 				+fieldItem("Cумма <strong>EUR</strong>", "text", "sum_eur_tourist")
 		.row 
-			.col.col-12.col-lg-4
+			.col-lg-4
 				+date("Дата и время платежа", "text", "pay_date")
 				
 

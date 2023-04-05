@@ -8,6 +8,9 @@
 	@media screen and (min-width: 991.98px) {
 		max-width: 800px;
 	}
+	@media screen and (min-width: 768px) {
+		max-width: 700px;
+	}
 }
 @media (max-width: 768px) {
 	.modal-dialog {
@@ -72,6 +75,9 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
+		@media screen and (max-width: $lg) {
+			width: 100%;
+		}
 	}
 	& .modal-text {
 		margin: 25px 0 15px 0px;
@@ -196,4 +202,7 @@
 		opacity: 0;
 		cursor: pointer;
 	}
+}
+.file-name {
+	word-break: break-all;
 }

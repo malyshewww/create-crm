@@ -18,7 +18,7 @@ import "./modules/choices.js";
 import "./modules/calendar.js";
 
 // Подключение модуля таблицы
-import "./modules/paginationTable.js";
+// import "./modules/paginationTable.js";
 
 // Подключение модуля табов
 import "./modules/tabs.js";
@@ -36,6 +36,9 @@ import "./api/api.js";
 
 import "./components/Cities/Cities.js";
 import "./components/Countries/Countries.js";
+
+// Подключение модуля с таблицей для главной страницы
+import "./modules/tables.js"
 
 document.addEventListener('click', documentActions);
 
@@ -63,9 +66,11 @@ function showHide(target, contentBlock) {
 		: content.setAttribute('hidden', 'true')
 }
 
-import DataTable from 'datatables.net-dt';
-// let table = new DataTable('#example', {
-// 	// ordering: false,
-// 	responsive: true,
-// 	// searching: false
-// });
+const btnCopy = document.getElementById('btn-copy');
+if (btnCopy) {
+	const claimNumber = document.querySelector('.claim-number')
+	btnCopy.addEventListener('click', () => {
+		navigator.clipboard.writeText(claimNumber.textContent)
+		btnCopy.querySelector("i").setAttribute("class", "fa-solid fa-file-circle-check");
+	})
+}

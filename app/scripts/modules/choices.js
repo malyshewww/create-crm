@@ -12,6 +12,7 @@ export const choiceConfig = {
 	searchResultLimit: 8,
 	shouldSort: false,
 };
+
 const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {
 	let choices = new Choices(select, choiceConfig)

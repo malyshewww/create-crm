@@ -10,6 +10,13 @@ import moment from 'moment';
 // Массив со значениями атрибутов, для которых в конфигурацию добавляется возможность выбора времени помиом основной даты
 const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date", "pay_date"];
 
+function mobilePicker() {
+	return window.innerWidth >= 991.98 ? false : true
+}
+window.addEventListener("resize", function () {
+	mobilePicker();
+})
+
 // Конфигурация для одиночных дат
 let button = {
 	content: 'Применить',
@@ -119,6 +126,7 @@ function rangeDate(start, end) {
 		dateSeparator: ",",
 		timepicker: dateValues.includes(start) ? true : false,
 		timeFormat: 'HH:mm',
+		isMobile: mobilePicker(),
 		onSelect: ({ date, datepicker }) => {
 			console.log(date)
 			console.log(datepicker)
@@ -137,6 +145,7 @@ function rangeDate(start, end) {
 		dateSeparator: ",",
 		timepicker: dateValues.includes(end) ? true : false,
 		timeFormat: 'HH:mm',
+		isMobile: mobilePicker(),
 		onSelect: ({ date, datepicker }) => {
 			datepickerStart.update({
 				maxDate: date

@@ -1,31 +1,40 @@
 .pagination {
-	&__list {
-		display: flex;
-		align-items: center;
-		list-style: none;
-		& li {
-			width: 30px;
-			height: 30px;
-			flex: 0 0 30px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-			color: $blackColorSecondary;
-			padding: 5px;
-			border-radius: 50%;
-			cursor: pointer;
-			&:not(:last-child) {
-				margin-right: 8px;
-			}
-			&.active {
-				background-color: $blueColorSecondary;
-				color: $whiteColor;
-			}
-		}
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	flex-wrap: wrap;
+}
+.paginate_button {
+	min-width: 30px;
+	min-height: 30px;
+	// flex: 0 0 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: $blackColorSecondary;
+	padding: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0 4px;
+	&.current {
+		background-color: $blueColorSecondary;
+		color: $whiteColor;
 	}
-	&__item--prev,
-	&__item--next {
+	&.disabled {
+		color: $grayColorLight;
+		pointer-events: none;
+	}
+	&.previous,
+	&.next {
 		border: 2px solid $grayColorSecondary;
+	}
+}
+.dataTables_paginate {
+	display: flex;
+	align-items: center;
+	& span {
+		display: flex;
 	}
 }
