@@ -26,10 +26,12 @@ const mainPage = document.querySelector('main');
 if (mainPage) {
 	const tableLength = document.querySelector('.dataTables_length');
 	const tableInfo = document.querySelector('.dataTables_info');
-	const tablePaginate = document.getElementById('table-id_paginate')
-	const pagination = document.querySelector('.pagination')
+	const tablePaginate = document.getElementById('table-id_paginate');
+	const pagination = document.querySelector('.pagination');
 	const tableBottom = document.querySelector('.table-bottom');
-	pagination.insertAdjacentElement("afterbegin", tableInfo);
-	pagination.insertAdjacentElement("beforeend", tablePaginate);
+	if (pagination) {
+		pagination.insertAdjacentElement("afterbegin", tableInfo);
+		pagination.insertAdjacentElement("beforeend", tablePaginate);
+	}
 	tableBottom.insertAdjacentElement("beforeend", tableLength);
 }

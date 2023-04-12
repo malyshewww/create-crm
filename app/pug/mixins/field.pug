@@ -13,9 +13,9 @@ mixin date(labelName, inputType = "text", inputName, required)
 		label.field-group__label(class=required ? "required" : "")= labelName
 		.field-group__box
 			if required
-				input(type=inputType name=inputName class="field-group__input" required)
+				input(type=inputType data-name=inputName name=inputName class="field-group__input" required)
 			else 
-				input(type=inputType name=inputName class="field-group__input")
+				input(type=inputType data-name=inputName name=inputName class="field-group__input")
 			.field-group__trigger
 				i(class="fa-regular fa-calendar-days calendar-icon")
 				input(type="text" class='input-trigger' data-id=inputName)

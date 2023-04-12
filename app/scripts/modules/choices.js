@@ -18,14 +18,16 @@ const selectChoices = document.querySelectorAll('.select-choices');
 	let choices = new Choices(select, choiceConfig)
 })
 const selectVisaCity = document.getElementById('visaCity');
-const parentCity = selectVisaCity.closest('.field-group__item');
 if (selectVisaCity) {
+	const parentCity = selectVisaCity.closest('.field-group__item');
 	parentCity.style.display = "none";
 }
 const selectVisaInfo = document.getElementById('visaInfo');
-selectVisaInfo.addEventListener('change', (event) => {
-	showFieldSelect(event, parentCity);
-});
+if (selectVisaInfo) {
+	selectVisaInfo.addEventListener('change', (event) => {
+		showFieldSelect(event, parentCity);
+	});
+}
 function showFieldSelect(event, selector) {
 	let target = event.target
 	const currentSelectValue = target.value;
@@ -34,17 +36,19 @@ function showFieldSelect(event, selector) {
 
 const selectInsuranceType = document.getElementById('insuranceType');
 const inputInsuranceTypeOther = document.querySelector('input[name="insurance_type_other"]');
-let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
-inputInsuranceTypeOtherParent.setAttribute('hidden', true);
-selectInsuranceType.addEventListener('change', (event) => {
-	let target = event.target;
-	const currentSelectValue = target.value;
-	if (currentSelectValue == "other") {
-		inputInsuranceTypeOtherParent.removeAttribute('hidden');
-		setTimeout(() => {
-			inputInsuranceTypeOther.focus();
-		}, 100)
-	} else {
-		inputInsuranceTypeOtherParent.setAttribute('hidden', true);
-	}
-})
+if (selectInsuranceType && inputInsuranceTypeOther) {
+	let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
+	inputInsuranceTypeOtherParent.setAttribute('hidden', true);
+	selectInsuranceType.addEventListener('change', (event) => {
+		let target = event.target;
+		const currentSelectValue = target.value;
+		if (currentSelectValue == "other") {
+			inputInsuranceTypeOtherParent.removeAttribute('hidden');
+			setTimeout(() => {
+				inputInsuranceTypeOther.focus();
+			}, 100)
+		} else {
+			inputInsuranceTypeOtherParent.setAttribute('hidden', true);
+		}
+	})
+}

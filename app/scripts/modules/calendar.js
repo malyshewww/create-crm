@@ -97,14 +97,14 @@ function singleDates(datesId) {
 				}
 			}
 		})
-		altFieldDate.addEventListener('change', function (e) {
-			let value = altFieldDate.value;
-			let newDate = new Date(value).toString();
-			altFieldDate.value = altFieldDate.value.replace(/([%;#/?*+^$[\]\\(){}-])/g, '.');
-			moment.defaultFormat = "DD.MM.YYYY";
-			const date = moment(newDate, moment.defaultFormat, true).toDate();
-			datepicker.selectedDates[0] = date;
-		})
+		// altFieldDate.addEventListener('change', function (e) {
+		// 	let value = altFieldDate.value;
+		// 	let newDate = new Date(value).toString();
+		// 	altFieldDate.value = altFieldDate.value.replace(/([%;#/?*+^$[\]\\(){}-])/g, '.');
+		// 	moment.defaultFormat = "DD.MM.YYYY";
+		// 	const date = moment(newDate, moment.defaultFormat, true).toDate();
+		// 	datepicker.selectedDates[0] = date;
+		// })
 	});
 }
 singleDates("date");
@@ -114,44 +114,46 @@ singleDates("pay_date");
 function rangeDate(start, end) {
 	let inputTriggerStart = document.querySelector(`[data-id=${start}]`);
 	let inputTriggerEnd = document.querySelector(`[data-id=${end}]`);
-	let inputAltFieldStart = document.querySelector(`input[name=${start}]`);
-	let inputAltFieldEnd = document.querySelector(`input[name=${end}]`);
-	let datepickerStart = new AirDatepicker(inputTriggerStart, {
-		autoClose: dateValues.includes(start) ? false : true,
-		position: 'bottom right',
-		dateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-		altField: inputAltFieldStart,
-		altFieldDateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-		buttons: ['today', 'clear'],
-		dateSeparator: ",",
-		timepicker: dateValues.includes(start) ? true : false,
-		timeFormat: 'HH:mm',
-		isMobile: mobilePicker(),
-		onSelect: ({ date, datepicker }) => {
-			console.log(date)
-			console.log(datepicker)
-			datepickerEnd.update({
-				minDate: date
-			})
-		},
-	});
-	let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
-		autoClose: dateValues.includes(end) ? false : true,
-		position: 'bottom right',
-		dateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-		altField: inputAltFieldEnd,
-		altFieldDateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-		buttons: ['today', 'clear'],
-		dateSeparator: ",",
-		timepicker: dateValues.includes(end) ? true : false,
-		timeFormat: 'HH:mm',
-		isMobile: mobilePicker(),
-		onSelect: ({ date, datepicker }) => {
-			datepickerStart.update({
-				maxDate: date
-			})
-		}
-	});
+	let inputAltFieldStart = document.querySelector(`[data-name=${start}]`);
+	let inputAltFieldEnd = document.querySelector(`[data-name=${end}]`);
+	if (inputTriggerStart && inputTriggerEnd && inputAltFieldStart && inputAltFieldEnd) {
+		let datepickerStart = new AirDatepicker(inputTriggerStart, {
+			autoClose: dateValues.includes(start) ? false : true,
+			position: 'bottom right',
+			dateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altField: inputAltFieldStart,
+			altFieldDateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			buttons: ['today', 'clear'],
+			dateSeparator: ",",
+			timepicker: dateValues.includes(start) ? true : false,
+			timeFormat: 'HH:mm',
+			isMobile: mobilePicker(),
+			onSelect: ({ date, datepicker }) => {
+				console.log(date)
+				console.log(datepicker)
+				datepickerEnd.update({
+					minDate: date
+				})
+			},
+		});
+		let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
+			autoClose: dateValues.includes(end) ? false : true,
+			position: 'bottom right',
+			dateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altField: inputAltFieldEnd,
+			altFieldDateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			buttons: ['today', 'clear'],
+			dateSeparator: ",",
+			timepicker: dateValues.includes(end) ? true : false,
+			timeFormat: 'HH:mm',
+			isMobile: mobilePicker(),
+			onSelect: ({ date, datepicker }) => {
+				datepickerStart.update({
+					maxDate: date
+				})
+			}
+		});
+	}
 }
 rangeDate("date_start", "date_end");
 rangeDate("datetour_start", "datetour_end");
