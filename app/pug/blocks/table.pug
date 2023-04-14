@@ -39,11 +39,9 @@ include ../mixins/tableData.pug
 									a(href="" class="tour-table__link")= itemRow.managerName 
 									div #{itemRow.managerDate}
 						td 
-							button.btn-archive(type="button")
-								i(class="fa-solid fa-box-archive")
+							+tableBtn("Перенести в архив", "btn-archive", "fa-solid fa-box-archive")
 						td
-							button.btn-copy
-								i(class="fa-solid fa-copy")
+							+tableBtn("Клонировать заявку", "btn-copy", "fa-regular fa-copy")
 div(class='table-bottom')
 	nav.pagination 
 	//- 	ul.pagination__list

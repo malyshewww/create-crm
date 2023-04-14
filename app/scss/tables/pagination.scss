@@ -27,7 +27,9 @@
 		pointer-events: none;
 	}
 	&.previous,
-	&.next {
+	&.next,
+	&.first,
+	&.last {
 		border: 2px solid $grayColorSecondary;
 	}
 }

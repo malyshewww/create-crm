@@ -18,8 +18,8 @@ const selectChoices = document.querySelectorAll('.select-choices');
 	let choices = new Choices(select, choiceConfig)
 })
 const selectVisaCity = document.getElementById('visaCity');
+const parentCity = selectVisaCity.closest('.field-group__item');
 if (selectVisaCity) {
-	const parentCity = selectVisaCity.closest('.field-group__item');
 	parentCity.style.display = "none";
 }
 const selectVisaInfo = document.getElementById('visaInfo');
