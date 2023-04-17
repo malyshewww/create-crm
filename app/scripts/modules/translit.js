@@ -7,10 +7,10 @@ import { translit } from 'gost-transliteration';
 	-	значения атрибутов у селекторов (input) - откуда брать значение / куда записывать результат 
 */
 function translitFields(target, surName, surNameLat, name, nameLat) {
-	const inputSurName = document.querySelector(`input[name=${surName}]`);
-	const inputSurNameLat = document.querySelector(`input[name=${surNameLat}]`);
-	const inputName = document.querySelector(`input[name=${name}]`);
-	const inputnNameLat = document.querySelector(`input[name=${nameLat}]`);
+	const inputSurName = document.querySelector(`[data-name=${surName}]`);
+	const inputSurNameLat = document.querySelector(`[data-name=${surNameLat}]`);
+	const inputName = document.querySelector(`[data-name=${name}]`);
+	const inputnNameLat = document.querySelector(`[data-name=${nameLat}]`);
 	const translitInput = document.querySelector(`input[name=${target}]`)
 	if (translitInput) {
 		translitInput.addEventListener('change', (event) => {

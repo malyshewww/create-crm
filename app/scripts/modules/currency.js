@@ -1,8 +1,8 @@
 import { rates } from "./../api/api.js";
 // Функция для получения селекторов и вызова функции с калькуляцией
 function getValute(selectId, inputName) {
-	const input = document.querySelector(`input[name=${inputName}]`)
 	const select = document.getElementById(`${selectId}`)
+	const input = document.querySelector(`[data-name=${inputName}]`)
 	input.addEventListener('change', () => {
 		convertValue(select, input);
 	});
@@ -12,6 +12,9 @@ function getValute(selectId, inputName) {
 }
 // Функция для калькуляции стоимости с текущим курсом
 function convertValue(select, input) {
+	if (input.value == "" || select.value == "") {
+		return;
+	}
 	if (select.value != "RUB" && input.value != "") {
 		input.value = (parseFloat(input.value) / rates[select.value].Value).toFixed(2);
 		// input.value = Math.ceil((parseFloat(input.value) / rates[select.value].Value) * 100) / 100;
@@ -24,7 +27,7 @@ getValute("exposeCurrency", "expose_payment_sum");
 function hiddenField() {
 	const selectTourPackageCurrency = document.getElementById('tourPackageCurrency');
 	if (selectTourPackageCurrency) {
-		const inputCourseTourist = document.querySelector('input[name="parameters_course_tourist"]')
+		const inputCourseTourist = document.querySelector('[data-name="parameters_course_tourist"]')
 		const parentField = inputCourseTourist.closest('.field-group__item');
 		parentField.setAttribute('hidden', true);
 		selectTourPackageCurrency.addEventListener('change', (event) => {

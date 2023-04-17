@@ -35,7 +35,7 @@ function showFieldSelect(event, selector) {
 }
 
 const selectInsuranceType = document.getElementById('insuranceType');
-const inputInsuranceTypeOther = document.querySelector('input[name="insurance_type_other"]');
+const inputInsuranceTypeOther = document.querySelector('[data-name="insurance_type_other"]');
 if (selectInsuranceType && inputInsuranceTypeOther) {
 	let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
 	inputInsuranceTypeOtherParent.setAttribute('hidden', true);

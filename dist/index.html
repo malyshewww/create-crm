@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Главная | site name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link href="styles/main.min.css?_v=20230417091148" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header class="header" id="header">
+        <div class="container">
+          <div class="logo">	</div>
+          <div class="header__menu menu-header">
+            <div class="menu-header__options"> 
+              <div class="menu-header__name">Тихановская И.В. </div>
+              <div class="submenu-header"> </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <div class="container">
+          <div class="main__top"> 
+            <div class="main__title">Активные заявки</div>
+            <div class="main__button">
+              <button class="btn btn-request" type="button" data-bs-toggle="modal" data-bs-target="#createClaim">Создать заявку</button>
+            </div>
+          </div>
+          <div class="filters"> 
+            <div class="filters__top">
+              <div class="filters__column">
+                <div class="filters__row field-group" style="--col: 3">
+                    <div class="field-group__item">
+                      <label class="field-group__label">ФИО ТУРИСТА</label>
+                      <div class="field-group__box">
+                        <input class="field-group__input" type="text" data-name="fio" name="fio">
+                      </div>
+                    </div>
+                    <div class="field-group__item">
+                      <label class="field-group__label">НАЧАЛО ТУРА (ОТ)</label>
+                      <div class="field-group__box">
+                        <input class="field-group__input" type="text" data-name="date_start" name="date_start">
+                        <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                          <input class="input-trigger" type="text" data-id="date_start">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field-group__item">
+                      <label class="field-group__label">НАЧАЛО ТУРА (ДО)</label>
+                      <div class="field-group__box">
+                        <input class="field-group__input" type="text" data-name="date_end" name="date_end">
+                        <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                          <input class="input-trigger" type="text" data-id="date_end">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="filters__column">
+                <div class="filters__buttons">
+                    <div class="filters__button">
+                      <button class="btn btn-reset" type="button"><i class="fa-solid fa-xmark"> </i>Сброс
+                      </button>
+                    </div>
+                    <div class="filters__button">
+                      <button class="btn btn-search" type="button"><i class="fa-solid fa-binoculars"> </i>Поиск
+                      </button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="tour-table table responsive" id="table-id">
+              <thead> 
+                <tr>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:130px;">Номер</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto">Начало тура, страны назначения</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto">Заказчик, туристы</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto">Поставщик, стоимость у ТО и оплата ТА</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto">Заказчик, стоимость и долг заказчика</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto">Менеджер</th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto"></th>
+                  <th tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width:auto"></th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tour-table__number"><a class="tour-table__link" href="claim.html">№ 1802-2707</a></td>
+                  <td class="tour-table__data"><span class="fw-600">15 мар 23 (4 ночи)</span><br><span>Нижний Новгород - Россия</span></td>
+                  <td class="tour-table__customer">
+                    <div class="text-clamp fw-600">Визгунова Мария Владимировна</div>
+                    <div class="text-clamp"><b>2:</b>Визгунова М. В., Косенко О. А.</div>
+                  </td>
+                  <td class="tour-table__operator">
+                    <div class="text-clamp">Pegas Touristik</div>
+                    <div class="payment-status status-full"><i class="fa-solid fa-circle-check"></i> Оплачено: 100%</div>
+                  </td>
+                  <td class="tour-table__sum"><span class="fw-600">39 076,00 RUB</span>
+                    <div class="payment-status status-part"><i class="fa-solid fa-circle-check"></i> Частично оплачено</div>
+                  </td>
+                  <td class="tour-table__manager">
+                    <div> <a class="tour-table__link" href="">Тихановская И. В.</a>
+                      <div>31 янв 2023</div>
+                    </div>
+                  </td>
+                  <td> 
+                      <button class="btn-archive" type="button" data-bs-toggle="tooltip" title="Перенести в архив"><i class="fa-solid fa-box-archive"></i></button>
+                  </td>
+                  <td>
+                      <button class="btn-copy" type="button" data-bs-toggle="tooltip" title="Клонировать заявку"><i class="fa-regular fa-copy"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-bottom">
+            <nav class="pagination"> </nav>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__copyright-block">
+            <div class="footer__copyright">&copy; CRM, 2023</div>
+          </div>
+        </div>
+      </footer>
+        <div class="modal fade" id="createClaim" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Заявка от 22.03.2023</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row"> 
+                    <div class="col-lg-4">
+                      <div class="modal-text">
+                         Даты тура</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetour_start" name="datetour_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetour_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetour_end" name="datetour_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetour_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12"> 
+                      <div class="field-group__item"> 
+                        <label class="field-group__label">КОММЕНТАРИЙ ДЛЯ СЕБЯ (ЕГО НЕ БУДУТ ВИДЕТЬ СОТРУДНИКИ ЦБ!)</label>
+                        <textarea class="field-group__textarea" type="text" name="comment"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Создать</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Отмена</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="comment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Коментарий</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row justify-content-center">
+                    <div class="col-12">
+                      <div class="field-group__item"> 
+                        <label class="field-group__label">КОММЕНТАРИЙ</label>
+                        <textarea class="field-group__textarea" type="text" name="comment"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="docModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Статус отправки документов</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Статус отправки документов</label>
+                          <select class="select-choices" name="statusDocs">
+                            <option value="" selected></option>
+                            <option value="Не отправлены">Не отправлены</option>
+                            <option value="Отправлены частично">Отправлены частично</option>
+                            <option value="Отправлены">Отправлены</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="tourpackageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Турпакет</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row">
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="name" name="name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetourpack_start" name="datetourpack_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetourpack_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetourpack_end" name="datetourpack_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetourpack_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="field-group__item">
+                        <label class="field-group__label">Город вылета</label>
+                        <select id="departureСity" name="departureСity"></select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="field-group__item">
+                        <label class="field-group__label">Страна прилета</label>
+                        <select id="countryArrival" name="countryArrival"></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="touroperatorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Туроператор - поставщик тура</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Туроператор</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="touroperator" name="touroperator">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="contractModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Договор</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row">
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Дата договора</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="date" name="date">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="date">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Номер брони</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="booking_number" name="booking_number">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addCustomer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Заказчик</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Заказчик</label>
+                          <select class="select-choices" name="customers" id="personsSelect">
+                            <option value="" selected></option>
+                            <option value="person">Физическое лицо</option>
+                            <option value="juridical">Юридическое лицо</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div id="tabContentModal">
+                      <div class="tabs-content" id="person" data-tab-content="person">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="checkbox">
+                              <label>
+                                <input class="checkbox__input" type="checkbox" name="translit_customer"><span class="checkbox__label text-label">Включить транслитерацию по госту 2016</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label required">Фамилия</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_surname" name="person_surname" required>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label required">Имя</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_name" name="person_name" required>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Отчество</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_surname_o" name="person_surname_o">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label required">Пол</label>
+                                <select class="select-choices" name="gender" required>
+                                  <option value="" selected></option>
+                                  <option value="male">Мужской</option>
+                                  <option value="female">Женский</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Фамилия (LAT)</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_surname_lat" name="person_surname_lat">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Имя (LAT)</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_name_lat" name="person_name_lat">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label required">Гражданство</label>
+                                <select class="select-choices" name="nationality" required>
+                                  <option value="" selected></option>
+                                  <option value="Россия">Россия</option>
+                                  <option value="Belarus">Беларусь</option>
+                                  <option value="Ukraine">Украина</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label required">Дата рождения</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_birthday" name="person_birthday" required>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Фактический адрес</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="person_address" name="person_address">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Телефон</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="tel" data-name="person_tel" name="person_tel">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Email</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="email" data-name="person_email" name="person_email">
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row"> 
+                          <div class="col-lg-4">
+                            <div class="text-label text-center mb-2"> Национальный паспорт</div>
+                            <div class="row"> 
+                              <div class="col-sm-3">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Серия</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="number" data-name="passport_series" name="passport_series">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-3">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Номер</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="number" data-name="passport_number" name="passport_number">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Дата выдачи</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="passport_date" name="passport_date">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-8">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Кем выдан</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="passport_issued" name="passport_issued">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-4">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Код</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="passport_code" name="passport_code">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Адрес регистрации</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="passport_address" name="passport_address">
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="text-label text-center mb-2">Свидетельство о рождении</div>
+                            <div class="row"> 
+                              <div class="col-sm-4">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Серия</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="certificate_series" name="certificate_series">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-8">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Номер</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="certificate_number" name="certificate_number">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Дата выдачи</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="date" name="date">
+                                      <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                        <input class="input-trigger" type="text" data-id="date">
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Кем выдан</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="certificate_issued" name="certificate_issued">
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="text-label text-center mb-2"> Заграничный паспорт</div>
+                            <div class="row"> 
+                              <div class="col-sm-4">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Серия</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="international_passport_series" name="international_passport_series">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-8">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Номер</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="international_passport_number" name="international_passport_number">
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Дата выдачи</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="date" name="date">
+                                      <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                        <input class="input-trigger" type="text" data-id="date">
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Срок действия</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="date" name="date">
+                                      <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                        <input class="input-trigger" type="text" data-id="date">
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="field-group__item">
+                                    <label class="field-group__label">Кем выдан</label>
+                                    <div class="field-group__box">
+                                      <input class="field-group__input" type="text" data-name="international_passport_issued" name="international_passport_issued">
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tabs-content" id="juridical" data-tab-content="juridical">
+                        <div class="row align-items-end">
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Наименование банка</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_bank" name="juridical_bank">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Бик</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_bik" name="juridical_bik">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Р/с</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_rs" name="juridical_rs">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">К/с</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_ks" name="juridical_ks">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Полное наименование юр.лица</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_fullname" name="juridical_fullname">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Сокращенное наименование юр.лица</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_shortname" name="juridical_shortname">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Юридический адрес</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_address" name="juridical_address">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Фактический адрес</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_actual_address" name="juridical_actual_address">
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row"> 
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">КПП</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_kpp" name="juridical_kpp">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">КПП</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_inn" name="juridical_inn">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">ОГРН</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_ogrn" name="juridical_ogrn">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Фио директора</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="text" data-name="juridical_director" name="juridical_director">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">Телефон</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="tel" data-name="juridical_tel" name="juridical_tel">
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+                              <div class="field-group__item">
+                                <label class="field-group__label">E-mail</label>
+                                <div class="field-group__box">
+                                  <input class="field-group__input" type="email" data-name="juridical_email" name="juridical_email">
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addTourist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Турист</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="checkbox">
+                          <label>
+                            <input class="checkbox__input" type="checkbox" name="translit_tourist"><span class="checkbox__label">Включить транслитерацию по госту 2016</span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label required">Фамилия</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_surname" name="tourist_surname" required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label required">Имя</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_name" name="tourist_name" required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Отчество</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_surname_o" name="tourist_surname_o">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label required">Пол</label>
+                          <select class="select-choices" name="gender" required>
+                            <option value="" selected></option>
+                            <option value="male">Мужской</option>
+                            <option value="female">Женский</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Фамилия (LAT)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_surname_lat" name="tourist_surname_lat">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Имя (LAT)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_name_lat" name="tourist_name_lat">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label required">Гражданство</label>
+                          <select class="select-choices" name="nationality" required>
+                            <option value="" selected></option>
+                            <option value="Россия">Россия</option>
+                            <option value="Belarus">Беларусь</option>
+                            <option value="Ukraine">Украина</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label required">Дата рождения</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_birthday" name="tourist_birthday" required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Фактический адрес</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="tourist_address" name="tourist_address">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Телефон</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="tel" data-name="tourist_tel" name="tourist_tel">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Email</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="email" data-name="tourist_email" name="tourist_email">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row"> 
+                    <div class="col-lg-4">
+                      <div class="text-label text-center mb-2"> Национальный паспорт</div>
+                      <div class="row"> 
+                        <div class="col-sm-3">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Серия</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="number" data-name="passport_series" name="passport_series">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Номер</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="number" data-name="passport_number" name="passport_number">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Дата выдачи</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="date" name="date">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Кем выдан</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="passport_issued" name="passport_issued">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Код</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="passport_code" name="passport_code">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Адрес регистрации</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="passport_address" name="passport_address">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="text-label text-center mb-2">Свидетельство о рождении</div>
+                      <div class="row"> 
+                        <div class="col-sm-4">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Серия</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="certificate_series" name="certificate_series">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Номер</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="certificate_number" name="certificate_number">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Дата выдачи</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="date" name="date">
+                                <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                  <input class="input-trigger" type="text" data-id="date">
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Кем выдан</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="certificate_issued" name="certificate_issued">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="text-label text-center mb-2"> Заграничный паспорт</div>
+                      <div class="row"> 
+                        <div class="col-sm-4">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Серия</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="international_passport_series" name="international_passport_series">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Номер</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="international_passport_number" name="international_passport_number">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Дата выдачи</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="date" name="date">
+                                <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                  <input class="input-trigger" type="text" data-id="date">
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Срок действия</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="date" name="date">
+                                <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                                  <input class="input-trigger" type="text" data-id="date">
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="field-group__item">
+                              <label class="field-group__label">Кем выдан</label>
+                              <div class="field-group__box">
+                                <input class="field-group__input" type="text" data-name="international_passport_issued" name="international_passport_issued">
+                              </div>
+                            </div>
+                          <div class="text-label mt-2">Пример: UFMS-12</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row"> 
+                    <div class="col-lg-4">
+                      <div class="text-label mb-2">Информация и визе</div>
+                      <div class="select-items">
+                          <div class="field-group__item">
+                            <label class="field-group__label required">Необходимость визы</label>
+                            <select class="select-choices" name="visa_info" id="visaInfo" required>
+                              <option value="" selected></option>
+                              <option value="not">Не требуется</option>
+                              <option value="yes">Надо оформить визу</option>
+                            </select>
+                          </div>
+                        <div class="field-group__item">
+                          <label class="field-group__label">Город подачи визы</label>
+                          <select id="visaCity" name="visa_city"></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addFlight" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Перелет (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">	
+                  <div class="row">	
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Маршрут</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="flight_route" name="flight_route">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Откуда</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="flight_start" name="flight_start">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Куда</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="flight_end" name="flight_end">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Авиакомпания</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="flight_aviacompany" name="flight_aviacompany">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Класс</label>
+                          <select class="select-choices" name="flight_class">
+                            <option value="" selected></option>
+                            <option value="unknown">Неизвестно</option>
+                            <option value="economy">Эконом</option>
+                            <option value="business">Бизнес</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Номер рейса</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="flight_number" name="flight_number">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Время вылета</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="dateflight_start" name="dateflight_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="dateflight_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Время прилета</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="dateflight_end" name="dateflight_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="dateflight_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addInsurance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Страховка (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row"> 
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="insurance_name" name="insurance_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Компания страховщик</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="insurance_company" name="insurance_company">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип страховки</label>
+                          <select class="select-choices" name="insurance_type" id="insuranceType">
+                            <option value="" selected></option>
+                            <option value="required">Обязательное страхование медицинских расходов в период путешествия</option>
+                            <option value="extended">Расширенное страхование</option>
+                            <option value="cancel">Отмена поездки</option>
+                            <option value="other">Другое (добавить вручную)</option>
+                          </select>
+                        </div>
+                      <div class="field-group__item mt-3">
+                        <label class="field-group__label">Тип страховки (заполняется вручную)</label>
+                        <div class="field-group__box">
+                          <input class="field-group__input" type="text" data-name="insurance_type_other" name="insurance_type_other">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало действия</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="dateinsurance_start" name="dateinsurance_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="dateinsurance_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание действия</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="dateinsurance_end" name="dateinsurance_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="dateinsurance_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Страховая сумма</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="insurance_sum" name="insurance_sum">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addTransfer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Трансфер (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Маршрут (туда)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="transfer_route_start" name="transfer_route_start">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Маршрут (обратно)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="transfer_route_end" name="transfer_route_end">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetransfer_start" name="datetransfer_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetransfer_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datetransfer_end" name="datetransfer_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datetransfer_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип трансфера</label>
+                          <select class="select-choices" name="transfer_type">
+                            <option value="" selected></option>
+                            <option value="group">Групповой</option>
+                            <option value="individual">Индивидуальный</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Вид транспорта (туда)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="transfer_transport_start" name="transfer_transport_start">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Вид транспорта (обратно)</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="transfer_transport_end" name="transfer_transport_end">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addVisa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Виза (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="visa_name" name="visa_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Страна назначения</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="visa_country" name="visa_country">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало действия</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datevisa_start" name="datevisa_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datevisa_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончани действия</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datevisa_end" name="datevisa_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datevisa_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addHabitation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Проживание (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_name" name="habitation_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Курорт</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_resort" name="habitation_resort">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Отель</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_hotel" name="habitation_hotel">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Адрес отеля</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_hotel_address" name="habitation_hotel_address">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип номера</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_type_number" name="habitation_type_number">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип номера</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_type_placement" name="habitation_type_placement">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип питания</label>
+                          <select class="select-choices" name="habitation_type_food">
+                            <option value="" selected></option>
+                            <option value="RO">RO</option>
+                            <option value="RO">RO</option>
+                            <option value="HB">HB</option>
+                            <option value="FB">FB</option>
+                            <option value="AI">AI</option>
+                            <option value="UAI">UAI</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Время заезда</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datehabitation_start" name="datehabitation_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datehabitation_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Время выезда</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="datehabitation_end" name="datehabitation_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="datehabitation_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addFuelSurcharge" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Топливный сбор (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="habitation_name" name="habitation_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addExcursionProgram" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Экскурсионная программа (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="excursion_name" name="excursion_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Описание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="excursion_description" name="excursion_description">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-extended" id="addOtherService" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Услуга (добавление)</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Название</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="other_service_name" name="other_service_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="checkbox-group"> 
+                          <div class="checkbox-group__label field-group__label">Туристы</div>
+                          <div class="checkbox-items">
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Новикова Алла Сергеева</span>
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input class="checkbox__input" type="checkbox" name="tourist"><span class="checkbox__label">Моисеева Ирина Сергеева</span>
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-small" id="prepaymentParameters" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Параметры предоплаты</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group"> 
+                  <div class="row">
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Предоплата не менее, %</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="prepayment_percent" name="prepayment_percent">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12"> 
+                        <div class="field-group__item">
+                          <label class="field-group__label">Полная оплата не позднее, дней</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="prepayment_days" name="prepayment_days">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exposePayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Счет на оплату</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row">
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Расчет</label>
+                          <select class="select-choices" name="expose_calculate" id="exposeCalculate">
+                            <option value="" selected></option>
+                            <option value="cash">Наличный</option>
+                            <option value="noncash">Безналичный</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Сумма платежа в счете</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="number" data-name="expose_payment_sum" name="expose_payment_sum">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="field-group__item">
+                        <label class="field-group__label">Валюта платежа</label>
+                        <select class="select-choices" name="expose_currency" id="exposeCurrency">
+                          <option value="" selected>
+                            <option value="RUB" selected>RUB</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Дата и время счёта</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="date" name="date">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="date">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-parameters" id="parametersPayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Параметры стоимости</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="parameters-payment">
+                  <div class="parameters-payment__row">
+                    <div class="parameters-payment__col">
+                      <div class="field-group__item">
+                        <label class="field-group__label">Валюта турпакета</label>
+                        <select class="select-choices" name="tourpackage_currency" id="tourPackageCurrency">
+                          <option value="" selected>
+                            <option value="RUB" selected>RUB</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="parameters-payment__col">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Курс для туриста</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="parameters_course_tourist" name="parameters_course_tourist">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <hr class="line-dashed">
+                  <div class="parameters-payment__row">
+                    <div class="parameters-payment__col">
+                      <div class="text-label">Цена тура для ТА</div>
+                    </div>
+                    <div class="parameters-payment__col parameters-price">
+                        <div class="field-group__item">
+                          <label class="field-group__label">RUB</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="parameters_tour_price" name="parameters_tour_price">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="parameters-payment__col">
+                      <div class="text-label">Комиссионная часть</div>
+                    </div>
+                    <div class="parameters-payment__col parameters-price">
+                        <div class="field-group__item">
+                          <label class="field-group__label">RUB</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="parameters_comission_price" name="parameters_comission_price">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addFile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Добавить файл</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <form class="drag-area" method="post" enctype="multipart/form-data"><i class="fa-solid fa-cloud-arrow-up drag-area__icon"></i>
+                    <p class="drag-area__text">
+                      Просто перетащите файл в эту область 
+                      <br>
+                      или воспользуйтесь стандартным загрузчиком
+                    </p>
+                  </form>
+                  <div class="row"> 
+                    <div class="col-lg-8">
+                      <form method="post" enctype="multipart/form-data">
+                        <div class="field-group__label">Файл</div>
+                        <div class="upload-file">
+                          <div class="upload-file__preview preview">
+                            <ul class="upload-file__list" id="fileList"></ul>
+                          </div>
+                          <div class="upload-file__button">
+                            <label class="upload-file__label" for="upload">Обзор</label>
+                            <input class="upload-file__input" id="file_uploads" type="file" name="uploads">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Тип файла</label>
+                          <select class="select-choices" name="file_type" id="fileType">
+                            <option value="" selected></option>
+                            <option value="doc_tourist">Документ туриста</option>
+                            <option value="doc_payment">Платежный документ</option>
+                            <option value="doc_tour">Документ тура</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Отменить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-small" id="addPayTourist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal__content">
+              <div class="modal__header">
+                <div class="modal__title"> Платеж от туриста</div>
+                <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="modal__body">
+                <div class="field-group">
+                  <div class="row align-items-end">
+                    <div class="col-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Cумма оплаты <strong>RUB</strong></label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="sum_payment_tourist" name="sum_payment_tourist">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-1"><span class="math-icon">	<i class="fa-solid fa-divide"></i></span></div>
+                    <div class="col-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Курс <strong>EUR</strong></label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="course_for_tourist" name="course_for_tourist">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-1"><span class="math-icon">	<i class="fa-solid fa-equals"></i></span></div>
+                    <div class="col-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Cумма <strong>EUR</strong></label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="sum_eur_tourist" name="sum_eur_tourist">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row"> 
+                    <div class="col-lg-4">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Дата и время платежа</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="pay_date" name="pay_date">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="pay_date">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal__footer">
+                <div class="modal__buttons">
+                  <button class="btn btn-create btn-primary" type="button"><i class="fa-solid fa-check"></i>Сохранить</button>
+                  <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src="scripts/main.min.js?_v=20230417091148" defer></script>
+  </body>
+</html>
