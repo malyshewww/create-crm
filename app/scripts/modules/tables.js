@@ -1,8 +1,10 @@
 
 import DataTable from 'datatables.net-dt';
+// import '../libs/dataTables.buttons.min.js';
+// import '../libs/buttons.html5.min.js';
 const mainTable = document.getElementById('table-id');
 let table = new DataTable(mainTable, {
-	ordering: false,
+	ordering: true,
 	responsive: true,
 	searching: false,
 	"language": {
@@ -22,6 +24,10 @@ let table = new DataTable(mainTable, {
 	"pagingType": "full_numbers",
 	"aLengthMenu": [[1, 5, 10, 15, 25, 50, 100, 200 - 1], [1, 5, 10, 15, 25, 50, 100, 200, "All"]],
 	"iDisplayLength": 5,
+	// dom: 'Bfrtip',
+	// buttons: [
+	// 	'excelHtml5',
+	// ],
 	// "fnDrawCallback": function (oSettings) {
 	// 	if (mainTable.rows.length < 11) {
 	// 		document.querySelector('.pagination').setAttribute('hidden', true);
@@ -32,11 +38,12 @@ let table = new DataTable(mainTable, {
 });
 const tableBottom = document.querySelector('.table-bottom');
 if (tableBottom) {
+	const sortBlock = document.querySelector('.sorting-block');
 	const tableLength = document.querySelector('.dataTables_length');
 	const tableInfo = document.querySelector('.dataTables_info');
 	const tablePaginate = document.getElementById('table-id_paginate');
 	const pagination = document.querySelector('.pagination');
 	pagination.insertAdjacentElement("afterbegin", tableInfo);
 	pagination.insertAdjacentElement("beforeend", tablePaginate);
-	tableBottom.insertAdjacentElement("beforeend", tableLength);
+	sortBlock.append(tableLength);
 }
