@@ -110,6 +110,29 @@ function singleDates(datesId) {
 singleDates("date");
 singleDates("pay_date");
 
+const rangeDateConfig = {
+	position: 'bottom right',
+	buttons: ['today', 'clear'],
+	dateSeparator: ",",
+	timeFormat: 'HH:mm',
+	isMobile: mobilePicker(),
+	getStartOpts: function () {
+		return {
+			autoClose: dateValues.includes(this.start) ? false : true,
+			dateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altFieldDateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			timepicker: dateValues.includes(this.start) ? true : false,
+		}
+	},
+	getEndOpts: function () {
+		return {
+			autoClose: dateValues.includes(this.end) ? false : true,
+			dateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altFieldDateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			timepicker: dateValues.includes(this.end) ? true : false,
+		}
+	}
+}
 // Функция для диапазона дат
 function rangeDate(start, end) {
 	let inputTriggerStart = document.querySelector(`[data-id=${start}]`);
@@ -118,35 +141,19 @@ function rangeDate(start, end) {
 	let inputAltFieldEnd = document.querySelector(`[data-name=${end}]`);
 	if (inputTriggerStart && inputTriggerEnd && inputAltFieldStart && inputAltFieldEnd) {
 		let datepickerStart = new AirDatepicker(inputTriggerStart, {
-			autoClose: dateValues.includes(start) ? false : true,
-			position: 'bottom right',
-			dateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
 			altField: inputAltFieldStart,
-			altFieldDateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			buttons: ['today', 'clear'],
-			dateSeparator: ",",
-			timepicker: dateValues.includes(start) ? true : false,
-			timeFormat: 'HH:mm',
-			isMobile: mobilePicker(),
+			...rangeDateConfig,
+			...rangeDateConfig.getStartOpts(start),
 			onSelect: ({ date, datepicker }) => {
-				console.log(date)
-				console.log(datepicker)
 				datepickerEnd.update({
 					minDate: date
 				})
 			},
 		});
 		let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
-			autoClose: dateValues.includes(end) ? false : true,
-			position: 'bottom right',
-			dateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
 			altField: inputAltFieldEnd,
-			altFieldDateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			buttons: ['today', 'clear'],
-			dateSeparator: ",",
-			timepicker: dateValues.includes(end) ? true : false,
-			timeFormat: 'HH:mm',
-			isMobile: mobilePicker(),
+			...rangeDateConfig,
+			...rangeDateConfig.getEndOpts(),
 			onSelect: ({ date, datepicker }) => {
 				datepickerStart.update({
 					maxDate: date

@@ -17,7 +17,7 @@ const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {
 	let choices = new Choices(select, choiceConfig)
 })
-const selectVisaCity = document.getElementById('visaCity');
+const selectVisaCity = document.querySelector('.visaCity');
 const parentCity = selectVisaCity.closest('.field-group__item');
 if (selectVisaCity) {
 	parentCity.style.display = "none";

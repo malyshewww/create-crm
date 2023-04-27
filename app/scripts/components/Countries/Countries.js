@@ -14,5 +14,7 @@ const newArrCountries = countries.map((country, index) => {
 newArrCountries.unshift({ value: "", label: "", selected: true, disabled: true })
 
 const selectCountries = document.getElementById('countryArrival');
-let choices = new Choices(selectCountries, choiceConfig);
-choices.setChoices(newArrCountries, 'value', 'label');
+if (selectCountries) {
+	let choices = new Choices(selectCountries, choiceConfig);
+	choices.setChoices(newArrCountries, 'value', 'label');
+}
