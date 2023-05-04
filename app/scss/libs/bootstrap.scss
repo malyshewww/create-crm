@@ -5028,9 +5028,11 @@ fieldset:disabled .btn {
 }
 .modal-backdrop.fade {
 	opacity: 0;
+	visibility: hidden;
 }
 .modal-backdrop.show {
 	opacity: 0.5;
+	visibility: visible;
 }
 .modal-header {
 	display: flex;

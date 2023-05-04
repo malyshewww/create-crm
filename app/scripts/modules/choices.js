@@ -18,12 +18,10 @@ const selectChoices = document.querySelectorAll('.select-choices');
 	let choices = new Choices(select, choiceConfig)
 })
 const selectVisaCity = document.querySelector('.visaCity');
-const parentCity = selectVisaCity.closest('.field-group__item');
-if (selectVisaCity) {
-	parentCity.style.display = "none";
-}
 const selectVisaInfo = document.getElementById('visaInfo');
-if (selectVisaInfo) {
+if (selectVisaCity && selectVisaInfo) {
+	const parentCity = selectVisaCity.closest('.field-group__item');
+	parentCity.style.display = "none";
 	selectVisaInfo.addEventListener('change', (event) => {
 		showFieldSelect(event, parentCity);
 	});

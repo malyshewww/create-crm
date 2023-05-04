@@ -1,4 +1,9 @@
 // Заголовки, общие БЄМ блоки и прочее...
+input.error,
+textarea.error,
+.choices__inner.error {
+	border-color: red;
+}
 select {
 	width: 100%;
 }

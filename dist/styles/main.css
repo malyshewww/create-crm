@@ -4653,10 +4653,12 @@ fieldset:disabled .btn {
 
 .modal-backdrop.fade {
   opacity: 0;
+  visibility: hidden;
 }
 
 .modal-backdrop.show {
   opacity: 0.5;
+  visibility: visible;
 }
 
 .modal-header {
@@ -6997,11 +6999,6 @@ input::-webkit-inner-spin-button {
 
 input::-ms-clear {
   display: none;
-}
-
-input.error,
-textarea.error {
-  border-color: red;
 }
 
 img {
@@ -19791,6 +19788,12 @@ table.dataTable td {
 
 .choices__item--disabled {
   display: none;
+}
+
+input.error,
+textarea.error,
+.choices__inner.error {
+  border-color: red;
 }
 
 select {
