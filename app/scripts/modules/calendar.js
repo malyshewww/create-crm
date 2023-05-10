@@ -11,7 +11,11 @@ import moment from 'moment';
 const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date", "pay_date"];
 
 function mobilePicker() {
-	return window.innerWidth >= 991.98 ? false : true
+	if (window.innerWidth > 991.98) {
+		return false
+	} else if (window.innerWidth < 991.98) {
+		return true;
+	}
 }
 window.addEventListener("resize", function () {
 	mobilePicker();
@@ -116,22 +120,22 @@ const rangeDateConfig = {
 	dateSeparator: ",",
 	timeFormat: 'HH:mm',
 	isMobile: mobilePicker(),
-	getStartOpts: function () {
-		return {
-			autoClose: dateValues.includes(this.start) ? false : true,
-			dateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			altFieldDateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			timepicker: dateValues.includes(this.start) ? true : false,
-		}
-	},
-	getEndOpts: function () {
-		return {
-			autoClose: dateValues.includes(this.end) ? false : true,
-			dateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			altFieldDateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			timepicker: dateValues.includes(this.end) ? true : false,
-		}
-	}
+	// getStartOpts: function () {
+	// 	return {
+	// 		autoClose: dateValues.includes(this.start) ? false : true,
+	// 		dateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+	// 		altFieldDateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+	// 		timepicker: dateValues.includes(this.start) ? true : false,
+	// 	}
+	// },
+	// getEndOpts: function () {
+	// 	return {
+	// 		autoClose: dateValues.includes(this.end) ? false : true,
+	// 		dateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+	// 		altFieldDateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+	// 		timepicker: dateValues.includes(this.end) ? true : false,
+	// 	}
+	// }
 }
 // Функция для диапазона дат
 function rangeDate(start, end) {
@@ -143,7 +147,10 @@ function rangeDate(start, end) {
 		let datepickerStart = new AirDatepicker(inputTriggerStart, {
 			altField: inputAltFieldStart,
 			...rangeDateConfig,
-			...rangeDateConfig.getStartOpts(start),
+			autoClose: dateValues.includes(start) ? false : true,
+			dateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altFieldDateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			timepicker: dateValues.includes(start) ? true : false,
 			onSelect: ({ date, datepicker }) => {
 				datepickerEnd.update({
 					minDate: date
@@ -153,7 +160,10 @@ function rangeDate(start, end) {
 		let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
 			altField: inputAltFieldEnd,
 			...rangeDateConfig,
-			...rangeDateConfig.getEndOpts(),
+			autoClose: dateValues.includes(end) ? false : true,
+			dateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			altFieldDateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+			timepicker: dateValues.includes(end) ? true : false,
 			onSelect: ({ date, datepicker }) => {
 				datepickerStart.update({
 					maxDate: date
@@ -170,6 +180,9 @@ rangeDate("dateinsurance_start", "dateinsurance_end");
 rangeDate("datetransfer_start", "datetransfer_end");
 rangeDate("datevisa_start", "datevisa_end");
 rangeDate("datehabitation_start", "datehabitation_end");
+rangeDate("fuelsurchange_date_start", "fuelsurchange_date_end");
+rangeDate("excursion_date_start", "excursion_date_end");
+rangeDate("otherservice_date_start", "otherservice_date_end");
 // let inputStartDate = document.querySelector('input[name="date_start"]');
 // if (inputStartDate) {
 // 	inputStartDate.addEventListener('change', function (e) {

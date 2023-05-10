@@ -6,7 +6,7 @@
     <title>Заявка | site name</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <link href="styles/main.min.css?_v=20230504160039" rel="stylesheet">
+    <link href="styles/main.min.css?_v=20230510172126" rel="stylesheet">
   </head>
   <body>
     <div class="wrapper" id="wrapper">
@@ -2232,7 +2232,29 @@
                         <div class="field-group__item">
                           <label class="field-group__label">Название</label>
                           <div class="field-group__box">
-                            <input class="field-group__input" type="text" data-name="habitation_name" name="habitation_name">
+                            <input class="field-group__input" type="text" data-name="fuelsurchange_name" name="fuelsurchange_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="fuelsurchange_date_start" name="fuelsurchange_date_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="fuelsurchange_date_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="fuelsurchange_date_end" name="fuelsurchange_date_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="fuelsurchange_date_end">
+                            </div>
                           </div>
                         </div>
                     </div>
@@ -2291,6 +2313,28 @@
                           </div>
                         </div>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="excursion_date_start" name="excursion_date_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="excursion_date_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="excursion_date_end" name="excursion_date_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="excursion_date_end">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="checkbox-group"> 
                           <div class="checkbox-group__label field-group__label">Туристы</div>
@@ -2324,7 +2368,7 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal__content">
               <div class="modal__header">
-                <div class="modal__title"> Услуга (добавление)</div>
+                <div class="modal__title">Услуга (добавление)</div>
                 <button class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
               </div>
               <div class="modal__body">
@@ -2335,6 +2379,28 @@
                           <label class="field-group__label">Название</label>
                           <div class="field-group__box">
                             <input class="field-group__input" type="text" data-name="other_service_name" name="other_service_name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Начало</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="otherservice_date_start" name="otherservice_date_start">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="otherservice_date_start">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-group__item">
+                          <label class="field-group__label">Окончание</label>
+                          <div class="field-group__box">
+                            <input class="field-group__input" type="text" data-name="otherservice_date_end" name="otherservice_date_end">
+                            <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
+                              <input class="input-trigger" type="text" data-id="otherservice_date_end">
+                            </div>
                           </div>
                         </div>
                     </div>
@@ -2655,6 +2721,6 @@
           </div>
         </div>
     </div>
-    <script src="scripts/main.min.js?_v=20230504160039" defer></script>
+    <script src="scripts/main.min.js?_v=20230510172126" defer></script>
   </body>
 </html>

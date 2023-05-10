@@ -356,7 +356,11 @@
 	.field-group 
 		.row
 			.col-12 
-				+fieldItem("Название", "text", "habitation_name")
+				+fieldItem("Название", "text", "fuelsurchange_name")
+			.col-lg-3
+				+date("Начало", "text", "fuelsurchange_date_start")
+			.col-lg-3
+				+date("Окончание", "text", "fuelsurchange_date_end")
 			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -369,6 +373,10 @@
 				+fieldItem("Название", "text", "excursion_name")
 			.col-12 
 				+fieldItem("Описание", "text", "excursion_description")
+			.col-lg-3
+				+date("Начало", "text", "excursion_date_start")
+			.col-lg-3
+				+date("Окончание", "text", "excursion_date_end")
 			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
@@ -379,6 +387,10 @@
 		.row
 			.col-12 
 				+fieldItem("Название", "text", "other_service_name")
+			.col-lg-3
+				+date("Начало", "text", "otherservice_date_start")
+			.col-lg-3
+				+date("Окончание", "text", "otherservice_date_end")
 			.col-12
 				+checkboxGroup("Туристы")
 					.checkbox-items
