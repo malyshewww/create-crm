@@ -156,6 +156,7 @@ function rangeDate(start, end) {
 					minDate: date
 				})
 			},
+			selectedDates: [inputAltFieldStart.value]
 		});
 		let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
 			altField: inputAltFieldEnd,
@@ -168,7 +169,8 @@ function rangeDate(start, end) {
 				datepickerStart.update({
 					maxDate: date
 				})
-			}
+			},
+			selectedDates: [inputAltFieldEnd.value]
 		});
 	}
 }

@@ -7,11 +7,12 @@ mixin modal(modalId, title, modalClasses, btnCreate = "Сохранить", btnC
 						| #{title}
 					button.modal__close(type='button' data-bs-dismiss='modal' aria-label='Close')
 						i(class="fa-solid fa-xmark")
-				.modal__body
-					block
-				.modal__footer
-					.modal__buttons
-						button(type="button").btn.btn-create.btn-primary
-							i(class="fa-solid fa-check")
-							| #{btnCreate}
-						button(type='button' data-bs-dismiss='modal').btn.btn-secondary #{btnClose}
+				form(action="#" class="form" method="post")
+					.modal__body
+						block
+					.modal__footer
+						.modal__buttons
+							button(type="submit").btn.btn-create.btn-primary
+								i(class="fa-solid fa-check")
+								| #{btnCreate}
+							button(type='button' data-bs-dismiss='modal').btn.btn-secondary #{btnClose}

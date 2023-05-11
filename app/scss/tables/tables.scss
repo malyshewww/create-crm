@@ -53,7 +53,7 @@
 	& tbody td {
 		padding: 7px;
 	}
-	& span {
+	& span:not(.checkbox__label) {
 		display: inline-block;
 	}
 	& ul {
