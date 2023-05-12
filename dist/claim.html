@@ -6,7 +6,7 @@
     <title>Заявка | site name</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <link href="styles/main.min.css?_v=20230511153011" rel="stylesheet">
+    <link href="styles/main.min.css?_v=20230512142325" rel="stylesheet">
   </head>
   <body>
     <div class="wrapper" id="wrapper">
@@ -729,7 +729,7 @@
                           <div class="col col-lg-4 col-12">
                               <div class="field-group__item">
                                 <label class="field-group__label">Выберите тип договора</label>
-                                <select class="select-choices" name="choice_type_doc" id="choiceTypeDoc">
+                                <select class="select-choices" name="choice_type_doc" data-name="choiceTypeDoc" id="choiceTypeDoc">
                                   <option value="" selected></option>
                                   <option value="doc_avia">Авиатуры</option>
                                   <option value="doc_bus">Автобусные туры</option>
@@ -776,9 +776,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetour_start" name="datetour_start">
+                              <input class="field-group__input" type="text" name="datetour_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetour_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -787,9 +787,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetour_end" name="datetour_end">
+                              <input class="field-group__input" type="text" name="datetour_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetour_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -901,9 +901,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetourpack_start" name="datetourpack_start">
+                              <input class="field-group__input" type="text" name="datetourpack_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetourpack_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -912,24 +912,34 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetourpack_end" name="datetourpack_end">
+                              <input class="field-group__input" type="text" name="datetourpack_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetourpack_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
                       </div>
                       <div class="col-lg-6">
-                        <div class="field-group__item">
-                          <label class="field-group__label">Город вылета</label>
-                          <select id="departureСity" name="departureСity"></select>
-                        </div>
+                          <div class="field-group__item">
+                            <label class="field-group__label">Город вылета</label>
+                            <select class="select-choices" name="departure_city" data-name="departureСity" id="departureСity">
+                              <option value="" selected></option>
+                              <option value="Moscow">Москва</option>
+                              <option value="Spb">Санкт-Петербург</option>
+                              <option value="novosibirsk">Новосибирск</option>
+                            </select>
+                          </div>
                       </div>
                       <div class="col-lg-6">
-                        <div class="field-group__item">
-                          <label class="field-group__label">Страна прилета</label>
-                          <select id="countryArrival" name="countryArrival"></select>
-                        </div>
+                          <div class="field-group__item">
+                            <label class="field-group__label">Страна прилета</label>
+                            <select class="select-choices" name="country_arrival" data-name="countryArrival" id="countryArrival">
+                              <option value="" selected></option>
+                              <option value="Egypt">Египет</option>
+                              <option value="Italy">Италия</option>
+                              <option value="Spain">Испания</option>
+                            </select>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -991,9 +1001,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Дата договора</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="date" name="date">
+                              <input class="field-group__input" type="text" name="date" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="date">
+                                <input class="input-trigger" type="text" data-trigger="date">
                               </div>
                             </div>
                           </div>
@@ -1033,7 +1043,7 @@
                       <div class="col-12">
                           <div class="field-group__item">
                             <label class="field-group__label">Заказчик</label>
-                            <select class="select-choices" name="customers" id="personsSelect">
+                            <select class="select-choices" name="customers" data-name="personsSelect" id="personsSelect">
                               <option value="" selected></option>
                               <option value="person">Физическое лицо</option>
                               <option value="juridical">Юридическое лицо</option>
@@ -1046,7 +1056,7 @@
                             <div class="col-12">
                               <div class="checkbox">
                                 <label>
-                                  <input class="checkbox__input" type="checkbox" name="translit_customer"><span class="checkbox__label text-label">Включить транслитерацию по госту 2016</span>
+                                  <input class="checkbox__input" type="checkbox" name="translit_customer" data-trigger="translit"><span class="checkbox__label text-label">Включить транслитерацию по госту 2016</span>
                                 </label>
                               </div>
                             </div>
@@ -1054,7 +1064,7 @@
                                 <div class="field-group__item">
                                   <label class="field-group__label required">Фамилия</label>
                                   <div class="field-group__box">
-                                    <input class="field-group__input" type="text" data-name="person_surname" name="person_surname" required>
+                                    <input class="field-group__input" type="text" data-name="surname" name="surname" required>
                                   </div>
                                 </div>
                             </div>
@@ -1062,7 +1072,7 @@
                                 <div class="field-group__item">
                                   <label class="field-group__label required">Имя</label>
                                   <div class="field-group__box">
-                                    <input class="field-group__input" type="text" data-name="person_name" name="person_name" required>
+                                    <input class="field-group__input" type="text" data-name="name" name="name" required>
                                   </div>
                                 </div>
                             </div>
@@ -1088,7 +1098,7 @@
                                 <div class="field-group__item">
                                   <label class="field-group__label">Фамилия (LAT)</label>
                                   <div class="field-group__box">
-                                    <input class="field-group__input" type="text" data-name="person_surname_lat" name="person_surname_lat">
+                                    <input class="field-group__input" type="text" data-name="surname_lat" name="surname_lat">
                                   </div>
                                 </div>
                             </div>
@@ -1096,7 +1106,7 @@
                                 <div class="field-group__item">
                                   <label class="field-group__label">Имя (LAT)</label>
                                   <div class="field-group__box">
-                                    <input class="field-group__input" type="text" data-name="person_name_lat" name="person_name_lat">
+                                    <input class="field-group__input" type="text" data-name="name_lat" name="name_lat">
                                   </div>
                                 </div>
                             </div>
@@ -1222,9 +1232,9 @@
                                     <div class="field-group__item">
                                       <label class="field-group__label">Дата выдачи</label>
                                       <div class="field-group__box">
-                                        <input class="field-group__input" type="text" data-name="date" name="date">
+                                        <input class="field-group__input" type="text" name="date" data-format="date">
                                         <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                          <input class="input-trigger" type="text" data-id="date">
+                                          <input class="input-trigger" type="text" data-trigger="date">
                                         </div>
                                       </div>
                                     </div>
@@ -1262,9 +1272,9 @@
                                     <div class="field-group__item">
                                       <label class="field-group__label">Дата выдачи</label>
                                       <div class="field-group__box">
-                                        <input class="field-group__input" type="text" data-name="date" name="date">
+                                        <input class="field-group__input" type="text" name="date" data-format="date">
                                         <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                          <input class="input-trigger" type="text" data-id="date">
+                                          <input class="input-trigger" type="text" data-trigger="date">
                                         </div>
                                       </div>
                                     </div>
@@ -1273,9 +1283,9 @@
                                     <div class="field-group__item">
                                       <label class="field-group__label">Срок действия</label>
                                       <div class="field-group__box">
-                                        <input class="field-group__input" type="text" data-name="date" name="date">
+                                        <input class="field-group__input" type="text" name="date" data-format="date">
                                         <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                          <input class="input-trigger" type="text" data-id="date">
+                                          <input class="input-trigger" type="text" data-trigger="date">
                                         </div>
                                       </div>
                                     </div>
@@ -1437,17 +1447,17 @@
                   <div class="field-group"> 
                     <div class="row">
                       <div class="col-12">
-                          <div class="checkbox">
-                            <label>
-                              <input class="checkbox__input" type="checkbox" name="translit_tourist"><span class="checkbox__label">Включить транслитерацию по госту 2016</span>
-                            </label>
-                          </div>
+                        <div class="checkbox">
+                          <label>
+                            <input class="checkbox__input" type="checkbox" name="translit_tourist" data-trigger="translit"><span class="checkbox__label text-label">Включить транслитерацию по госту 2016</span>
+                          </label>
+                        </div>
                       </div>
                       <div class="col-lg-3 col-md-6">
                           <div class="field-group__item">
                             <label class="field-group__label required">Фамилия</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="tourist_surname" name="tourist_surname" required>
+                              <input class="field-group__input" type="text" data-name="surname" name="surname" required>
                             </div>
                           </div>
                       </div>
@@ -1455,7 +1465,7 @@
                           <div class="field-group__item">
                             <label class="field-group__label required">Имя</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="tourist_name" name="tourist_name" required>
+                              <input class="field-group__input" type="text" data-name="name" name="name" required>
                             </div>
                           </div>
                       </div>
@@ -1481,7 +1491,7 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Фамилия (LAT)</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="tourist_surname_lat" name="tourist_surname_lat">
+                              <input class="field-group__input" type="text" data-name="surname_lat" name="surname_lat">
                             </div>
                           </div>
                       </div>
@@ -1489,7 +1499,7 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Имя (LAT)</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="tourist_name_lat" name="tourist_name_lat">
+                              <input class="field-group__input" type="text" data-name="name_lat" name="name_lat">
                             </div>
                           </div>
                       </div>
@@ -1615,9 +1625,9 @@
                               <div class="field-group__item">
                                 <label class="field-group__label">Дата выдачи</label>
                                 <div class="field-group__box">
-                                  <input class="field-group__input" type="text" data-name="date" name="date">
+                                  <input class="field-group__input" type="text" name="date" data-format="date">
                                   <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                    <input class="input-trigger" type="text" data-id="date">
+                                    <input class="input-trigger" type="text" data-trigger="date">
                                   </div>
                                 </div>
                               </div>
@@ -1655,9 +1665,9 @@
                               <div class="field-group__item">
                                 <label class="field-group__label">Дата выдачи</label>
                                 <div class="field-group__box">
-                                  <input class="field-group__input" type="text" data-name="date" name="date">
+                                  <input class="field-group__input" type="text" name="date" data-format="date">
                                   <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                    <input class="input-trigger" type="text" data-id="date">
+                                    <input class="input-trigger" type="text" data-trigger="date">
                                   </div>
                                 </div>
                               </div>
@@ -1666,9 +1676,9 @@
                               <div class="field-group__item">
                                 <label class="field-group__label">Срок действия</label>
                                 <div class="field-group__box">
-                                  <input class="field-group__input" type="text" data-name="date" name="date">
+                                  <input class="field-group__input" type="text" name="date" data-format="date">
                                   <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                    <input class="input-trigger" type="text" data-id="date">
+                                    <input class="input-trigger" type="text" data-trigger="date">
                                   </div>
                                 </div>
                               </div>
@@ -1691,16 +1701,21 @@
                         <div class="select-items">
                             <div class="field-group__item">
                               <label class="field-group__label required">Необходимость визы</label>
-                              <select class="select-choices" name="visa_info" id="visaInfo" required>
+                              <select class="select-choices" name="visa_info" data-name="visaInfo" id="visaInfo" required>
                                 <option value="" selected></option>
                                 <option value="not">Не требуется</option>
                                 <option value="yes">Надо оформить визу</option>
                               </select>
                             </div>
-                          <div class="field-group__item">
-                            <label class="field-group__label">Город подачи визы</label>
-                            <select class="visaCity" id="visaCity" name="visa_city"></select>
-                          </div>
+                            <div class="field-group__item">
+                              <label class="field-group__label">Город подачи визы</label>
+                              <select class="select-choices" name="visa_city" data-name="visaCity" id="visaCity">
+                                <option value="" selected></option>
+                                <option value="moscow">Москва</option>
+                                <option value="kaliningrad">Калининград</option>
+                                <option value="murmansk">Мурманск</option>
+                              </select>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -1782,9 +1797,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Время вылета</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="dateflight_start" name="dateflight_start">
+                              <input class="field-group__input" type="text" name="dateflight_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="dateflight_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -1793,9 +1808,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Время прилета</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="dateflight_end" name="dateflight_end">
+                              <input class="field-group__input" type="text" name="dateflight_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="dateflight_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -1860,7 +1875,7 @@
                       <div class="col-lg-8">
                           <div class="field-group__item">
                             <label class="field-group__label">Тип страховки</label>
-                            <select class="select-choices" name="insurance_type" id="insuranceType">
+                            <select class="select-choices" name="insurance_type" data-name="insuranceType" id="insuranceType">
                               <option value="" selected></option>
                               <option value="required">Обязательное страхование медицинских расходов в период путешествия</option>
                               <option value="extended">Расширенное страхование</option>
@@ -1879,9 +1894,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало действия</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="dateinsurance_start" name="dateinsurance_start">
+                              <input class="field-group__input" type="text" name="dateinsurance_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="dateinsurance_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -1890,9 +1905,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание действия</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="dateinsurance_end" name="dateinsurance_end">
+                              <input class="field-group__input" type="text" name="dateinsurance_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="dateinsurance_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -1966,9 +1981,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetransfer_start" name="datetransfer_start">
+                              <input class="field-group__input" type="text" name="datetransfer_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetransfer_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -1977,9 +1992,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datetransfer_end" name="datetransfer_end">
+                              <input class="field-group__input" type="text" name="datetransfer_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datetransfer_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2071,9 +2086,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало действия</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datevisa_start" name="datevisa_start">
+                              <input class="field-group__input" type="text" name="datevisa_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datevisa_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -2082,9 +2097,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончани действия</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datevisa_end" name="datevisa_end">
+                              <input class="field-group__input" type="text" name="datevisa_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datevisa_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2196,9 +2211,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Время заезда</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datehabitation_start" name="datehabitation_start">
+                              <input class="field-group__input" type="text" name="datehabitation_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datehabitation_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -2207,9 +2222,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Время выезда</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="datehabitation_end" name="datehabitation_end">
+                              <input class="field-group__input" type="text" name="datehabitation_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="datehabitation_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2267,9 +2282,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="fuelsurchange_date_start" name="fuelsurchange_date_start">
+                              <input class="field-group__input" type="text" name="fuelsurchange_date_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="fuelsurchange_date_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -2278,9 +2293,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="fuelsurchange_date_end" name="fuelsurchange_date_end">
+                              <input class="field-group__input" type="text" name="fuelsurchange_date_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="fuelsurchange_date_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2346,9 +2361,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="excursion_date_start" name="excursion_date_start">
+                              <input class="field-group__input" type="text" name="excursion_date_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="excursion_date_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -2357,9 +2372,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="excursion_date_end" name="excursion_date_end">
+                              <input class="field-group__input" type="text" name="excursion_date_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="excursion_date_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2417,9 +2432,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Начало</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="otherservice_date_start" name="otherservice_date_start">
+                              <input class="field-group__input" type="text" name="otherservice_date_start" data-name="date_start" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="otherservice_date_start">
+                                <input class="input-trigger" type="text" data-trigger="date_start">
                               </div>
                             </div>
                           </div>
@@ -2428,9 +2443,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Окончание</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="otherservice_date_end" name="otherservice_date_end">
+                              <input class="field-group__input" type="text" name="otherservice_date_end" data-name="date_end" data-format="date">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="otherservice_date_end">
+                                <input class="input-trigger" type="text" data-trigger="date_end">
                               </div>
                             </div>
                           </div>
@@ -2519,7 +2534,7 @@
                       <div class="col-lg-3">
                           <div class="field-group__item">
                             <label class="field-group__label">Расчет</label>
-                            <select class="select-choices" name="expose_calculate" id="exposeCalculate">
+                            <select class="select-choices" name="expose_calculate" data-name="exposeCalculate" id="exposeCalculate">
                               <option value="" selected></option>
                               <option value="cash">Наличный</option>
                               <option value="noncash">Безналичный</option>
@@ -2554,9 +2569,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Дата и время счёта</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="date" name="date">
+                              <input class="field-group__input" type="text" name="date" data-format="datetime">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="date">
+                                <input class="input-trigger" type="text" data-trigger="date">
                               </div>
                             </div>
                           </div>
@@ -2678,7 +2693,7 @@
                       <div class="col-lg-4">
                           <div class="field-group__item">
                             <label class="field-group__label">Тип файла</label>
-                            <select class="select-choices" name="file_type" id="fileType">
+                            <select class="select-choices" name="file_type" data-name="fileType" id="fileType">
                               <option value="" selected></option>
                               <option value="doc_tourist">Документ туриста</option>
                               <option value="doc_payment">Платежный документ</option>
@@ -2742,9 +2757,9 @@
                           <div class="field-group__item">
                             <label class="field-group__label">Дата и время платежа</label>
                             <div class="field-group__box">
-                              <input class="field-group__input" type="text" data-name="pay_date" name="pay_date">
+                              <input class="field-group__input" type="text" name="pay_date" data-format="datetime">
                               <div class="field-group__trigger"><i class="fa-regular fa-calendar-days calendar-icon"></i>
-                                <input class="input-trigger" type="text" data-id="pay_date">
+                                <input class="input-trigger" type="text" data-trigger="date">
                               </div>
                             </div>
                           </div>
@@ -2763,6 +2778,6 @@
           </div>
         </div>
     </div>
-    <script src="scripts/main.min.js?_v=20230511153011" defer></script>
+    <script src="scripts/main.min.js?_v=20230512142325" defer></script>
   </body>
 </html>

@@ -84,7 +84,7 @@ function displayFile() {
 	while (fileList.firstChild) {
 		fileList.removeChild(fileList.firstChild);
 	}
-	if (file.size < 15728640) {
+	if (file?.size < 15728640) {
 		renderFile(file);
 		dropArea.classList.remove('active');
 	} else {

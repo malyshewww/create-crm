@@ -8,21 +8,32 @@ mixin fieldItem(labelName, inputType = "text", inputName, required)
 				input(type=`${inputType == null ? "text" : inputType}` data-name=inputName name=inputName class="field-group__input")
 		if block 
 			block
-mixin date(labelName, inputType = "text", inputName, required)
+mixin date(labelName, inputType = "text", inputName, required, date, format = "date")
 	.field-group__item(id=itemId)
 		label.field-group__label(class=required ? "required" : "")= labelName
 		.field-group__box
 			if required
-				input(type=inputType data-name=inputName name=inputName class="field-group__input" required)
+				input(type=inputType name=inputName data-name=`${date == 'start' ? 'date_start' : 'date_end'}` data-format=format class="field-group__input" required)
 			else 
-				input(type=inputType data-name=inputName name=inputName class="field-group__input")
+				input(type=inputType name=inputName data-name=`${date == 'start' ? 'date_start' : 'date_end'}` data-format=format class="field-group__input")
 			.field-group__trigger
 				i(class="fa-regular fa-calendar-days calendar-icon")
-				input(type="text" class='input-trigger' data-id=inputName)
-mixin select(labelName, selectName, selectId, [...items], required)
+				input(type="text" class='input-trigger' data-trigger=`${date == 'start' ? 'date_start' : 'date_end'}`)
+mixin singleDate(labelName, inputType = "text", inputName, required, format = "date")
+	.field-group__item(id=itemId)
+		label.field-group__label(class=required ? "required" : "")= labelName
+		.field-group__box
+			if required
+				input(type=inputType name=inputName data-format=format class="field-group__input" required)
+			else 
+				input(type=inputType name=inputName data-format=format class="field-group__input")
+			.field-group__trigger
+				i(class="fa-regular fa-calendar-days calendar-icon")
+				input(type="text" class='input-trigger' data-trigger="date")
+mixin select(labelName, selectName, selectId, [...items], required, className = "select-choices")
 	.field-group__item
 		label.field-group__label(class=required ? "required" : "")= labelName
-		select(name=selectName class="select-choices" id=selectId)&attributes({required: required != null})
+		select(name=selectName class=className data-name=selectId id=selectId)&attributes({required: required != null})
 			option(value="" selected)
 			each item, index in items 
 				option(value=item.value)= item.name 

@@ -17,36 +17,41 @@ const selectChoices = document.querySelectorAll('.select-choices');
 [...selectChoices].forEach((select) => {
 	let choices = new Choices(select, choiceConfig)
 })
-const selectVisaCity = document.querySelector('.visaCity');
-const selectVisaInfo = document.getElementById('visaInfo');
-if (selectVisaCity && selectVisaInfo) {
-	const parentCity = selectVisaCity.closest('.field-group__item');
-	parentCity.style.display = "none";
-	selectVisaInfo.addEventListener('change', (event) => {
-		showFieldSelect(event, parentCity);
-	});
-}
+
+let forms = document.querySelectorAll('.form');
+[...forms].forEach((form) => {
+	const selectVisaCity = form.querySelector('[data-name="visaCity"]');
+	const selectVisaInfo = form.querySelector('[data-name="visaInfo"]');
+	if (selectVisaCity && selectVisaInfo) {
+		const parentCity = selectVisaCity.closest('.field-group__item');
+		parentCity.style.display = "none";
+		selectVisaInfo.addEventListener('change', (event) => {
+			showFieldSelect(event, parentCity);
+		});
+	}
+	const selectInsuranceType = form.querySelector('[data-name="insuranceType"]');
+	const inputInsuranceTypeOther = form.querySelector('[data-name="insurance_type_other"]');
+	if (selectInsuranceType && inputInsuranceTypeOther) {
+		let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
+		inputInsuranceTypeOtherParent.setAttribute('hidden', true);
+		selectInsuranceType.addEventListener('change', (event) => {
+			let target = event.target;
+			const currentSelectValue = target.value;
+			if (currentSelectValue == "other") {
+				inputInsuranceTypeOtherParent.removeAttribute('hidden');
+				setTimeout(() => {
+					inputInsuranceTypeOther.focus();
+				}, 100)
+			} else {
+				inputInsuranceTypeOtherParent.setAttribute('hidden', true);
+			}
+		})
+	}
+})
 function showFieldSelect(event, selector) {
 	let target = event.target
 	const currentSelectValue = target.value;
 	currentSelectValue == "yes" ? selector.style.display = "block" : selector.style.display = "none";
 }
 
-const selectInsuranceType = document.getElementById('insuranceType');
-const inputInsuranceTypeOther = document.querySelector('[data-name="insurance_type_other"]');
-if (selectInsuranceType && inputInsuranceTypeOther) {
-	let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
-	inputInsuranceTypeOtherParent.setAttribute('hidden', true);
-	selectInsuranceType.addEventListener('change', (event) => {
-		let target = event.target;
-		const currentSelectValue = target.value;
-		if (currentSelectValue == "other") {
-			inputInsuranceTypeOtherParent.removeAttribute('hidden');
-			setTimeout(() => {
-				inputInsuranceTypeOther.focus();
-			}, 100)
-		} else {
-			inputInsuranceTypeOtherParent.setAttribute('hidden', true);
-		}
-	})
-}
+

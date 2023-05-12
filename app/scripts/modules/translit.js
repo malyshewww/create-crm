@@ -6,12 +6,13 @@ import { translit } from 'gost-transliteration';
 	-	Целевой элемент (target) - input с типом checkbox в разметке
 	-	значения атрибутов у селекторов (input) - откуда брать значение / куда записывать результат 
 */
-function translitFields(target, surName, surNameLat, name, nameLat) {
-	const inputSurName = document.querySelector(`[data-name=${surName}]`);
-	const inputSurNameLat = document.querySelector(`[data-name=${surNameLat}]`);
-	const inputName = document.querySelector(`[data-name=${name}]`);
-	const inputnNameLat = document.querySelector(`[data-name=${nameLat}]`);
-	const translitInput = document.querySelector(`input[name=${target}]`)
+let forms = document.querySelectorAll('.form');
+forms.forEach((form) => {
+	const inputSurName = form.querySelector('[data-name="surname"]');
+	const inputSurNameLat = form.querySelector('[data-name="surname_lat"]');
+	const inputName = form.querySelector('[data-name="name"]');
+	const inputnNameLat = form.querySelector('[data-name="name_lat"]');
+	const translitInput = form.querySelector(`[data-trigger="translit"]`)
 	if (translitInput) {
 		translitInput.addEventListener('change', (event) => {
 			const inputSurNameValue = inputSurName.value;
@@ -27,9 +28,7 @@ function translitFields(target, surName, surNameLat, name, nameLat) {
 			}
 		})
 	}
-}
-translitFields("translit_customer", "person_surname", "person_surname_lat", "person_name", "person_name_lat");
-translitFields("translit_tourist", "tourist_surname", "tourist_surname_lat", "tourist_name", "tourist_name_lat");
+})
 
 // Кастомная функция для транслитерации с возможностью редактирования объекта с буквами
 function transliterate(word) {

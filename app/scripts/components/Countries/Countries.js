@@ -13,8 +13,11 @@ const newArrCountries = countries.map((country, index) => {
 // Добавляем в начало массива элемент (объект) с пустыми значениями, чтобы оставить селект пустым, если ничего не выбрано
 newArrCountries.unshift({ value: "", label: "", selected: true, disabled: true })
 
-const selectCountries = document.getElementById('countryArrival');
-if (selectCountries) {
-	let choices = new Choices(selectCountries, choiceConfig);
-	choices.setChoices(newArrCountries, 'value', 'label');
-}
+let forms = document.querySelectorAll('.form');
+forms.forEach((form) => {
+	const selectCountries = form.querySelector('.countryArrival');
+	if (selectCountries) {
+		let choices = new Choices(selectCountries, choiceConfig);
+		choices.setChoices(newArrCountries, 'value', 'label');
+	}
+})

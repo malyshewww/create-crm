@@ -8,49 +8,42 @@ import anime from 'animejs';
 import moment from 'moment';
 
 // Массив со значениями атрибутов, для которых в конфигурацию добавляется возможность выбора времени помиом основной даты
-const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date", "pay_date"];
+// const dateValues = ["dateflight_start", "dateflight_end", "datetransfer_start", "datetransfer_end", "datehabitation_start", "datehabitation_end", "expose_payment_date", "pay_date"];
 
-function mobilePicker() {
-	if (window.innerWidth > 991.98) {
-		return false
-	} else if (window.innerWidth < 991.98) {
-		return true;
-	}
-}
-window.addEventListener("resize", function () {
-	mobilePicker();
-})
+let deviceType = window.innerWidth < 991.98 ? 'mobile' : 'desktop';
 
-// Конфигурация для одиночных дат
-let button = {
-	content: 'Применить',
-	className: 'custom-button-classname',
-	onClick: (dp, date) => {
-		let newDate = new Date(date);
-		dp.selectDate(newDate);
-		dp.setViewDate(newDate);
-		dp.hide();
+function initDatePicker(type) {
+	const rangeDateConfig = {
+		position: 'bottom right',
+		buttons: ['today', 'clear'],
+		dateSeparator: ",",
+		timeFormat: 'HH:mm',
 	}
-}
-function singleDates(datesId) {
-	const inputTriggerDates = document.querySelectorAll(`[data-id=${datesId}]`);
-	[...inputTriggerDates].forEach((item) => {
-		const parent = item.closest('.field-group__box');
-		const altFieldDate = parent.querySelector('.field-group__input')
-		let datepicker = new AirDatepicker(item, {
-			dateSeparator: "",
-			position: "bottom right",
-			autoClose: false,
-			dateFormat: dateValues.includes(datesId) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			altField: altFieldDate,
-			altFieldDateFormat: dateValues.includes(datesId) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			buttons: ['today', 'clear', button],
-			timepicker: dateValues.includes(datesId) ? true : false,
-			timeFormat: 'HH:mm',
-			// navTitles: {
-			// 	days: '<strong>yyyy</strong> <i>MMMM</i>',
-			// 	months: 'Выберите месяц в  <strong>yyyy</strong>'
-			// },
+
+	// Конфигурация для одиночных дат
+	let button = {
+		content: 'Применить',
+		className: 'custom-button-classname',
+		onClick: (dp, date) => {
+			let newDate = new Date(date);
+			dp.selectDate(newDate);
+			dp.setViewDate(newDate);
+			dp.hide();
+		}
+	}
+	let settings = {}
+	let singleDateSettings = {}
+	if (type === 'mobile') {
+		settings = {
+			// описание настроек для мобильной вариации.
+			isMobile: true,
+		}
+	} else {
+		settings = {
+			// описание настроек для десктопной вариации.
+			isMobile: false,
+		}
+		singleDateSettings = {
 			container: "#scroll-container",
 			position({ $datepicker, $target, $pointer, isViewChange, done }) {
 				let popper = createPopper($target, $datepicker, {
@@ -100,91 +93,88 @@ function singleDates(datesId) {
 					})
 				}
 			}
-		})
-		// altFieldDate.addEventListener('change', function (e) {
-		// 	let value = altFieldDate.value;
-		// 	let newDate = new Date(value).toString();
-		// 	altFieldDate.value = altFieldDate.value.replace(/([%;#/?*+^$[\]\\(){}-])/g, '.');
-		// 	moment.defaultFormat = "DD.MM.YYYY";
-		// 	const date = moment(newDate, moment.defaultFormat, true).toDate();
-		// 	datepicker.selectedDates[0] = date;
-		// })
-	});
-}
-singleDates("date");
-singleDates("pay_date");
-
-const rangeDateConfig = {
-	position: 'bottom right',
-	buttons: ['today', 'clear'],
-	dateSeparator: ",",
-	timeFormat: 'HH:mm',
-	isMobile: mobilePicker(),
-	// getStartOpts: function () {
-	// 	return {
-	// 		autoClose: dateValues.includes(this.start) ? false : true,
-	// 		dateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-	// 		altFieldDateFormat: dateValues.includes(this.start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-	// 		timepicker: dateValues.includes(this.start) ? true : false,
-	// 	}
-	// },
-	// getEndOpts: function () {
-	// 	return {
-	// 		autoClose: dateValues.includes(this.end) ? false : true,
-	// 		dateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-	// 		altFieldDateFormat: dateValues.includes(this.end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-	// 		timepicker: dateValues.includes(this.end) ? true : false,
-	// 	}
-	// }
-}
-// Функция для диапазона дат
-function rangeDate(start, end) {
-	let inputTriggerStart = document.querySelector(`[data-id=${start}]`);
-	let inputTriggerEnd = document.querySelector(`[data-id=${end}]`);
-	let inputAltFieldStart = document.querySelector(`[data-name=${start}]`);
-	let inputAltFieldEnd = document.querySelector(`[data-name=${end}]`);
-	if (inputTriggerStart && inputTriggerEnd && inputAltFieldStart && inputAltFieldEnd) {
-		let datepickerStart = new AirDatepicker(inputTriggerStart, {
-			altField: inputAltFieldStart,
-			...rangeDateConfig,
-			autoClose: dateValues.includes(start) ? false : true,
-			dateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			altFieldDateFormat: dateValues.includes(start) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			timepicker: dateValues.includes(start) ? true : false,
-			onSelect: ({ date, datepicker }) => {
-				datepickerEnd.update({
-					minDate: date
-				})
-			},
-			selectedDates: [inputAltFieldStart.value]
-		});
-		let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
-			altField: inputAltFieldEnd,
-			...rangeDateConfig,
-			autoClose: dateValues.includes(end) ? false : true,
-			dateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			altFieldDateFormat: dateValues.includes(end) ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
-			timepicker: dateValues.includes(end) ? true : false,
-			onSelect: ({ date, datepicker }) => {
-				datepickerStart.update({
-					maxDate: date
-				})
-			},
-			selectedDates: [inputAltFieldEnd.value]
+		}
+	}
+	let forms = document.querySelectorAll('.form');
+	[...forms].forEach((form) => {
+		let inputTriggerStart = form.querySelector('[data-trigger="date_start"]');
+		let inputTriggerEnd = form.querySelector('[data-trigger="date_end"]');
+		let inputAltFieldStart = form.querySelector('[data-name="date_start"]');
+		let inputAltFieldEnd = form.querySelector('[data-name="date_end"]');
+		if (inputTriggerStart && inputTriggerEnd && inputAltFieldStart && inputAltFieldEnd) {
+			let inputAltFieldStartFormat = inputAltFieldStart.dataset.format;
+			let inputAltFieldEndFormat = inputAltFieldEnd.dataset.format;
+			let datepickerStart = new AirDatepicker(inputTriggerStart, {
+				altField: inputAltFieldStart,
+				...rangeDateConfig,
+				...settings,
+				autoClose: true,
+				dateFormat: inputAltFieldStartFormat == 'datetime' ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				altFieldDateFormat: inputAltFieldStartFormat == 'datetime' ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				timepicker: inputAltFieldStartFormat == 'datetime' ? true : false,
+				onSelect: ({ date, datepicker }) => {
+					datepickerEnd.update({
+						minDate: date
+					})
+				},
+				selectedDates: [inputAltFieldStart.value != "" ? inputAltFieldStart.value : null]
+			});
+			let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
+				altField: inputAltFieldEnd,
+				...rangeDateConfig,
+				...settings,
+				autoClose: true,
+				dateFormat: inputAltFieldEndFormat == 'datetime' ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				altFieldDateFormat: inputAltFieldEndFormat == 'datetime' ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				timepicker: inputAltFieldEndFormat == 'datetime' ? true : false,
+				onSelect: ({ date, datepicker }) => {
+					datepickerStart.update({
+						maxDate: date
+					})
+				},
+				selectedDates: [inputAltFieldEnd.value != "" ? inputAltFieldEnd.value : null]
+			});
+		}
+	})
+	function singleDates() {
+		const inputTriggerDates = document.querySelectorAll('[data-trigger="date"]');
+		[...inputTriggerDates].forEach((item) => {
+			const parent = item.closest('.field-group__box');
+			const altFieldDate = parent.querySelector('.field-group__input')
+			let altFieldDateFormat = altFieldDate.dataset.format;
+			let datepicker = new AirDatepicker(item, {
+				...settings,
+				dateSeparator: "",
+				position: "bottom right",
+				autoClose: false,
+				dateFormat: altFieldDateFormat == "datetime" ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				altField: altFieldDate,
+				altFieldDateFormat: altFieldDateFormat == "datetime" ? "dd.MM.yyyy HH:mm" : "dd.MM.yyyy",
+				buttons: ['today', 'clear', button],
+				timepicker: altFieldDateFormat == "datetime" ? true : false,
+				timeFormat: 'HH:mm',
+				// navTitles: {
+				// 	days: '<strong>yyyy</strong> <i>MMMM</i>',
+				// 	months: 'Выберите месяц в  <strong>yyyy</strong>'
+				// },
+				selectedDates: [altFieldDate.value != "" ? altFieldDate.value : null]
+			})
 		});
 	}
+	singleDates();
 }
-rangeDate("date_start", "date_end");
-rangeDate("datetour_start", "datetour_end");
-rangeDate("datetourpack_start", "datetourpack_end");
-rangeDate("dateflight_start", "dateflight_end");
-rangeDate("dateinsurance_start", "dateinsurance_end");
-rangeDate("datetransfer_start", "datetransfer_end");
-rangeDate("datevisa_start", "datevisa_end");
-rangeDate("datehabitation_start", "datehabitation_end");
-rangeDate("fuelsurchange_date_start", "fuelsurchange_date_end");
-rangeDate("excursion_date_start", "excursion_date_end");
-rangeDate("otherservice_date_start", "otherservice_date_end");
+initDatePicker(deviceType)
+window.addEventListener("resize", () => {
+	if (window.innerWidth < 991.98 && deviceType == 'desktop') {
+		deviceType = 'mobile';
+		// initDatePicker(deviceType);
+	} else if (window.innerWidth > 991.98 && deviceType == 'mobile') {
+		deviceType = 'desktop';
+		// initDatePicker(deviceType);
+	}
+});
+
+// Функция для диапазона дат
 // let inputStartDate = document.querySelector('input[name="date_start"]');
 // if (inputStartDate) {
 // 	inputStartDate.addEventListener('change', function (e) {
@@ -193,7 +183,6 @@ rangeDate("otherservice_date_start", "otherservice_date_end");
 // 		inputStartDate.value = inputStartDate.value.replace(/([%#/?*+^$[\]\\(){}-])/g, '.');
 // 		moment.defaultFormat = "DD.MM.YYYY";
 // 		const date = moment(newDate, moment.defaultFormat, true).toDate();
-// 		console.log(date);
 // 		datepickerStart.selectedDates[0] = date;
 // 		datepickerEnd.minDate = date;
 // 	})

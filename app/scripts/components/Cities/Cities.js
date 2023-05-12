@@ -15,12 +15,18 @@ const newArrCities = cities.map((city, index) => {
 // Добавляем в начало массива элемент (объект) с пустыми значениями, чтобы оставить селект пустым, если ничего не выбрано
 newArrCities.unshift({ value: "", label: "", selected: true, disabled: true })
 
-function setCities(selectId) {
-	let select = document.getElementById(selectId);
+
+let forms = document.querySelectorAll('.form');
+forms.forEach((form) => {
+	setCities(form, ".departureСity");
+	setCities(form, ".visaCity");
+})
+function setCities(form, selectId) {
+	let select = form.querySelector(selectId);
 	if (select) {
 		let choices = new Choices(select, choiceConfig);
 		choices.setChoices(newArrCities, 'value', 'label');
 	}
+	return false;
 }
-setCities("departureСity");
-setCities("visaCity");
+
