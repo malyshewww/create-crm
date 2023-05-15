@@ -31,6 +31,9 @@ function initDatePicker(type) {
 			dp.hide();
 		}
 	}
+	let startConfig = {}
+	let endConfig = {}
+	let singleDateConfig = {}
 	let settings = {}
 	let singleDateSettings = {}
 	if (type === 'mobile') {
@@ -102,6 +105,16 @@ function initDatePicker(type) {
 		let inputAltFieldStart = form.querySelector('[data-name="date_start"]');
 		let inputAltFieldEnd = form.querySelector('[data-name="date_end"]');
 		if (inputTriggerStart && inputTriggerEnd && inputAltFieldStart && inputAltFieldEnd) {
+			if (inputAltFieldStart.value != "") {
+				startConfig = {
+					selectedDates: [inputAltFieldStart.value]
+				}
+			}
+			if (inputAltFieldEnd.value != "") {
+				endConfig = {
+					selectedDates: [inputAltFieldEnd.value]
+				}
+			}
 			let inputAltFieldStartFormat = inputAltFieldStart.dataset.format;
 			let inputAltFieldEndFormat = inputAltFieldEnd.dataset.format;
 			let datepickerStart = new AirDatepicker(inputTriggerStart, {
@@ -117,7 +130,8 @@ function initDatePicker(type) {
 						minDate: date
 					})
 				},
-				selectedDates: [inputAltFieldStart.value != "" ? inputAltFieldStart.value : null]
+				...startConfig
+				// selectDates: [inputAltFieldStart.value != '' ? inputAltFieldStart.value : '']
 			});
 			let datepickerEnd = new AirDatepicker(inputTriggerEnd, {
 				altField: inputAltFieldEnd,
@@ -132,7 +146,8 @@ function initDatePicker(type) {
 						maxDate: date
 					})
 				},
-				selectedDates: [inputAltFieldEnd.value != "" ? inputAltFieldEnd.value : null]
+				...endConfig
+				// selectDates: [inputAltFieldEnd.value != '' ? inputAltFieldEnd.value : '']
 			});
 		}
 	})
@@ -142,6 +157,11 @@ function initDatePicker(type) {
 			const parent = item.closest('.field-group__box');
 			const altFieldDate = parent.querySelector('.field-group__input')
 			let altFieldDateFormat = altFieldDate.dataset.format;
+			if (altFieldDate.value != "") {
+				singleDateConfig = {
+					selectedDates: [altFieldDate.value]
+				}
+			}
 			let datepicker = new AirDatepicker(item, {
 				...settings,
 				dateSeparator: "",
@@ -157,7 +177,8 @@ function initDatePicker(type) {
 				// 	days: '<strong>yyyy</strong> <i>MMMM</i>',
 				// 	months: 'Выберите месяц в  <strong>yyyy</strong>'
 				// },
-				selectedDates: [altFieldDate.value != "" ? altFieldDate.value : null]
+				...singleDateConfig
+				// selectedDates: [altFieldDate.value != '' ? altFieldDate.value : '']
 			})
 		});
 	}

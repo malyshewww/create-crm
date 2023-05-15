@@ -20463,7 +20463,8 @@ input[type=date]::before {
   gap: 20px;
 }
 
-.table__buttons button {
+.table__buttons button,
+.table__buttons a {
   width: 30px;
   height: 30px;
   display: -ms-grid;
@@ -20471,7 +20472,8 @@ input[type=date]::before {
   place-items: center;
 }
 
-.table__buttons button i {
+.table__buttons button i,
+.table__buttons a i {
   font-size: 20px;
   color: #0092ff;
 }
