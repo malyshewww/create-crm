@@ -20,7 +20,7 @@ function convertValue(select, input) {
 		// input.value = Math.ceil((parseFloat(input.value) / rates[select.value].Value) * 100) / 100;
 	}
 }
-getValute("exposeCurrency", "expose_payment_sum");
+// getValute("exposeCurrency", "expose_payment_sum");
 // getValute("tourPackageCurrency", "parameters_course_tourist");
 
 // Функция для скрытия | показа поля с курсом в зависимости от выбранного значения в селекте
@@ -29,7 +29,7 @@ function hiddenField() {
 	if (selectTourPackageCurrency) {
 		const inputCourseTourist = document.querySelector('[data-name="parameters_course_tourist"]')
 		const parentField = inputCourseTourist.closest('.field-group__item');
-		parentField.setAttribute('hidden', true);
+		// parentField.setAttribute('hidden', true);
 		selectTourPackageCurrency.addEventListener('change', (event) => {
 			let self = event.target;
 			const parametersPrices = document.querySelectorAll('.parameters-price');

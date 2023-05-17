@@ -1,0 +1,19 @@
+.auth {
+	&__body {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	&__title {
+		text-align: center;
+		font-size: 30px;
+	}
+	&__button {
+		margin-top: 20px;
+	}
+}
+
+.field-group__items {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}

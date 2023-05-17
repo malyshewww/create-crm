@@ -21302,6 +21302,28 @@ table.dataTable.no-footer {
   background-repeat: no-repeat;
 }
 
+.auth__body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.auth__title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.auth__button {
+  margin-top: 20px;
+}
+
+.field-group__items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
 /* ПОДКЛЮЧЕНИЕ СТИЛЕЙ АДАПТИВА */
 
 /* НИЖЕ СТЕЛЕЙ НЕ ДОЛЖНО БЫТЬ!!! */

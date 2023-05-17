@@ -1,0 +1,22 @@
+extends layout.pug
+
+block variables
+	- var pageTitle = "Регистрация"
+block content
+	section.auth 
+		.auth__container 
+			.auth__body 
+				h1.auth__title= pageTitle
+				form(action="#" method="post" id="formRegistration" class="auth__from form-auth")
+					.field-group
+						.field-group__items 
+							.field-group__item
+								label(for="login").field-group__label Логин 
+								input(type="text" name="login" id="login" placeholder="Введите логин").field-group__input
+							.field-group__item
+								label(for="login").field-group__label E-mail 
+								input(type="email" name="email" placeholder="Введите email").field-group__input
+							.field-group__item
+								label(for="login").field-group__label Пароль 
+								input(type="password" name="password" placeholder="Введите пароль").field-group__input
+						button(type="submit").auth__button.btn.btn-primary Зарегистрироваться
