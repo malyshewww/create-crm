@@ -38,7 +38,7 @@ import "./components/Cities/Cities.js";
 import "./components/Countries/Countries.js";
 
 // Подключение модуля с таблицей для главной страницы
-import "./modules/tables.js"
+// import "./modules/tables.js";
 
 document.addEventListener('click', documentActions);
 
@@ -59,11 +59,13 @@ function documentActions(event) {
 }
 function showHide(target, contentBlock) {
 	const btn = document.querySelector(target);
-	btn.classList.toggle('isActive');
 	const content = document.querySelector(contentBlock);
-	content.hasAttribute('hidden')
-		? content.removeAttribute('hidden')
-		: content.setAttribute('hidden', 'true')
+	btn.classList.toggle('isActive');
+	if (content) {
+		content.hasAttribute('hidden')
+			? content.removeAttribute('hidden')
+			: content.setAttribute('hidden', 'true')
+	}
 }
 
 const btnCopy = document.getElementById('btn-copy');

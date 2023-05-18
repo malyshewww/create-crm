@@ -151,3 +151,11 @@
 table.dataTable.no-footer {
 	border-bottom: none;
 }
+div.dt-buttons {
+	float: none;
+	width: 100%;
+	& button {
+		width: 100%;
+		margin: 0;
+	}
+}
