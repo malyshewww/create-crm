@@ -33,7 +33,7 @@ let forms = document.querySelectorAll('.form');
 	const inputInsuranceTypeOther = form.querySelector('[data-name="insurance_type_other"]');
 	if (selectInsuranceType && inputInsuranceTypeOther) {
 		let inputInsuranceTypeOtherParent = inputInsuranceTypeOther.closest(".field-group__item");
-		inputInsuranceTypeOtherParent.setAttribute('hidden', true);
+		// inputInsuranceTypeOtherParent.setAttribute('hidden', true);
 		selectInsuranceType.addEventListener('change', (event) => {
 			let target = event.target;
 			const currentSelectValue = target.value;
