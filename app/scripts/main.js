@@ -38,7 +38,7 @@ import "./components/Cities/Cities.js";
 import "./components/Countries/Countries.js";
 
 // Подключение модуля с таблицей для главной страницы
-// import "./modules/tables.js";
+import "./modules/tables.js";
 
 document.addEventListener('click', documentActions);
 

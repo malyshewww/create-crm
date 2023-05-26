@@ -98,7 +98,7 @@ function initDatePicker(type) {
 			}
 		}
 	}
-	let forms = document.querySelectorAll('.form');
+	let forms = document.querySelectorAll('.form, .form-filter');
 	[...forms].forEach((form) => {
 		let inputTriggerStart = form.querySelector('[data-trigger="date_start"]');
 		let inputTriggerEnd = form.querySelector('[data-trigger="date_end"]');

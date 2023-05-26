@@ -8,25 +8,27 @@ import { translit } from 'gost-transliteration';
 */
 let forms = document.querySelectorAll('.form');
 forms.forEach((form) => {
-	const inputSurName = form.querySelector('[data-name="surname"]');
-	const inputSurNameLat = form.querySelector('[data-name="surname_lat"]');
-	const inputName = form.querySelector('[data-name="name"]');
-	const inputnNameLat = form.querySelector('[data-name="name_lat"]');
-	const translitInput = form.querySelector(`[data-trigger="translit"]`)
-	if (translitInput) {
-		translitInput.addEventListener('change', (event) => {
-			const inputSurNameValue = inputSurName.value;
-			const inputNameValue = inputName.value;
-			if (event.target.checked) {
-				if (inputSurNameValue != "" && inputNameValue != "") {
-					inputSurNameLat.value = translit(inputSurNameValue).toUpperCase();
-					inputnNameLat.value = translit(inputNameValue).toUpperCase();
+	if (form) {
+		const inputSurName = form.querySelector('[data-name="surname"]');
+		const inputSurNameLat = form.querySelector('[data-name="surname_lat"]');
+		const inputName = form.querySelector('[data-name="name"]');
+		const inputnNameLat = form.querySelector('[data-name="name_lat"]');
+		const translitInput = form.querySelector(`[data-trigger="translit"]`)
+		if (translitInput) {
+			translitInput.addEventListener('change', (event) => {
+				const inputSurNameValue = inputSurName.value;
+				const inputNameValue = inputName.value;
+				if (event.target.checked) {
+					if (inputSurNameValue != "" && inputNameValue != "") {
+						inputSurNameLat.value = translit(inputSurNameValue).toUpperCase();
+						inputnNameLat.value = translit(inputNameValue).toUpperCase();
+					}
+				} else {
+					inputSurNameLat.value = "";
+					inputnNameLat.value = "";
 				}
-			} else {
-				inputSurNameLat.value = "";
-				inputnNameLat.value = "";
-			}
-		})
+			})
+		}
 	}
 })
 
