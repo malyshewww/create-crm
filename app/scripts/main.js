@@ -68,6 +68,7 @@ function showHide(target, contentBlock) {
 	}
 }
 
+// Кнопка копировать заявку
 const btnCopy = document.getElementById('btn-copy');
 if (btnCopy) {
 	const claimNumber = document.querySelector('.claim-number')
