@@ -148,6 +148,9 @@
 	display: flex;
 	min-height: 30px;
 	border: 1px solid $grayColorSecondary;
+	&.error {
+		border: 1px solid $redColor;
+	}
 	&__item {
 		display: flex;
 		align-items: center;
