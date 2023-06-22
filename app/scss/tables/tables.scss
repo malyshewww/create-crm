@@ -90,6 +90,13 @@
 		}
 	}
 }
+.table-btn {
+	& button {
+		& i {
+			font-size: 18px;
+		}
+	}
+}
 .table > :not(:last-child) > :last-child > * {
 	border: none;
 }
