@@ -125,20 +125,15 @@ input[type="date"]::before {
 	}
 	&__input,
 	&__textarea {
-		padding: 5px;
+		padding: 4px;
 		font-size: inherit;
 		color: $mainColor;
 		width: 100%;
 		border: 1px solid $grayColorLight2;
+		min-height: 32px;
 		&:focus {
 			border: 1px solid $blueColorSecondary;
 		}
-		// &:focus + .field-group__trigger {
-		// 	background: $blueColorSecondary;
-		// 	& .calendar-icon {
-		// 		color: $whiteColor;
-		// 	}
-		// }
 	}
 	&__textarea {
 		min-height: 90px;

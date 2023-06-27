@@ -64,7 +64,7 @@ select {
 	color: $whiteColor;
 	cursor: pointer;
 	font-family: "OpenSans", sans-serif;
-	border-radius: 0;
+	border-radius: 4px;
 	& i:not(.fa-regular) {
 		font-size: 18px;
 	}

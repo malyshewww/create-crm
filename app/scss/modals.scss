@@ -75,6 +75,7 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
+		width: 42%;
 		@media screen and (max-width: $lg) {
 			width: 100%;
 		}

@@ -1,2 +1,6 @@
-.header {
+.nav-item {
+	&.active .nav-link {
+		color: $blackColor;
+		font-weight: 600;
+	}
 }

@@ -125,7 +125,8 @@
 	border: 1px solid $grayColorLight2;
 	border-radius: 0;
 	font-size: 14px;
-	min-height: 30px;
+	min-height: 32px;
+	max-height: 32px;
 	overflow: hidden;
 }
 .is-focused .choices__inner,
