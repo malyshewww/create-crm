@@ -90,11 +90,11 @@ body {
 // Подключение общих стилей для элементов
 @import "common";
 
-// Подключение стилей фильтров
-@import "filters/filters";
-
 // Подключение стилей для таблицы
 @import "tables/tables";
+
+// Подключение стилей фильтров
+@import "filters/filters";
 
 // Подключение стилей для модальных окон
 @import "modals.scss";

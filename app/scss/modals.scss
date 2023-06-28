@@ -40,6 +40,8 @@
 		position: relative;
 		padding: 10px;
 		margin-bottom: 10px;
+		cursor: move;
+		user-select: none;
 	}
 	&__title {
 		font-size: 24px;

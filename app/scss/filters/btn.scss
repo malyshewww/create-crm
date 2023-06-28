@@ -19,6 +19,16 @@
 		color: $greenColorPrimary;
 	}
 }
+button.dt-button.btn-download {
+	background: transparent;
+	color: $greenColorPrimary;
+	border: 1px solid $greenColorPrimary;
+	&:hover {
+		color: $greenColorPrimary;
+		border: 1px solid $greenColorPrimary;
+		background: transparent;
+	}
+}
 .btn-request {
 	border: 1px solid $blackColorSecondary;
 	color: $blackColorSecondary;
