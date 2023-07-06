@@ -63,6 +63,17 @@
 			#tabContentModal
 				#person(class="tabs-content" data-tab-content="person")
 					.row
+					.col-12.mb-2
+						.field-group__item
+							label.field-group__label Список физ. лиц
+							.search(data-type='tourist')
+								input.field-group__input.field-group__input--search(type='text' name='search' placeholder='Начните вводить фамилию')
+								button.btn.btn-primary.search__button(type='button' data-id='0' data-status='new') Новый
+								.search__dropdown.active
+									ul.search__list 
+										each item in searchList
+											li= item
+					.row
 						.col-12
 							.checkbox
 								label

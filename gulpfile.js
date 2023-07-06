@@ -17,7 +17,7 @@
 */
 
 import pkg from 'gulp'
-const { gulp, src, dest, parallel, series, watch: gulpWatch } = pkg
+const { gulp, src, dest, parallel, series, lastRun, watch: gulpWatch } = pkg
 
 import browserSync from 'browser-sync'
 import bssi from 'browsersync-ssi'
@@ -73,6 +73,11 @@ function browsersync() {
   })
 }
 
+function assets() {
+  return src([`${srcFolder}/**`], { since: lastRun(`${srcFolder}`) })
+    .pipe(dest(`${buildFolder}`))
+}
+
 function buildPug() {
   return src([`${srcFolder}/pug/*.pug`, `!${srcFolder}/pug/layout.pug`, `!${srcFolder}/pug/variables.pug`])
     .pipe(plumber(
@@ -81,7 +86,7 @@ function buildPug() {
         message: "Error: <%= error.message %>"
       }))
     )
-    .pipe(newer(`${buildFolder}`))
+    .pipe(changed(`${buildFolder}`))
     .pipe(pug({
       // Cжатие HTML файла
       pretty: true,
@@ -303,6 +308,7 @@ function startwatch() {
   gulpWatch([`${srcFolder}/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`], { usePolling: true }, images)
   gulpWatch([`${srcFolder}/fonts/**/*`], { usePolling: true }, fonts)
   gulpWatch([`${buildFolder}/**/*.*`], { usePolling: true }).on('change', browserSync.reload)
+  // gulpWatch([`${srcFolder}/**/*.*`], { usePolling: true }, assets);
 }
 
 const build = series(cleandist, parallel(images, scripts, buildPug, styles, sprite, fonts))

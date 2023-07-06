@@ -365,3 +365,55 @@
 		}
 	}
 }
+.search {
+	display: flex;
+	align-items: center;
+	position: relative;
+	&__button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-height: 32px;
+		max-height: 32px;
+		padding: 5px;
+		width: 23%;
+		z-index: 10;
+	}
+	&__dropdown {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		border: 1px solid $blueColorSecondary;
+		border-top: none;
+		z-index: 20;
+		background-color: $whiteColor;
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	&__list {
+		max-height: 220px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		@include reset-list;
+		& li {
+			padding: 5px 10px;
+			cursor: pointer;
+			transition: background-color 0.15s ease 0s;
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: $grayColorLight2;
+				}
+			}
+		}
+	}
+	& .field-group__input {
+		padding-right: calc(23% + 10px);
+		&::placeholder {
+			font-size: 14px;
+			line-height: 1;
+		}
+	}
+}

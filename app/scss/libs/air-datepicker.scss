@@ -565,7 +565,7 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	z-index: 20;
+	z-index: 2000;
 }
 .air-datepicker--pointer {
 	--pointer-half-size: calc(var(--adp-pointer-size) / 2);
